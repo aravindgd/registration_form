@@ -24,8 +24,10 @@ class RegistrationFormsController < ApplicationController
   # POST /registration_forms
   # POST /registration_forms.json
   def create
-    @registration_form = RegistrationForm.new(registration_form_params)
-
+    @registration_form = RegistrationForm.new(name_of_student: params[:registration_form][:name_of_student],gender: params[:registration_form][:gender],nationality:  params[:registration_form][:nationality],caste: params[:registration_form][:caste],community_category: params[:registration_form][:community_category],child_with_special_needs: params[:registration_form][:child_with_special_needs],locality: params[:registration_form][:locality],residental_address: params[:registration_form][:residental_address],pincode: params[:registration_form][:pincode],landmark: params[:registration_form][:landmark],mobile_number: params[:registration_form][:mobile_number],landline_number: params[:registration_form][:landline_number],email: params[:registration_form][:email])
+    @registration_form.date_of_birth_proof = params[:registration_form][:date_of_birth_proof]
+    @registration_form.build_father_data(name: params[:registration_form][:father_datas][:name],qualification: params[:registration_form][:father_datas][:qualification],qualification_proof: params[:registration_form][:father_datas][:qualification_proof],annual_income: params[:registration_form][:father_datas][:annual_income],occupation_designation: params[:registration_form][:father_datas][:occupation_designation])
+    @registration_form.build_mother_data(name: params[:registration_form][:mother_datas][:name],qualification: params[:registration_form][:mother_datas][:qualification],qualification_proof: params[:registration_form][:mother_datas][:qualification_proof],annual_income: params[:registration_form][:mother_datas][:annual_income],occupation_designation: params[:registration_form][:mother_datas][:occupation_designation])
     respond_to do |format|
       if @registration_form.save
         format.html { redirect_to @registration_form, notice: 'Registration form was successfully created.' }
@@ -69,6 +71,7 @@ class RegistrationFormsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def registration_form_params
-      params.require(:registration_form).permit(:name_of_student, :date_of_birth, :gender, :nationality, :caste, :community_category, :student_category_id, :sibling_existing_parent_id, :child_with_special_needs, :locality, :residental_address, :pincode, :landmark, :mobile_number, :landline_number, :email, :father_data_id, :mother_data, :application_number)
+      # params.require(:registration_form).permit(:name_of_student, :date_of_birth, :gender, :nationality, :caste, :community_category, :student_category_id, :sibling_existing_parent_id, :child_with_special_needs, :locality, :residental_address, :pincode, :landmark, :mobile_number, :landline_number, :email, :father_data_id, :mother_data, :application_number)
+      params.require(:registration_form).permit!
     end
 end

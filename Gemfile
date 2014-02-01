@@ -45,3 +45,8 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'carrierwave'
+gem 'simple_form'
+gem "twitter-bootstrap-rails"
+gem 'bootstrap-datepicker-rails'
+gem 'better_errors'
+gem 'binding_of_caller'
