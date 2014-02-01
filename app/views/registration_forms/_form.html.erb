@@ -4,7 +4,7 @@
   <%= f.input :gender , as: :select, label: 'What is your gender?', :collection => [['Male',true],['Female',false]]%><br/>
   <%= f.input :nationality %><br/>
   <%= f.input :caste %><br/>
-  <%= f.input :community_category , as: :select, label: 'What is your Category?', :collection => [['OC'],['BC'],['MBC'],['SC'],['ST'],['DNC']]%><br/>
+  <%= f.input :community_category , as: :select, label: 'What is your Category?', :collection => [['OC','OC'],['BC','BC'],['MBC','MBC'],['SC','SC'],['ST','ST'],['DNC','DNC']]%><br/>
   <%#= f.collection_select(:author, Author.all, :id, :name_with_initial) %>
   <%#= f.input :community_category, :collection => [['OC','OC'],['BC','BC']],['MBC','MBC']],['SC','SC']],['ST','ST']],['DNC','DNC']] %>
   <%= f.input :community_category_proof, as: :file %><br/>
