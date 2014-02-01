@@ -1,0 +1,93 @@
+<%= form_for(@registration_form) do |f| %>
+  <% if @registration_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@registration_form.errors.count, "error") %> prohibited this registration_form from being saved:</h2>
+
+      <ul>
+      <% @registration_form.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name_of_student %><br>
+    <%= f.text_field :name_of_student %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_birth %><br>
+    <%= f.date_select :date_of_birth %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.check_box :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :nationality %><br>
+    <%= f.text_field :nationality %>
+  </div>
+  <div class="field">
+    <%= f.label :caste %><br>
+    <%= f.text_field :caste %>
+  </div>
+  <div class="field">
+    <%= f.label :community_category %><br>
+    <%= f.text_field :community_category %>
+  </div>
+  <div class="field">
+    <%= f.label :student_category_id %><br>
+    <%= f.text_field :student_category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sibling_existing_parent_id %><br>
+    <%= f.text_field :sibling_existing_parent_id %>
+  </div>
+  <div class="field">
+    <%= f.label :child_with_special_needs %><br>
+    <%= f.text_field :child_with_special_needs %>
+  </div>
+  <div class="field">
+    <%= f.label :locality %><br>
+    <%= f.text_field :locality %>
+  </div>
+  <div class="field">
+    <%= f.label :residental_address %><br>
+    <%= f.text_field :residental_address %>
+  </div>
+  <div class="field">
+    <%= f.label :pincode %><br>
+    <%= f.number_field :pincode %>
+  </div>
+  <div class="field">
+    <%= f.label :landmark %><br>
+    <%= f.text_field :landmark %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_number %><br>
+    <%= f.number_field :mobile_number %>
+  </div>
+  <div class="field">
+    <%= f.label :landline_number %><br>
+    <%= f.number_field :landline_number %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :father_data_id %><br>
+    <%= f.text_field :father_data_id %>
+  </div>
+  <div class="field">
+    <%= f.label :mother_data %><br>
+    <%= f.text_field :mother_data %>
+  </div>
+  <div class="field">
+    <%= f.label :application_number %><br>
+    <%= f.number_field :application_number %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

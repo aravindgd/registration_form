@@ -1,0 +1,63 @@
+<h1>Listing registration_forms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name of student</th>
+      <th>Date of birth</th>
+      <th>Gender</th>
+      <th>Nationality</th>
+      <th>Caste</th>
+      <th>Community category</th>
+      <th>Student category</th>
+      <th>Sibling existing parent</th>
+      <th>Child with special needs</th>
+      <th>Locality</th>
+      <th>Residental address</th>
+      <th>Pincode</th>
+      <th>Landmark</th>
+      <th>Mobile number</th>
+      <th>Landline number</th>
+      <th>Email</th>
+      <th>Father data</th>
+      <th>Mother data</th>
+      <th>Application number</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @registration_forms.each do |registration_form| %>
+      <tr>
+        <td><%= registration_form.name_of_student %></td>
+        <td><%= registration_form.date_of_birth %></td>
+        <td><%= registration_form.gender %></td>
+        <td><%= registration_form.nationality %></td>
+        <td><%= registration_form.caste %></td>
+        <td><%= registration_form.community_category %></td>
+        <td><%= registration_form.student_category %></td>
+        <td><%= registration_form.sibling_existing_parent %></td>
+        <td><%= registration_form.child_with_special_needs %></td>
+        <td><%= registration_form.locality %></td>
+        <td><%= registration_form.residental_address %></td>
+        <td><%= registration_form.pincode %></td>
+        <td><%= registration_form.landmark %></td>
+        <td><%= registration_form.mobile_number %></td>
+        <td><%= registration_form.landline_number %></td>
+        <td><%= registration_form.email %></td>
+        <td><%= registration_form.father_data %></td>
+        <td><%= registration_form.mother_data %></td>
+        <td><%= registration_form.application_number %></td>
+        <td><%= link_to 'Show', registration_form %></td>
+        <td><%= link_to 'Edit', edit_registration_form_path(registration_form) %></td>
+        <td><%= link_to 'Destroy', registration_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Registration form', new_registration_form_path %>
