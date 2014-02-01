@@ -1,93 +1,46 @@
-<%= form_for(@registration_form) do |f| %>
-  <% if @registration_form.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@registration_form.errors.count, "error") %> prohibited this registration_form from being saved:</h2>
-
-      <ul>
-      <% @registration_form.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= simple_form_for @registration_form, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name_of_student %><br/>
+  <%= f.input :date_of_birth, wrapper_html: { id: 'dob' } %>
+  <%= f.input :gender , as: :select, label: 'What is your gender?', :collection => [['Male',true],['Female',false]]%><br/>
+  <%= f.input :nationality %><br/>
+  <%= f.input :caste %><br/>
+  <%= f.input :community_category , as: :select, label: 'What is your Category?', :collection => [['OC'],['BC'],['MBC'],['SC'],['ST'],['DNC']]%><br/>
+  <%#= f.collection_select(:author, Author.all, :id, :name_with_initial) %>
+  <%#= f.input :community_category, :collection => [['OC','OC'],['BC','BC']],['MBC','MBC']],['SC','SC']],['ST','ST']],['DNC','DNC']] %>
+  <%= f.input :community_category_proof, as: :file %><br/>
+    <%= f.simple_fields_for :sibling_existing_parents do |sibling_existing_parent|%>
+    <%= sibling_existing_parent.input :name%><br/>
+    <%= sibling_existing_parent.input :class%><br/>
+    <%= sibling_existing_parent.input :admission_num,label: "Admission Number"%><br/>
+    <% end %>
+  <%= f.input :child_with_special_needs %><br/>
+  <%= f.input :child_with_special_needs_proof, as: :file %><br/>
+  <%= f.input :locality %><br/>
+  <%= f.input :residental_address %><br/>
+  <%= f.input :residental_address_proof, as: :file %><br/>
+  <%= f.input :pincode , as: :integer%><br/>
+  <%= f.input :landmark %><br/>
+  <%= f.input :mobile_number, as: :tel %><br/>
+  <%= f.input :landline_number , as: :tel%><br/>
+  <%= f.input :email , as: :email%><br/>
+  <%= f.simple_fields_for :father_datas do |father_data|%>
+    <%= father_data.input :name,:label => "Father's / Gaurdian's Name"%><br/>
+    <%= father_data.input :qualification%><br/>
+    <%= father_data.input :qualification_proof, as: :file %><br/>
+    <%= father_data.input :annual_income, as: :integer%><br/>
+    <%= father_data.input :occupation_designation, :label => "Occupation / Designation"%><br/>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name_of_student %><br>
-    <%= f.text_field :name_of_student %>
-  </div>
-  <div class="field">
-    <%= f.label :date_of_birth %><br>
-    <%= f.date_select :date_of_birth %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.check_box :gender %>
-  </div>
-  <div class="field">
-    <%= f.label :nationality %><br>
-    <%= f.text_field :nationality %>
-  </div>
-  <div class="field">
-    <%= f.label :caste %><br>
-    <%= f.text_field :caste %>
-  </div>
-  <div class="field">
-    <%= f.label :community_category %><br>
-    <%= f.text_field :community_category %>
-  </div>
-  <div class="field">
-    <%= f.label :student_category_id %><br>
-    <%= f.text_field :student_category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :sibling_existing_parent_id %><br>
-    <%= f.text_field :sibling_existing_parent_id %>
-  </div>
-  <div class="field">
-    <%= f.label :child_with_special_needs %><br>
-    <%= f.text_field :child_with_special_needs %>
-  </div>
-  <div class="field">
-    <%= f.label :locality %><br>
-    <%= f.text_field :locality %>
-  </div>
-  <div class="field">
-    <%= f.label :residental_address %><br>
-    <%= f.text_field :residental_address %>
-  </div>
-  <div class="field">
-    <%= f.label :pincode %><br>
-    <%= f.number_field :pincode %>
-  </div>
-  <div class="field">
-    <%= f.label :landmark %><br>
-    <%= f.text_field :landmark %>
-  </div>
-  <div class="field">
-    <%= f.label :mobile_number %><br>
-    <%= f.number_field :mobile_number %>
-  </div>
-  <div class="field">
-    <%= f.label :landline_number %><br>
-    <%= f.number_field :landline_number %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :father_data_id %><br>
-    <%= f.text_field :father_data_id %>
-  </div>
-  <div class="field">
-    <%= f.label :mother_data %><br>
-    <%= f.text_field :mother_data %>
-  </div>
-  <div class="field">
-    <%= f.label :application_number %><br>
-    <%= f.number_field :application_number %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <%= f.simple_fields_for :mother_datas do |mother_data|%>
+    <%= mother_data.input :name%><br/>
+    <%= mother_data.input :qualification%><br/>
+    <%= mother_data.input :qualification_proof, as: :file %><br/>
+    <%= mother_data.input :annual_income, as: :integer%><br/>
+    <%= mother_data.input :occupation_designation, :label => "Occupation / Designation"%><br/>
+  <% end %>
+  <%= f.input :date_of_birth_proof, as: :file %><br/>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                registration_forms_path, :class => 'btn' %>
   </div>
 <% end %>

@@ -1,44 +1,49 @@
-<h1>Listing registration_forms</h1>
-
-<table>
+<%- model_class = RegistrationForm -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name of student</th>
-      <th>Date of birth</th>
-      <th>Gender</th>
-      <th>Nationality</th>
-      <th>Caste</th>
-      <th>Community category</th>
-      <th>Student category</th>
-      <th>Sibling existing parent</th>
-      <th>Child with special needs</th>
-      <th>Locality</th>
-      <th>Residental address</th>
-      <th>Pincode</th>
-      <th>Landmark</th>
-      <th>Mobile number</th>
-      <th>Landline number</th>
-      <th>Email</th>
-      <th>Father data</th>
-      <th>Mother data</th>
-      <th>Application number</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name_of_student) %></th>
+      <th><%= model_class.human_attribute_name(:date_of_birth) %></th>
+      <th><%= model_class.human_attribute_name(:gender) %></th>
+      <th><%= model_class.human_attribute_name(:nationality) %></th>
+      <th><%= model_class.human_attribute_name(:caste) %></th>
+      <th><%= model_class.human_attribute_name(:community_category) %></th>
+      <th><%= model_class.human_attribute_name(:student_category_id) %></th>
+      <th><%= model_class.human_attribute_name(:sibling_existing_parent_id) %></th>
+      <th><%= model_class.human_attribute_name(:child_with_special_needs) %></th>
+      <th><%= model_class.human_attribute_name(:locality) %></th>
+      <th><%= model_class.human_attribute_name(:residental_address) %></th>
+      <th><%= model_class.human_attribute_name(:pincode) %></th>
+      <th><%= model_class.human_attribute_name(:landmark) %></th>
+      <th><%= model_class.human_attribute_name(:mobile_number) %></th>
+      <th><%= model_class.human_attribute_name(:landline_number) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:father_data_id) %></th>
+      <th><%= model_class.human_attribute_name(:application_number) %></th>
+      <th><%= model_class.human_attribute_name(:mother_data_id) %></th>
+      <th><%= model_class.human_attribute_name(:date_of_birth_proof) %></th>
+      <th><%= model_class.human_attribute_name(:community_category_proof) %></th>
+      <th><%= model_class.human_attribute_name(:residental_address_proof) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @registration_forms.each do |registration_form| %>
       <tr>
+        <td><%= link_to registration_form.id, registration_form_path(registration_form) %></td>
         <td><%= registration_form.name_of_student %></td>
         <td><%= registration_form.date_of_birth %></td>
         <td><%= registration_form.gender %></td>
         <td><%= registration_form.nationality %></td>
         <td><%= registration_form.caste %></td>
         <td><%= registration_form.community_category %></td>
-        <td><%= registration_form.student_category %></td>
-        <td><%= registration_form.sibling_existing_parent %></td>
+        <td><%= registration_form.student_category_id %></td>
+        <td><%= registration_form.sibling_existing_parent_id %></td>
         <td><%= registration_form.child_with_special_needs %></td>
         <td><%= registration_form.locality %></td>
         <td><%= registration_form.residental_address %></td>
@@ -47,17 +52,27 @@
         <td><%= registration_form.mobile_number %></td>
         <td><%= registration_form.landline_number %></td>
         <td><%= registration_form.email %></td>
-        <td><%= registration_form.father_data %></td>
-        <td><%= registration_form.mother_data %></td>
+        <td><%= registration_form.father_data_id %></td>
         <td><%= registration_form.application_number %></td>
-        <td><%= link_to 'Show', registration_form %></td>
-        <td><%= link_to 'Edit', edit_registration_form_path(registration_form) %></td>
-        <td><%= link_to 'Destroy', registration_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= registration_form.mother_data_id %></td>
+        <td><%= registration_form.date_of_birth_proof %></td>
+        <td><%= registration_form.community_category_proof %></td>
+        <td><%= registration_form.residental_address_proof %></td>
+        <td><%=l registration_form.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_registration_form_path(registration_form), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      registration_form_path(registration_form),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Registration form', new_registration_form_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_registration_form_path,
+            :class => 'btn btn-primary' %>
