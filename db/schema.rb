@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140201101127) do
+ActiveRecord::Schema.define(version: 20140201102652) do
 
   create_table "father_data", force: true do |t|
     t.string   "name"
@@ -53,13 +53,14 @@ ActiveRecord::Schema.define(version: 20140201101127) do
     t.integer  "landline_number"
     t.string   "email"
     t.integer  "father_data_id"
-    t.integer  "mother_data_id"
     t.integer  "application_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mother_data_id"
   end
 
   add_index "registration_forms", ["father_data_id"], name: "index_registration_forms_on_father_data_id"
+  add_index "registration_forms", ["mother_data_id"], name: "index_registration_forms_on_mother_data_id"
   add_index "registration_forms", ["sibling_existing_parent_id"], name: "index_registration_forms_on_sibling_existing_parent_id"
   add_index "registration_forms", ["student_category_id"], name: "index_registration_forms_on_student_category_id"
 
