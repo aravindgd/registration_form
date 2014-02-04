@@ -1,21 +1,50 @@
+
+<h5><strong>Eligibility:Children who are born between 30 November 2010 and 30 November 2011.</strong></h5>
+<p>
+<h5>List of supporting Documents to be attached with the registration form at the time of submission.</h5>
+<ul>
+  <li>Attested Photocopy of Birth Certificate of the child</li>
+  <li>Proof of Residence (Photo copy of Ration Card / EB Card / Passport / Voter Id / Gas Bill / Aadhar Card / Telephone Bill only)</li>
+  <li>Proof of Sibling - Copy of id card / fee challan</li>
+  <li>For all categories except "OC", Attested Community Ceritificate has to be enclosed</li>
+  <li>Medical Ceritificate of the Child(for children with special needs)</li>
+  <li>Proof if Income</li>
+</p><br/>
+<h4>Student Details</h4><br/>
+<div class="new-page" align="left">
 <%= simple_form_for @registration_form, :html => { :class => 'form-horizontal' } do |f| %>
+
   <%= f.input :name_of_student %><br/>
   <%= f.input :date_of_birth, wrapper_html: { id: 'dob' } %>
-  <%= f.input :gender , as: :select, label: 'What is your gender?', :collection => [['Male',true],['Female',false]]%><br/>
+  <%= f.input :date_of_birth_proof, as: :file %><br/>
+  <%= f.input :gender , as: :select, label: 'Gender', :collection => [['Male','Male'],['Female','Female']]%><br/>
   <%= f.input :nationality %><br/>
   <%= f.input :caste %><br/>
-  <%= f.input :community_category , as: :select, label: 'What is your Category?', :collection => [['OC','OC'],['BC','BC'],['MBC','MBC'],['SC','SC'],['ST','ST'],['DNC','DNC']]%><br/>
+  <%= f.input :community_category , as: :select, label: 'Community Category', :collection => [['OC','OC'],['BC','BC'],['MBC','MBC'],['SC','SC'],['ST','ST'],['DNC','DNC']]%><br/>
   <%#= f.collection_select(:author, Author.all, :id, :name_with_initial) %>
   <%#= f.input :community_category, :collection => [['OC','OC'],['BC','BC']],['MBC','MBC']],['SC','SC']],['ST','ST']],['DNC','DNC']] %>
   <%= f.input :community_category_proof, as: :file %><br/>
+  <%= f.input :student_category , as: :select, label: 'Student Category', :collection => [['General','General'],['SBI Grand Parent','SBI Grand Parent'],['SBI Officers','SBI Officers'],['Pre-School','Pre-School'],['Alumni','Alumni'],['Staff Child - SBOAJC','Staff Child - SBOAJC'],['Staff Child - Others','Staff Child - Others']]%><br/>
+  <%= f.input :student_category_proof, as: :file %><br/>
+  <div class="sibling-detail">
+    <h5>Slibing / Existing Parents</h5>
+  <p><input type="radio" id="sibling1" value="1"> Yes
+    <input type="radio" id="sibling2" value="0"> No</p><br> 
+  </div>
+  <div id="sibling-column">
     <%= f.simple_fields_for :sibling_existing_parents do |sibling_existing_parent|%>
-    <%= sibling_existing_parent.input :name%><br/>
-    <%= sibling_existing_parent.input :class%><br/>
+    <%= sibling_existing_parent.input :name, id:"sibling-column" %><br/>
+    <%= sibling_existing_parent.input :class_of_sibling%><br/>
+    <%= sibling_existing_parent.input :sec,label: "Section"%><br/>
     <%= sibling_existing_parent.input :admission_num,label: "Admission Number"%><br/>
+    <%= sibling_existing_parent.input :school_name%><br/>
     <% end %>
-  <%= f.input :child_with_special_needs %><br/>
+  </div>
+  <%= f.input :child_with_special_needs,as: :select, :collection => [['Yes','Yes'],['No','No']]%><br/>
   <%= f.input :child_with_special_needs_proof, as: :file %><br/>
+  <div class="comm-detail"><h4>Communication Details</h4></div>
   <%= f.input :locality %><br/>
+  <%= f.input :kilometers, as: :select, :collection => [['0-3 Kilometers','0-3 Kilometers'],['4-5 Kilometers','4-5 Kilometers'],['6-8 Kilometers','6-8 Kilometers'],['9-10 Kilometers','9-10 Kilometers'],['Above 10 Kilometers','Above Kilometers']]%><br/>
   <%= f.input :residental_address %><br/>
   <%= f.input :residental_address_proof, as: :file %><br/>
   <%= f.input :pincode , as: :integer%><br/>
@@ -23,21 +52,28 @@
   <%= f.input :mobile_number, as: :tel %><br/>
   <%= f.input :landline_number , as: :tel%><br/>
   <%= f.input :email , as: :email%><br/>
+  <div class="parent-detail"><h4>Parent's / Guardian Occupation</h4></div>
+  <div class="father-detail"><h4> a) Father's / Guardian Occupation</h4></div>
   <%= f.simple_fields_for :father_datas do |father_data|%>
     <%= father_data.input :name,:label => "Father's / Gaurdian's Name"%><br/>
-    <%= father_data.input :qualification%><br/>
+    <%= father_data.input :qualification, as: :select, :collection => [['Graduate','Graduate'],['Post Graduate','Post Graduate'],['Professionl','Professionl'],['Others','Others']]%><br/>
     <%= father_data.input :qualification_proof, as: :file %><br/>
-    <%= father_data.input :annual_income, as: :integer%><br/>
+    <%= father_data.input :annual_income, as: :select, :collection => [['Below One Lakh','Below One Lakh'],['2 to 3 Lakhs','2 to 3 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs']]%><br/>
     <%= father_data.input :occupation_designation, :label => "Occupation / Designation"%><br/>
+    <%= father_data.input :organisation_name%><br/>
+    <%= father_data.input :organisation_address%><br/>
   <% end %>
+  <div class="Mother-detail"><h4> b) Mother's Occupation</h4></div>
   <%= f.simple_fields_for :mother_datas do |mother_data|%>
-    <%= mother_data.input :name%><br/>
-    <%= mother_data.input :qualification%><br/>
+    <%= mother_data.input :name,:label => "Mother's Name"%><br/>
+    <%= mother_data.input :qualification, as: :select, :collection => [['Graduate','Graduate'],['Post Graduate','Post Graduate'],['Professionl','Professionl'],['Others','Others']]%><br/>
     <%= mother_data.input :qualification_proof, as: :file %><br/>
-    <%= mother_data.input :annual_income, as: :integer%><br/>
+    <%= mother_data.input :annual_income, as: :select, :collection => [['Below One Lakh','Below One Lakh'],['2 to 3 Lakhs','2 to 3 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs'],['None','None']]%><br/>
     <%= mother_data.input :occupation_designation, :label => "Occupation / Designation"%><br/>
+    <%= mother_data.input :organisation_name%><br/>
+    <%= mother_data.input :organisation_address%><br/>
   <% end %>
-  <%= f.input :date_of_birth_proof, as: :file %><br/>
+  </div>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

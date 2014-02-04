@@ -9,7 +9,7 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//= require dataTables/jquery.dataTables
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
@@ -17,3 +17,5 @@
 //= require bootstrap-datepicker
 //= require turbolinks
 //= require registration_forms
+//= require custom
+//= require_tree 

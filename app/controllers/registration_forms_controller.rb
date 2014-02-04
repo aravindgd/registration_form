@@ -5,6 +5,13 @@ class RegistrationFormsController < ApplicationController
   # GET /registration_forms.json
   def index
     @registration_forms = RegistrationForm.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        send_data registration_forms_drawer(@registration_forms), :filename=>'registration_forms.pdf', :typr=>'application/pdf', :disposition=>'inline'
+      end
+    end
+
   end
 
   # GET /registration_forms/1
@@ -24,8 +31,9 @@ class RegistrationFormsController < ApplicationController
   # POST /registration_forms
   # POST /registration_forms.json
   def create
-    @registration_form = RegistrationForm.new(name_of_student: params[:registration_form][:name_of_student],gender: params[:registration_form][:gender],nationality:  params[:registration_form][:nationality],caste: params[:registration_form][:caste],community_category: params[:registration_form][:community_category],child_with_special_needs: params[:registration_form][:child_with_special_needs],locality: params[:registration_form][:locality],residental_address: params[:registration_form][:residental_address],pincode: params[:registration_form][:pincode],landmark: params[:registration_form][:landmark],mobile_number: params[:registration_form][:mobile_number],landline_number: params[:registration_form][:landline_number],email: params[:registration_form][:email])
-    @registration_form.date_of_birth_proof = params[:registration_form][:date_of_birth_proof]
+    @registration_form = RegistrationForm.new(name_of_student: params[:registration_form][:name_of_student], date_of_birth: params[:registration_form][:date_of_birth], gender: params[:registration_form][:gender],nationality:  params[:registration_form][:nationality],caste: params[:registration_form][:caste],community_category: params[:registration_form][:community_category], student_category: params[:registration_form][:student_category], child_with_special_needs: params[:registration_form][:child_with_special_needs],locality: params[:registration_form][:locality], kilometers: params[:registration_form][:kilometers], residental_address: params[:registration_form][:residental_address],pincode: params[:registration_form][:pincode],landmark: params[:registration_form][:landmark],mobile_number: params[:registration_form][:mobile_number],landline_number: params[:registration_form][:landline_number],email: params[:registration_form][:email])
+    @registration_form.date_of_birth_proof = params[:registration_form][:date_of_birth_proof] 
+    @registration_form.build_sibling_existing_parent(name: params[:registration_form][:sibling_existing_parents][:name], class_of_sibling: params[:registration_form][:sibling_existing_parents][:class_of_sibling],sec: params[:registration_form][:sibling_existing_parents][:sec], admission_num: params[:registration_form][:sibling_existing_parents][:admission_num],school_name: params[:registration_form][:sibling_existing_parents][:school_name])
     @registration_form.build_father_data(name: params[:registration_form][:father_datas][:name],qualification: params[:registration_form][:father_datas][:qualification],qualification_proof: params[:registration_form][:father_datas][:qualification_proof],annual_income: params[:registration_form][:father_datas][:annual_income],occupation_designation: params[:registration_form][:father_datas][:occupation_designation])
     @registration_form.build_mother_data(name: params[:registration_form][:mother_datas][:name],qualification: params[:registration_form][:mother_datas][:qualification],qualification_proof: params[:registration_form][:mother_datas][:qualification_proof],annual_income: params[:registration_form][:mother_datas][:annual_income],occupation_designation: params[:registration_form][:mother_datas][:occupation_designation])
     respond_to do |format|

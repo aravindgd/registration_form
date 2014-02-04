@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140201122538) do
+ActiveRecord::Schema.define(version: 20140203145126) do
 
   create_table "father_data", force: true do |t|
     t.string   "name"
@@ -65,15 +65,26 @@ ActiveRecord::Schema.define(version: 20140201122538) do
     t.string   "community_category_proof"
     t.string   "residental_address_proof"
     t.string   "child_with_special_needs_proof"
+    t.integer  "student_data_id"
+    t.integer  "student_category_id"
+    t.integer  "sibling_existing_parent_id"
+    t.integer  "father_data_id"
+    t.integer  "mother_data_id"
+    t.string   "student_category"
+    t.integer  "kilometers"
+    t.string   "student_category_proof"
+    t.string   "sibling"
   end
 
   create_table "sibling_existing_parents", force: true do |t|
-    t.string   "class"
     t.string   "sec"
     t.string   "admission_num"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "registration_form_id"
+    t.string   "class_of_sibling"
+    t.string   "name"
+    t.string   "school_name"
   end
 
   add_index "sibling_existing_parents", ["registration_form_id"], name: "index_sibling_existing_parents_on_registration_form_id"

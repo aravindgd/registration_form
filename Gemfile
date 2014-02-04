@@ -43,10 +43,12 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
+gem 'pdf-writer'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'carrierwave'
 gem 'simple_form'
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-datepicker-rails'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'email_validator'
