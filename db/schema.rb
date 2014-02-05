@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203145126) do
+ActiveRecord::Schema.define(version: 20140205083911) do
 
   create_table "father_data", force: true do |t|
     t.string   "name"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20140203145126) do
 
   create_table "registration_forms", force: true do |t|
     t.string   "name_of_student"
-    t.date     "date_of_birth"
     t.boolean  "gender"
     t.string   "nationality"
     t.string   "caste"
@@ -74,6 +73,8 @@ ActiveRecord::Schema.define(version: 20140203145126) do
     t.integer  "kilometers"
     t.string   "student_category_proof"
     t.string   "sibling"
+    t.date     "birth_date"
+    t.string   "date_of_birth"
   end
 
   create_table "sibling_existing_parents", force: true do |t|

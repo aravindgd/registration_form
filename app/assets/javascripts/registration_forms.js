@@ -1,5 +1,5 @@
 read = function(){
-    $('#dob').change(datepicker());
+  $('#dob').change(datepicker());
 }
 
 $(document).ready(read);

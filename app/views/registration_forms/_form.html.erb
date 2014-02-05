@@ -15,7 +15,8 @@
 <%= simple_form_for @registration_form, :html => { :class => 'form-horizontal' } do |f| %>
 
   <%= f.input :name_of_student %><br/>
-  <%= f.input :date_of_birth, wrapper_html: { id: 'dob' } %>
+  <%= f.input :date_of_birth, input_html: { id: 'dob'} %>
+  
   <%= f.input :date_of_birth_proof, as: :file %><br/>
   <%= f.input :gender , as: :select, label: 'Gender', :collection => [['Male','Male'],['Female','Female']]%><br/>
   <%= f.input :nationality %><br/>
@@ -24,24 +25,40 @@
   <%#= f.collection_select(:author, Author.all, :id, :name_with_initial) %>
   <%#= f.input :community_category, :collection => [['OC','OC'],['BC','BC']],['MBC','MBC']],['SC','SC']],['ST','ST']],['DNC','DNC']] %>
   <%= f.input :community_category_proof, as: :file %><br/>
-  <%= f.input :student_category , as: :select, label: 'Student Category', :collection => [['General','General'],['SBI Grand Parent','SBI Grand Parent'],['SBI Officers','SBI Officers'],['Pre-School','Pre-School'],['Alumni','Alumni'],['Staff Child - SBOAJC','Staff Child - SBOAJC'],['Staff Child - Others','Staff Child - Others']]%><br/>
+  <%= f.input :student_category , as: :select, label: 'Student Category', :collection => [['General','General'],['SBI Grand Parent','SBI Grand Parent'],['SBI Officers','SBI Officers'],['Pre-School','Pre-School'],['Alumni','Alumni'],['Staff Child','Staff Child']]%><br/>
+  <div id="staff_child" style="display: none;">
+    <%#= f.select("Staff Child", "s_c", [["SBOAJC",1],["Others",2]], { include_blank: true })%>
+
+       <%= f.input :staff_child, :collection => [ "SBOAJC","Others"] %>
+
+  </div>
   <%= f.input :student_category_proof, as: :file %><br/>
   <div class="sibling-detail">
     <h5>Slibing / Existing Parents</h5>
-  <p><input type="radio" id="sibling1" value="1"> Yes
-    <input type="radio" id="sibling2" value="0"> No</p><br> 
+     <p>
+      <%#= collection_radio_buttons :sibling, [[true, 'Yes'] ,[false, 'No']], :first, :last %>
+<input type="radio" name="group1" id="show" value="yes"> Yes
+<input type="radio" name="group1" id="hide" value="no" > No<br>
+  </p><br> 
   </div>
-  <div id="sibling-column">
+
+  <div id="showpage">
     <%= f.simple_fields_for :sibling_existing_parents do |sibling_existing_parent|%>
-    <%= sibling_existing_parent.input :name, id:"sibling-column" %><br/>
+    <%= sibling_existing_parent.input :name %><br/>
     <%= sibling_existing_parent.input :class_of_sibling%><br/>
     <%= sibling_existing_parent.input :sec,label: "Section"%><br/>
     <%= sibling_existing_parent.input :admission_num,label: "Admission Number"%><br/>
     <%= sibling_existing_parent.input :school_name%><br/>
     <% end %>
   </div>
-  <%= f.input :child_with_special_needs,as: :select, :collection => [['Yes','Yes'],['No','No']]%><br/>
+  <div id="child_need">
+    <h5>Child with special needs</h5>
+    <p><input type="radio" name="special" id="show_child" value="1"> Yes
+   <input type="radio" name="special" id="hide_child" value="0" > No<br></p>
+  </div>
+  <div id="child_proof">
   <%= f.input :child_with_special_needs_proof, as: :file %><br/>
+ </div><br>
   <div class="comm-detail"><h4>Communication Details</h4></div>
   <%= f.input :locality %><br/>
   <%= f.input :kilometers, as: :select, :collection => [['0-3 Kilometers','0-3 Kilometers'],['4-5 Kilometers','4-5 Kilometers'],['6-8 Kilometers','6-8 Kilometers'],['9-10 Kilometers','9-10 Kilometers'],['Above 10 Kilometers','Above Kilometers']]%><br/>

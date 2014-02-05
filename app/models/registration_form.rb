@@ -3,6 +3,7 @@ class RegistrationForm < ActiveRecord::Base
   has_one :sibling_existing_parent
   has_one :father_data
   has_one :mother_data
+  attr_accessor :staff_child
   
   accepts_nested_attributes_for :sibling_existing_parent
   accepts_nested_attributes_for :father_data
