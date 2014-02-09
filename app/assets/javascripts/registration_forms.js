@@ -1,6 +1,9 @@
-read = function(){
-  $('#dob').change(datepicker());
+ready = function(){
+$(document).ready(function(){
+$('#dob').datepicker( {
+	format: 'dd/mm/yyyy'
+  });
+});
 }
-
-$(document).ready(read);
-$(document).on('page:load', read);
+$(document).ready(ready);
+$(document).on('page:load', ready);

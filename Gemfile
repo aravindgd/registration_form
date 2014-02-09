@@ -43,7 +43,8 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'pdf-writer'
+ gem 'prawn'
+ gem 'pdfkit'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'carrierwave'
 gem 'simple_form'

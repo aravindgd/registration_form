@@ -8,6 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *= require dataTables/jquery.dataTables
+ *= require dataTables/extras/TableTools
  *= require bootstrap_and_overrides
  *= require bootstrap-datepicker
  *= require_self
@@ -57,12 +58,25 @@
 .simple_form .sibling-detail p{
 	padding-left: 250px;    
 }
-.simple_form .sibling-detail h5{
-  position: absolute;
-  bottom: -297px;
+.simple_form #mother_data p{
+  padding-left: 100px; 
+}
+.simple_form #father_data p{
+  padding-left: 100px; 
 }
 
 .simple_form #child_need p{
   padding-left: 250px;
 }
 
+@media print{
+  body{
+    background-color: #fff;
+  }
+  #container{
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+}

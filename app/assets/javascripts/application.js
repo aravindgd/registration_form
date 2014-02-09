@@ -17,7 +17,10 @@
 //= require bootstrap-datepicker
 //= require turbolinks
 //= require dataTables/jquery.dataTables
-
+//= require dataTables/extras/TableTools
+//= require dataTables/extras/ZeroClipboard.js
 //= require custom
 //= require showhide
 //= require child_show
+//= require registration_forms
+//= require sbi_grand

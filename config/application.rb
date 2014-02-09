@@ -21,6 +21,6 @@ module SboaRegisterationProject
     # config.i18n.default_locale = :de
     config.generators do |g|
   g.template_engine "web_app_theme"
-end
+ 
   end
 end

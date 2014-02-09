@@ -51,7 +51,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @registration_forms.each do |registration_form| %>
+    <%@registration_forms.each do |registration_form| %>
       <tr>
         <!-- <td><%#= link_to registration_form.id, registration_form_path(registration_form) %></td> -->
         <td><%= registration_form.name_of_student %></td>
@@ -72,8 +72,8 @@
         <!-- <td><%#= registration_form.email %></td> -->
         <!-- <td><%#= registration_form.father_data_id %></td> -->
         <!-- <td><%#= registration_form.father_data.name %></td> -->
-        <td><%= registration_form.father_data.annual_income %></td>
-        <td><%= registration_form.father_data.occupation_designation %></td>
+        <td><%= registration_form.father_data.annual_income if registration_form.father_data %></td>
+        <td><%= registration_form.father_data.occupation_designation if registration_form.father_data%></td>
         <!-- <td><%#= registration_form.father_data.organisation_name %></td> -->
         <!-- <td><%#= registration_form.father_data.organisation_address %></td> -->
         <!-- <td><%#= registration_form.application_number %></td> -->
@@ -81,8 +81,8 @@
         <!-- <td><%#= registration_form.mother_data.name %></td> -->
         <!-- <td><%#= registration_form.mother_data.qualification %></td> -->
         <!-- <td><%#= registration_form.mother_data.qualification_proof %></td> -->
-        <td><%= registration_form.mother_data.annual_income %></td>
-        <td><%= registration_form.mother_data.occupation_designation %></td>
+        <td><%= registration_form.mother_data.annual_income if registration_form.mother_data%></td>
+        <td><%= registration_form.mother_data.occupation_designation if registration_form.mother_data %></td>
         <!-- <td><%#= registration_form.mother_data.organisation_name %></td> -->
         <!-- <td><%#= registration_form.mother_data.organisation_address %></td> -->
         <!-- <td><%#= registration_form.date_of_birth_proof %></td> -->
@@ -90,6 +90,7 @@
         <!-- <td><%#= registration_form.residental_address_proof %></td> -->
         <td><%=l registration_form.created_at %></td>
         <td>
+          
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_registration_form_path(registration_form), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

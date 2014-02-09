@@ -1,0 +1,9 @@
+@media print{
+#show-page h5{
+	display:none !important;
+
+}
+body{
+	background-color: green;
+}
+}

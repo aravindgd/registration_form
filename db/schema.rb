@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205083911) do
+ActiveRecord::Schema.define(version: 20140207110718) do
 
   create_table "father_data", force: true do |t|
     t.string   "name"
     t.string   "qualification"
     t.string   "occupation_designation"
-    t.integer  "annual_income"
+    t.string   "annual_income"
     t.string   "organisation_name"
     t.string   "organisation_address"
     t.datetime "created_at"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140205083911) do
     t.string   "name"
     t.string   "qualification"
     t.string   "occupation_designation"
-    t.integer  "annual_income"
+    t.string   "annual_income"
     t.string   "organisation_name"
     t.string   "organisation_address"
     t.datetime "created_at"
@@ -75,7 +75,18 @@ ActiveRecord::Schema.define(version: 20140205083911) do
     t.string   "sibling"
     t.date     "birth_date"
     t.string   "date_of_birth"
+    t.string   "year_of_passing"
+    t.string   "marksheet_proof"
+    t.integer  "student_categories_id"
+    t.string   "tie_up"
+    t.string   "rbi_proof"
+    t.string   "sail_proof"
+    t.string   "residental_address2"
+    t.string   "reference"
+    t.string   "remarks"
   end
+
+  add_index "registration_forms", ["student_categories_id"], name: "index_registration_forms_on_student_categories_id"
 
   create_table "sibling_existing_parents", force: true do |t|
     t.string   "sec"
@@ -95,6 +106,14 @@ ActiveRecord::Schema.define(version: 20140205083911) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "registration_form_id"
+    t.integer  "membership_no"
+    t.string   "grandfather_name"
+    t.string   "branch"
+    t.string   "year_of_passing"
+    t.string   "marksheet_proof"
+    t.integer  "sbi_membership_no"
+    t.string   "sbi_branch"
+    t.string   "service_retirement"
   end
 
   add_index "student_categories", ["registration_form_id"], name: "index_student_categories_on_registration_form_id"

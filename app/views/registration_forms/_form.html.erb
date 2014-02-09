@@ -18,7 +18,7 @@
   <%= f.input :date_of_birth, input_html: { id: 'dob'} %>
   
   <%= f.input :date_of_birth_proof, as: :file %><br/>
-  <%= f.input :gender , as: :select, label: 'Gender', :collection => [['Male','Male'],['Female','Female']]%><br/>
+  <%= f.input :gender , as: :select, label: 'Gender', :collection => [['Male',true],['Female',false]]%><br/>
   <%= f.input :nationality %><br/>
   <%= f.input :caste %><br/>
   <%= f.input :community_category , as: :select, label: 'Community Category', :collection => [['OC','OC'],['BC','BC'],['MBC','MBC'],['SC','SC'],['ST','ST'],['DNC','DNC']]%><br/>
@@ -29,12 +29,31 @@
   <div id="staff_child" style="display: none;">
     <%#= f.select("Staff Child", "s_c", [["SBOAJC",1],["Others",2]], { include_blank: true })%>
 
-       <%= f.input :staff_child, :collection => [ "SBOAJC","Others"] %>
+       <%= f.input :staff_child, :collection => [ "SBOAJC","SBOAMAT","SBOAMDU","CBE","MODEL","TRY","CEN","ERK"] %><br>
 
   </div>
-  <%= f.input :student_category_proof, as: :file %><br/>
+  <div id="pre_school" style="display: none;">
+  <%= f.input :student_category_proof, label:'Copy of Fee challan',as: :file %><br/></div>
+
+  <%= f.simple_fields_for :student_categories do |student_categories|%>
+  <div id="sbi-grand" style="display: none;">
+  <%= student_categories.input :membership_no, as: :integer,label:'Membership No' %><br>
+  <%= student_categories.input :grandfather_name, label:'Grandfather Name' %><br>
+  <%= student_categories.input :branch,label:'Branch' %><br>
+  <%= student_categories.input :service_retirement,as: :file, label:'Service Retirement' %><br></div>
+  <div id="alumni" style="display: none;">
+  <%= student_categories.input :year_of_passing %><br>
+  <%= student_categories.input :marksheet_proof, as: :file %><br></div>
+  <div id="sbi-officers" style="display: none;">
+  <%= student_categories.input :sbi_membership_no, as: :integer, label:'Membership No' %><br>
+  <%= student_categories.input :sbi_branch, label:'Branch' %><br></div>
+  <% end %>
+  <%= f.input :tie_up, label:'Tie-up', as: :select, :collection=>[['RBI','RBI'],['SAIL','SAIL']] %><br/>
+  <div id="rbi_proof" style="display: none;"><%= f.input :rbi_proof, as: :file ,label:'RBI Proof'%><br/></div>
+  <div id="sail_proof" style="display: none;"><%= f.input :sail_proof, as: :file,label:'SAIL Proof' %><br/></div>
+  
   <div class="sibling-detail">
-    <h5>Slibing / Existing Parents</h5>
+    <h5>Slibing / Existing Parents(SBOA School Junior College Only)</h5>
      <p>
       <%#= collection_radio_buttons :sibling, [[true, 'Yes'] ,[false, 'No']], :first, :last %>
 <input type="radio" name="group1" id="show" value="yes"> Yes
@@ -48,7 +67,7 @@
     <%= sibling_existing_parent.input :class_of_sibling%><br/>
     <%= sibling_existing_parent.input :sec,label: "Section"%><br/>
     <%= sibling_existing_parent.input :admission_num,label: "Admission Number"%><br/>
-    <%= sibling_existing_parent.input :school_name%><br/>
+    
     <% end %>
   </div>
   <div id="child_need">
@@ -60,12 +79,12 @@
   <%= f.input :child_with_special_needs_proof, as: :file %><br/>
  </div><br>
   <div class="comm-detail"><h4>Communication Details</h4></div>
-  <%= f.input :locality %><br/>
-  <%= f.input :kilometers, as: :select, :collection => [['0-3 Kilometers','0-3 Kilometers'],['4-5 Kilometers','4-5 Kilometers'],['6-8 Kilometers','6-8 Kilometers'],['9-10 Kilometers','9-10 Kilometers'],['Above 10 Kilometers','Above Kilometers']]%><br/>
-  <%= f.input :residental_address %><br/>
+  <%= f.input :locality, as: :select, :collection=>[['Anna Nagar(West/East/Extn)','Anna Nagar(West/East/Extn)'],['Padi','Padi'],['Koyambedu','Koyambedu'],['Villivakkam','Villivakkam'],['ICF','ICF'],['Kilpauk','Kilpauk'],['MMDA','MMDA'],['Choolaimedu','Choolaimedu'],['Kellys','Kellys'],['Perambur','Perambur'],['Shenoynagar','Shenoynagar'],['Kolathur','Kolathur'],['GKM Colony','GKM Colony'],['Retteri','Retteri'],['Mogappair(East/West)','Mogappair(East/West)'],['Arumbakkam','Arumbakkam'],['Aminjikarai','Aminjikarai'],['Korattur','Korattur'],['Ambattur','Ambattur'],['Agaram','Agaram'],['Metha Nagar','Metha Nagar'],['Ayanavaram','Ayanavaram'],['Ambattur OT','Ambattur OT'],['Redhills','Redhills'],['Athipet','Athipet'],['Periar Nagar','Periar Nagar'],['Choolai','Choolai'],['Vadapalani','Vadapalani'],['Nungambakkam','Nungambakkam'],['Chinmaya Nagar','Chinmaya Nagar'],['Nolambur','Nolambur'],['Kodambakkam','Kodambakkam'],['KK Nagar','KK Nagar'],['Virugambakkam','Virugambakkam'],['Saligramam','Saligramam'],['Moolakadai','Moolakadai'],['Madhavaram','Madhavaram'],['Jawahar Nagar','Jawahar Nagar'],['Purasawalkkam','Purasawalkkam'],['Ashok Nagar','Ashok Nagar'],['Chetpet','Chetpet'],['Ayyapakkam','Ayyapakkam'],['Madhuravoyal','Madhuravoyal'],['Other Places','Other Places']] %><br/>
+  
+  <%= f.input :residental_address,label:'Residental_address1'%><br/>
+  <%= f.input :residental_address2 %><br/>
   <%= f.input :residental_address_proof, as: :file %><br/>
   <%= f.input :pincode , as: :integer%><br/>
-  <%= f.input :landmark %><br/>
   <%= f.input :mobile_number, as: :tel %><br/>
   <%= f.input :landline_number , as: :tel%><br/>
   <%= f.input :email , as: :email%><br/>
@@ -73,22 +92,37 @@
   <div class="father-detail"><h4> a) Father's / Guardian Occupation</h4></div>
   <%= f.simple_fields_for :father_datas do |father_data|%>
     <%= father_data.input :name,:label => "Father's / Gaurdian's Name"%><br/>
-    <%= father_data.input :qualification, as: :select, :collection => [['Graduate','Graduate'],['Post Graduate','Post Graduate'],['Professionl','Professionl'],['Others','Others']]%><br/>
+    <%= father_data.input :qualification, as: :select, :collection => [['Graduate','Graduate'],['Post Graduate','Post Graduate'],['Professional','Professional'],['Others','Others']]%><br/>
     <%= father_data.input :qualification_proof, as: :file %><br/>
-    <%= father_data.input :annual_income, as: :select, :collection => [['Below One Lakh','Below One Lakh'],['2 to 3 Lakhs','2 to 3 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs']]%><br/>
+    <%= father_data.input :annual_income, as: :select, :collection => [['Below One Lakh','Below One Lakh'],['1 to 2 Lakhs','1 to 2 Lakhs'],['2 to 3 Lakhs','2 to 3 Lakhs'],['3 to 4 Lakhs','3 to 4 Lakhs'],['4 to 5 Lakhs','4 to 5 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs']]%><br/>
     <%= father_data.input :occupation_designation, :label => "Occupation / Designation"%><br/>
     <%= father_data.input :organisation_name%><br/>
     <%= father_data.input :organisation_address%><br/>
+    <div id="father_data"><p><input type="radio" name="group2" id="private" value="0"> Private
+    <input type="radio" name="group2" id="central" value="1" > Central Government
+    <input type="radio" name="group2" id="state" value="2"> State Government
+    <input type="radio" name="group2" id="deffence" value="3" > Deffence
+    <input type="radio" name="group2" id="public_sector" value="4" > Public Sector
+    </p></div><br>
   <% end %>
   <div class="Mother-detail"><h4> b) Mother's Occupation</h4></div>
   <%= f.simple_fields_for :mother_datas do |mother_data|%>
     <%= mother_data.input :name,:label => "Mother's Name"%><br/>
-    <%= mother_data.input :qualification, as: :select, :collection => [['Graduate','Graduate'],['Post Graduate','Post Graduate'],['Professionl','Professionl'],['Others','Others']]%><br/>
+    <%= mother_data.input :qualification, as: :select, :collection => [['Graduate','Graduate'],['Post Graduate','Post Graduate'],['Professional','Professional'],['Others','Others']]%><br/>
     <%= mother_data.input :qualification_proof, as: :file %><br/>
-    <%= mother_data.input :annual_income, as: :select, :collection => [['Below One Lakh','Below One Lakh'],['2 to 3 Lakhs','2 to 3 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs'],['None','None']]%><br/>
+    <%= mother_data.input :annual_income, as: :select, :collection => [['Below One Lakh','Below One Lakh'],['1 to 2 Lakhs','1 to 2 Lakhs'],['2 to 3 Lakhs','2 to 3 Lakhs'],['3 to 4 Lakhs','3 to 4 Lakhs'],['4 to 5 Lakhs','4 to 5 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs']]%><br/>
     <%= mother_data.input :occupation_designation, :label => "Occupation / Designation"%><br/>
     <%= mother_data.input :organisation_name%><br/>
     <%= mother_data.input :organisation_address%><br/>
+    <div id="mother_data"><p><input type="radio" name="group3" id="private-mother" value="0"> Private
+    <input type="radio" name="group3" id="central-mother" value="1" > Central Government
+    <input type="radio" name="group3" id="state-mother" value="2"> State Government
+    <input type="radio" name="group3" id="deffence-mother" value="3" > Deffence
+    <input type="radio" name="group3" id="public-mother" value="4" > Public Sector
+    </p></div><br>
+    <h4>Other Details</h4>
+    <%= f.input :reference %><br/>
+    <%= f.input :remarks %><br/>
   <% end %>
   </div>
   <div class="form-actions">
