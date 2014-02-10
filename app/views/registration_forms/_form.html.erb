@@ -25,29 +25,26 @@
   <%#= f.collection_select(:author, Author.all, :id, :name_with_initial) %>
   <%#= f.input :community_category, :collection => [['OC','OC'],['BC','BC']],['MBC','MBC']],['SC','SC']],['ST','ST']],['DNC','DNC']] %>
   <%= f.input :community_category_proof, as: :file %><br/>
-  <%= f.input :student_category , as: :select, label: 'Student Category', :collection => [['General','General'],['SBI Grand Parent','SBI Grand Parent'],['SBI Officers','SBI Officers'],['Pre-School','Pre-School'],['Alumni','Alumni'],['Staff Child','Staff Child']]%><br/>
+  <%# f.input :student_category , as: :select, label: 'Student Category', :collection => [['General','General'],['SBI Grand Parent','SBI Grand Parent'],['SBI Officers','SBI Officers'],['Pre-School','Pre-School'],['Alumni','Alumni'],['Staff Child','Staff Child']]%><br/>
+  <!-- collection_select(:author, Author.all, :id, :name_with_initial) -->
+  <%= f.collection_select(:student_category, StudentCategory.all, :id, :name)%><br/>
+  
   <div id="staff_child" style="display: none;">
-    <%#= f.select("Staff Child", "s_c", [["SBOAJC",1],["Others",2]], { include_blank: true })%>
-
-       <%= f.input :staff_child, :collection => [ "SBOAJC","SBOAMAT","SBOAMDU","CBE","MODEL","TRY","CEN","ERK"] %><br>
-
+    <%= f.input :staff_child, :collection => [ "SBOAJC","SBOAMAT","SBOAMDU","CBE","MODEL","TRY","CEN","ERK"] %><br>
   </div>
   <div id="pre_school" style="display: none;">
-  <%= f.input :student_category_proof, label:'Copy of Fee challan',as: :file %><br/></div>
-
-  <%= f.simple_fields_for :student_categories do |student_categories|%>
+  <%= f.input :pre_school_proof, label:'Copy of Fee challan',as: :file %><br/></div>
   <div id="sbi-grand" style="display: none;">
-  <%= student_categories.input :membership_no, as: :integer,label:'Membership No' %><br>
-  <%= student_categories.input :grandfather_name, label:'Grandfather Name' %><br>
-  <%= student_categories.input :branch,label:'Branch' %><br>
-  <%= student_categories.input :service_retirement,as: :file, label:'Service Retirement' %><br></div>
+  <%= f.input :grand_membership_no, as: :integer,label:'Membership No' %><br>
+  <%= f.input :grandfather_name, label:'Grandfather Name' %><br>
+  <%= f.input :grand_branch,label:'Branch' %><br>
+  <%= f.input :grand_service_retirement,as: :file, label:'Service Retirement' %><br></div>
   <div id="alumni" style="display: none;">
-  <%= student_categories.input :year_of_passing %><br>
-  <%= student_categories.input :marksheet_proof, as: :file %><br></div>
+  <%= f.input :alumni_year_of_passing %><br>
+  <%= f.input :alumni_marksheet_proof, as: :file %><br></div>
   <div id="sbi-officers" style="display: none;">
-  <%= student_categories.input :sbi_membership_no, as: :integer, label:'Membership No' %><br>
-  <%= student_categories.input :sbi_branch, label:'Branch' %><br></div>
-  <% end %>
+  <%= f.input :sbi_officer_membership_no, as: :integer, label:'Membership No' %><br>
+  <%= f.input :sbi_officer_branch, label:'Branch' %><br></div>
   <%= f.input :tie_up, label:'Tie-up', as: :select, :collection=>[['RBI','RBI'],['SAIL','SAIL']] %><br/>
   <div id="rbi_proof" style="display: none;"><%= f.input :rbi_proof, as: :file ,label:'RBI Proof'%><br/></div>
   <div id="sail_proof" style="display: none;"><%= f.input :sail_proof, as: :file,label:'SAIL Proof' %><br/></div>

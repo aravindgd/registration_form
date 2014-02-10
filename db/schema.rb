@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140210150047) do
+ActiveRecord::Schema.define(version: 20140210151030) do
+
+  create_table "alumnis", force: true do |t|
+    t.integer  "year_of_passing"
+    t.string   "mark_sheet_proof"
+    t.integer  "student_cat_reg_form_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "alumnis", ["student_cat_reg_form_id"], name: "index_alumnis_on_student_cat_reg_form_id"
 
   create_table "father_data", force: true do |t|
     t.string   "name"
@@ -130,6 +140,15 @@ ActiveRecord::Schema.define(version: 20140210150047) do
   end
 
   add_index "sibling_existing_parents", ["registration_form_id"], name: "index_sibling_existing_parents_on_registration_form_id"
+
+  create_table "staff_children", force: true do |t|
+    t.string   "branch"
+    t.integer  "student_cat_reg_form_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "staff_children", ["student_cat_reg_form_id"], name: "index_staff_children_on_student_cat_reg_form_id"
 
   create_table "staffchildren", force: true do |t|
     t.string   "staff_child"

@@ -3,12 +3,14 @@ class RegistrationForm < ActiveRecord::Base
   has_one :sibling_existing_parent
   has_one :father_data
   has_one :mother_data
-  has_one :student_categories
-  attr_accessor :staff_child, :sibling_existing_parents,:father_datas, :mother_datas
+  has_one :student_cat_reg_form
+  has_one :student_category, through: :student_cat_reg_form
+  attr_accessor :staff_child, :pre_school_proof,:grand_membership_no, :grandfather_name,:grand_branch,:grand_service_retirement,:alumni_year_of_passing,:alumni_marksheet_proof,:sbi_officer_membership_no,:sbi_officer_branch
   
   accepts_nested_attributes_for :sibling_existing_parent
   accepts_nested_attributes_for :father_data
   accepts_nested_attributes_for :mother_data
+  accepts_nested_attributes_for :student_cat_reg_form
   
   mount_uploader :date_of_birth_proof, DocumentUploader
   mount_uploader :community_category_proof, DocumentUploader

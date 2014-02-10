@@ -1,7 +1,8 @@
-$(document).ready(function(){
+ready = function(){
+
 $("#registration_form_student_category").change(function() {
   console.log($("#registration_form_student_category").val())
-  if($("#registration_form_student_category").val()=="SBI Grand Parent")
+  if($("#registration_form_student_category").val()=="2")
   {
   	$("#sbi-grand").toggle();
   }
@@ -15,7 +16,7 @@ $("#registration_form_student_category").change(function() {
 });
 $("#registration_form_student_category").change(function() {
   console.log($("#registration_form_student_category").val())
-  if($("#registration_form_student_category").val()=="Alumni")
+  if($("#registration_form_student_category").val()=="5")
   {
     $("#alumni").toggle();
   }
@@ -29,7 +30,7 @@ $("#registration_form_student_category").change(function() {
 });
 $("#registration_form_student_category").change(function() {
   console.log($("#registration_form_student_category").val())
-  if($("#registration_form_student_category").val()=="Pre-School")
+  if($("#registration_form_student_category").val()=="4")
   {
     $("#pre_school").toggle();
   }
@@ -43,7 +44,7 @@ $("#registration_form_student_category").change(function() {
 });
 $("#registration_form_student_category").change(function() {
   console.log($("#registration_form_student_category").val())
-  if($("#registration_form_student_category").val()=="SBI Officers")
+  if($("#registration_form_student_category").val()=="3")
   {
     $("#sbi-officers").toggle();
   }
@@ -56,4 +57,20 @@ $("#registration_form_student_category").change(function() {
   }
 });
 
+$("#registration_form_student_category").change(function() {
+  console.log($("#registration_form_student_category").val())
+  if($("#registration_form_student_category").val()=="6")
+  {
+    $("#staff_child").toggle();
+  }
+  else
+  {
+    if($("#staff_child").length)
+    {
+      $("#staff_child").hide();
+    }
+  }
 });
+};
+$(document).ready(ready);
+$(document).on('page:load', ready);

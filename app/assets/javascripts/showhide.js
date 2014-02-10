@@ -1,4 +1,4 @@
-$(document).ready(function() {
+ready = function(){
  // hides the slickbox as soon as the DOM is ready
  $('#showpage').hide();
  // shows the slickbox on clicking the noted link  
@@ -11,5 +11,6 @@ $(document).ready(function() {
     
   });
   
-
-  });
+};
+$(document).ready(ready);
+$(document).on('page:load', ready);
