@@ -7,7 +7,6 @@ class CreateRegistrationForms < ActiveRecord::Migration
       t.string :nationality
       t.string :caste
       t.string :community_category
-      t.references :student_category, index: true
       t.references :sibling_existing_parent, index: true
       t.string :child_with_special_needs
       t.string :locality
