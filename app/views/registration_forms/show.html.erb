@@ -49,12 +49,19 @@
   </tr>
   <tr>
   <td><strong><%= model_class.human_attribute_name(:student_category) %>:</strong></td>
-  <td><%= @registration_form.student_category %></td>
+  <td><%= @registration_form.student_category.name %></td>
   </tr>
+  <% case @registration_form.student_category.id %>
+  <% when 2 %>
   <tr>
   <td><strong><%= model_class.human_attribute_name(:membership_no) %>:</strong></td>
   <td><%= @registration_form.student_categories.membership_no %></td>
   </tr>
+  <% when 3 %>
+  <% when 4 %>
+  <% when 5 %>
+  <% when 6 %>
+  <% end %>
   <tr>
   <td><strong><%= model_class.human_attribute_name(:grandfather_name) %>:</strong></td>
   <td><%= @registration_form.student_categories.grandfather_name %></td>

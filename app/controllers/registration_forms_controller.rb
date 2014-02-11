@@ -17,6 +17,21 @@ class RegistrationFormsController < ApplicationController
   # GET /registration_forms/1
   # GET /registration_forms/1.json
   def show
+    student_category_id = @registration_form.student_category.id
+    case student_category_id 
+    when 1
+      
+    when 2
+
+    when 3
+      
+    when 4
+      
+    when 5
+      
+    when 6
+      
+    end
   end
   
 

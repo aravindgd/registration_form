@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20140210151030) do
     t.datetime "updated_at"
     t.string   "qualification_proof"
     t.integer  "registration_form_id"
-    t.string   "work_category"
   end
 
   add_index "father_data", ["registration_form_id"], name: "index_father_data_on_registration_form_id"
@@ -50,7 +49,6 @@ ActiveRecord::Schema.define(version: 20140210151030) do
     t.datetime "updated_at"
     t.string   "qualification_proof"
     t.integer  "registration_form_id"
-    t.string   "work_category"
   end
 
   add_index "mother_data", ["registration_form_id"], name: "index_mother_data_on_registration_form_id"
@@ -85,26 +83,23 @@ ActiveRecord::Schema.define(version: 20140210151030) do
     t.string   "community_category_proof"
     t.string   "residental_address_proof"
     t.string   "child_with_special_needs_proof"
-    t.integer  "student_data_id"
-    t.integer  "student_category_id"
     t.integer  "sibling_existing_parent_id"
     t.integer  "father_data_id"
     t.integer  "mother_data_id"
+    t.string   "student_category"
     t.integer  "kilometers"
     t.string   "student_category_proof"
+    t.string   "sibling"
     t.string   "date_of_birth"
-    t.integer  "student_categories_id"
+    t.string   "year_of_passing"
+    t.string   "marksheet_proof"
     t.string   "tie_up"
     t.string   "rbi_proof"
     t.string   "sail_proof"
     t.string   "residental_address2"
     t.string   "reference"
     t.string   "remarks"
-    t.boolean  "sibling"
-    t.boolean  "child_special"
   end
-
-  add_index "registration_forms", ["student_categories_id"], name: "index_registration_forms_on_student_categories_id"
 
   create_table "sbi_grand_parents", force: true do |t|
     t.string   "membership_number"
@@ -149,17 +144,6 @@ ActiveRecord::Schema.define(version: 20140210151030) do
   end
 
   add_index "staff_children", ["student_cat_reg_form_id"], name: "index_staff_children_on_student_cat_reg_form_id"
-
-  create_table "staffchildren", force: true do |t|
-    t.string   "staff_child"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "registration_form_id"
-    t.integer  "student_cat_reg_form_id"
-  end
-
-  add_index "staffchildren", ["registration_form_id"], name: "index_staffchildren_on_registration_form_id"
-  add_index "staffchildren", ["student_cat_reg_form_id"], name: "index_staffchildren_on_student_cat_reg_form_id"
 
   create_table "student_cat_reg_forms", force: true do |t|
     t.integer  "student_category_id"
