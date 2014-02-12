@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212034958) do
+ActiveRecord::Schema.define(version: 20140212131836) do
 
   create_table "alumnis", force: true do |t|
     t.integer  "year_of_passing"
@@ -179,5 +179,14 @@ ActiveRecord::Schema.define(version: 20140212034958) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "tie_ups", force: true do |t|
+    t.string   "rbi_or_sbi_proof"
+    t.integer  "student_cat_reg_form_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tie_ups", ["student_cat_reg_form_id"], name: "index_tie_ups_on_student_cat_reg_form_id"
 
 end

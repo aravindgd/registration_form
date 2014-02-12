@@ -17,7 +17,5 @@ class RegistrationForm < ActiveRecord::Base
   mount_uploader :residental_address_proof, DocumentUploader
   mount_uploader :child_with_special_needs_proof, DocumentUploader
   mount_uploader :student_category_proof, DocumentUploader
-  mount_uploader :rbi_proof, DocumentUploader
-  mount_uploader :sail_proof, DocumentUploader
-
+  
 end

@@ -71,6 +71,20 @@ $("#registration_form_student_category").change(function() {
     }
   }
 });
+$("#registration_form_student_category").change(function() {
+  console.log($("#registration_form_student_category").val())
+  if($("#registration_form_student_category").val()=="7")
+  {
+    $("#rbi_proof").toggle();
+  }
+  else
+  {
+    if($("#rbi_proof").length)
+    {
+      $("#rbi_proof").hide();
+    }
+  }
+});
 };
 $(document).ready(ready);
 $(document).on('page:load', ready);

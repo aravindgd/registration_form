@@ -101,24 +101,13 @@
   <td><strong><%= model_class.human_attribute_name(:branch) %>:</strong></td>
   <td><%= @registration_form.student_cat_reg_form.staff_child.branch %></td>
   </tr>
+  <% when 7 %>
+  <tr>
+  <td><strong>RBI / SAIL Proof:</strong></td>
+  <td><%= @registration_form.student_cat_reg_form.tie_up.rbi_or_sbi_proof %></td>
+  </tr>
   <tr>
   <% end %>
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:tie_up) %>:</strong></td>
-  <% if @registration_form.tie_up %>
-  <td>RBI</td>
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:rbi_proof) %>:</strong></td>
-  <td><%= @registration_form.rbi_proof %></td>
-  </tr>
-  <%else %>
-  <td>SAIL</td>
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:sail_proof) %>:</strong></td>
-  <td><%= @registration_form.sail_proof %></td>
-  </tr>
-  <% end %>
-  </tr>
   <tr>
   <td><strong><%= model_class.human_attribute_name(:sibling) %>:</strong></td>
   <%if @registration_form.sibling %>
@@ -310,6 +299,6 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-  <div class="print" ><p><%= link_to "Download PDF", registration_form_path(@registration_form, :format => 'pdf'),:class => 'btn' %></p>
+  <%= link_to "Download PDF", registration_form_path(@registration_form, :format => 'pdf'),:class => 'btn' %>
   </div>            
 </div>

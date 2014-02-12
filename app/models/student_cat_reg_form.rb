@@ -4,6 +4,7 @@ class StudentCatRegForm < ActiveRecord::Base
 	has_one :pre_school
 	has_one :alumni
 	has_one :staff_child
+	has_one :tie_up
   belongs_to :student_category
   belongs_to :registration_form
 end
