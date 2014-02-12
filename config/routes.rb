@@ -2,6 +2,8 @@ SboaRegisterationProject::Application.routes.draw do
   resources :registration_forms
  
   root :to => "registration_forms#new"
+
+  get "pdf_to" => "registration_forms#pdf_to"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

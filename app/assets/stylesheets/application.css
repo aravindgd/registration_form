@@ -15,7 +15,7 @@
  */
 .simple_form label {
   float: left;
-  width: 100px;
+  /*width: 100px;*/
   text-align: right;
   margin: 2px 10px;
 }
@@ -55,9 +55,18 @@
   font-style: italic;
 }
 
-.simple_form .sibling-detail p{
-	padding-left: 250px;    
+.simple_form #student_category{
+  font-style: normal;
+	    padding-left: 180px;
 }
+.simple_form #student p{
+  font-style: normal;
+  padding-left: 20px;
+
+  }
+  /*.simple_form #sibling-detail label.collection_radio{*/
+    /*width:50px;*/
+  /*}*/
 .simple_form #mother_data p{
   padding-left: 100px; 
 }

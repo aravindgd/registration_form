@@ -19,10 +19,5 @@ class RegistrationForm < ActiveRecord::Base
   mount_uploader :student_category_proof, DocumentUploader
   mount_uploader :rbi_proof, DocumentUploader
   mount_uploader :sail_proof, DocumentUploader
-  after_save :update_application_number
-
-  def update_application_number
-    self.application_number = self.id+1000
-  end
 
 end

@@ -19,7 +19,7 @@ ready = function(){
 
 $("#registration_form_tie_up").change(function() {
   console.log($("#registration_form_tie_up").val())
-  if($("#registration_form_tie_up").val()=="RBI")
+  if($("#registration_form_tie_up").val()=="true")
   {
     $("#rbi_proof").toggle();
   }
@@ -33,7 +33,7 @@ $("#registration_form_tie_up").change(function() {
 });
 $("#registration_form_tie_up").change(function() {
   console.log($("#registration_form_tie_up").val())
-  if($("#registration_form_tie_up").val()=="SAIL")
+  if($("#registration_form_tie_up").val()=="false")
   {
     $("#sail_proof").toggle();
   }

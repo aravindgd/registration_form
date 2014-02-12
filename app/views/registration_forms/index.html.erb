@@ -13,8 +13,9 @@
       <th><%= model_class.human_attribute_name(:name_of_student) %></th>
       <th><%= model_class.human_attribute_name(:date_of_birth) %></th>
       <th><%= model_class.human_attribute_name(:gender) %></th>
-      <!-- <th><%#= model_class.human_attribute_name(:nationality) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:caste) %></th> -->
+      <th><%= model_class.human_attribute_name(:nationality) %></th>
+      <th><%= model_class.human_attribute_name(:religion) %></th>
+      <th><%= model_class.human_attribute_name(:caste) %></th>
       <th><%= model_class.human_attribute_name(:community_category) %></th>
       <!-- <th><%#= model_class.human_attribute_name(:student_category_id) %></th> -->
       <!-- <th><%#= model_class.human_attribute_name(:sibling_existing_parent_id) %></th> -->
@@ -56,9 +57,14 @@
         <!-- <td><%#= link_to registration_form.id, registration_form_path(registration_form) %></td> -->
         <td><%= registration_form.name_of_student %></td>
         <td><%= registration_form.date_of_birth %></td>
-        <td><%= registration_form.gender %></td>
-        <!-- <td><%#= registration_form.nationality %></td> -->
-        <!-- <td><%#= registration_form.caste %></td> -->
+        <% if registration_form.gender %>
+        <td>Male</td>
+        <% else %>
+        <td>Female</td>
+        <% end %>
+        <td><%= registration_form.nationality %></td>
+        <td><%= registration_form.religion %></td>
+        <td><%= registration_form.caste %></td>
         <td><%= registration_form.community_category %></td>
         <!-- <td><%#= registration_form.student_category_id %></td> -->
         <!-- <td><%#= registration_form.sibling_existing_parent_id %></td> -->
