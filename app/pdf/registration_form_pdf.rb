@@ -34,15 +34,15 @@ class RegistrationFormPdf < Prawn::Document
 		  text "  "
           text "Student Details",:style => :bold
           text "  "
-          text "Name of the student :"+@registration_form.name_of_student
+          text "Name of the student :"+@registration_form.name_of_student, :size => 9
           text "  "
-          text "Date of Birth :"+@registration_form.date_of_birth
+          text "Date of Birth :"+@registration_form.date_of_birth, :size => 9
           text "  "
           text "Gender :"+if @registration_form.gender
           	"Male"
           else
           	"Female"
-          end
+          end, :size => 9
 
           text "  "
           text "Father's Name / Guardian's Name :"+@registration_form.father_data.name
@@ -70,14 +70,12 @@ class RegistrationFormPdf < Prawn::Document
                     text "Year of Passing :"+@registration_form.student_cat_reg_form.alumni.year_of_passing
                when 6
                     text "Branch :"+@registration_form.student_cat_reg_form.staff_child.branch
+               when 7
+                    text "Tie-up :"+@registration_form.student_cat_reg_form.tie_up.rbi_or_sbi_proof
           end
           text "  "
-          text "Tie-up :"+ if@registration_form.tie_up
-               "RBI"
-          else
-               "SAIL"
-          end
-          if @registration_form.sibling_existing_parent
+
+          if @registration_form.sibling
           text "Sibling : Yes"
               text "Name :"+@registration_form.sibling_existing_parent.name
               text "Class of Sibling "+@registration_form.sibling_existing_parent.class_of_sibling
@@ -86,7 +84,7 @@ class RegistrationFormPdf < Prawn::Document
           else
           text "Sibling : No"
           end
-          if @registration_form.child_with_special_needs
+          if @registration_form.child_special
           text "Child with special needs : Yes"
           else
           text "Child with special needs : No"
@@ -96,8 +94,8 @@ class RegistrationFormPdf < Prawn::Document
           text " "
           text "Locality :"+@registration_form.locality
           text "  "
-          text "Residental_address :"+@registration_form.residental_address
-          text "Residental_address2 :"+@registration_form.residental_address2
+          text "Residental Address1 :"+@registration_form.residental_address
+          text "Address2 :"+@registration_form.residental_address2
           text "  "
           text "Pincode :"+@registration_form.pincode
           text "  "
@@ -185,10 +183,6 @@ class RegistrationFormPdf < Prawn::Document
           end
           text " "
           text "Other Details",:style => :bold
-          text " "
-          text "Reference :"+@registration_form.reference
-          text " "
-          text "Remarks :"+@registration_form.remarks
           text " "
           text " "
           text " "

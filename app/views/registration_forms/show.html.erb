@@ -82,15 +82,23 @@
   <td><strong><%= model_class.human_attribute_name(:branch) %>:</strong></td>
   <td><%= @registration_form.student_cat_reg_form.sbi_officer.branch %></td>
   </tr>
+  <tr>
+  <td><strong><%= model_class.human_attribute_name(:sbi_id_proof) %>:</strong></td>
+  <td><%= @registration_form.student_cat_reg_form.sbi_officer.sbi_id_proof %></td>
+  </tr>
   <% when 4 %>
   <tr>
-  <td><strong><%= model_class.human_attribute_name(:copy_of_fee_chalan) %>:</strong></td>
-  <td><%= @registration_form.student_cat_reg_form.pre_school.copy_of_fee_chalan %></td>
+  <td><strong><%= model_class.human_attribute_name(:admission_number) %>:</strong></td>
+  <td><%= @registration_form.student_cat_reg_form.pre_school.admission_number %></td>
   </tr>
   <% when 5 %>
   <tr>
   <td><strong><%= model_class.human_attribute_name(:year_of_passing) %>:</strong></td>
   <td><%= @registration_form.student_cat_reg_form.alumni.year_of_passing %></td>
+  </tr>
+  <tr>
+  <td><strong>Category:</strong></td>
+  <td><%= @registration_form.student_cat_reg_form.alumni.alumni_category %></td>
   </tr>
   <tr>
   <td><strong><%= model_class.human_attribute_name(:mark_sheet_proof) %>:</strong></td>
@@ -104,7 +112,7 @@
   <% when 7 %>
   <tr>
   <td><strong>RBI / SAIL Proof:</strong></td>
-  <td><%= @registration_form.student_cat_reg_form.tie_up.rbi_or_sbi_proof %></td>
+  <td><%= @registration_form.student_cat_reg_form.tie_up.rbi_proof %></td>
   </tr>
   <tr>
   <% end %>
@@ -188,61 +196,81 @@
   <td><%= @registration_form.email %></td>
   </tr>
   <tr>
-  <td><strong>Father's name</strong></td>
+  <td><strong>Father's name:</strong></td>
   <td><%= @registration_form.father_data.name %></td>
   </tr>
   <tr>
-  <td><strong>Father's Qualification</strong></td>
+  <td><strong>Father's Qualification:</strong></td>
   <td><%= @registration_form.father_data.qualification %></td>
   </tr>
-    <tr>
-  <td><strong>Father's Annual Income</strong></td>
+  <tr>
+  <td><strong>Father's Annual Income:</strong></td>
   <td><%= @registration_form.father_data.annual_income %></td>
   </tr>
   <tr>
-  <td><strong>Father's Occupation / Designation</strong></td>
+  <td><strong>Father's Income Proof:</strong></td>
+  <td><%= @registration_form.father_data.income_proof %></td>
+  </tr>
+  <tr>
+  <td><strong>Father's Occupation / Designation:</strong></td>
   <td><%= @registration_form.father_data.occupation_designation %></td>
   </tr>
   <tr>
-  <td><strong>Father's Organistaion Name</strong></td>
+  <td><strong>Father's Organistaion Name:</strong></td>
   <td><%= @registration_form.father_data.organisation_name %></td>
   </tr>
   <tr>
-  <td><strong>Father's Organisation Address</strong></td>
+  <td><strong>Father's Organisation Address:</strong></td>
   <td><%= @registration_form.father_data.organisation_address %></td>
   </tr>
   <tr>
-  <td><strong>Father's Organisation Type</strong></td>
+  <td><strong>Father's Organisation Address 2:</strong></td>
+  <td><%= @registration_form.father_data.organisation_address2 %></td>
+  </tr>
+  <tr>
+  <td><strong>Father's Organisation Type:</strong></td>
   <td><%= @registration_form.father_data.organisation_type %></td>
   </tr>
   <tr>
-  <td><strong>Mother's name</strong></td>
+  <td><strong>Mother's name:</strong></td>
   <td><%= @registration_form.mother_data.name %></td>
   </tr>
   <tr>
-  <td><strong>Mother's Qualification</strong></td>
+  <td><strong>Mother's Qualification:</strong></td>
   <td><%= @registration_form.mother_data.qualification %></td>
   </tr>
+  <tr>
+  <td><strong>Mother's Professional:</strong></td>
+  <td><%= @registration_form.mother_data.professional %></td>
+  </tr>
    <tr>
-  <td><strong>Mother's Annual Income</strong></td>
+  <td><strong>Mother's Annual Income:</strong></td>
   <td><%= @registration_form.mother_data.annual_income %></td>
   </tr>
   <tr>
-  <td><strong>Mother's Occupation / Designation</strong></td>
+  <td><strong>Mother's Income Proof:</strong></td>
+  <td><%= @registration_form.mother_data.income_proof %></td>
+  </tr>
+  <tr>
+  <td><strong>Mother's Occupation / Designation:</strong></td>
   <td><%= @registration_form.mother_data.occupation_designation %></td>
   </tr>
   <tr>
    
   <tr>
-  <td><strong>Mother's Organistaion Name</strong></td>
+  <td><strong>Mother's Organistaion Name:</strong></td>
   <td><%= @registration_form.mother_data.organisation_name %></td>
   </tr>
   <tr>
-  <td><strong>Mother's Organisation Address</strong></td>
+  <td><strong>Mother's Organisation Address:</strong></td>
   <td><%= @registration_form.mother_data.organisation_address %></td>
   </tr>
   <tr>
-  <td><strong>Mother's Organisation Type</strong></td>
+  <td><strong>Mother's Organisation Address 2:</strong></td>
+  <td><%= @registration_form.mother_data.organisation_address2 %></td>
+  </tr>
+  <tr>
+  <td><strong>Mother's Organisation Type:</strong></td>
   <td><%= @registration_form.mother_data.organisation_type %></td>
   </tr>
   <tr>
@@ -269,11 +297,11 @@
   <!-- <td><%#= @registration_form.student_category_proof %></td> -->
   <!-- </tr> -->
   <tr>
-  <td><strong>Father's Qualification Proof</strong></td>
+  <td><strong>Father's Qualification Proof:</strong></td>
   <td><%= @registration_form.father_data.qualification_proof %></td>
   </tr>
   <tr>
-  <td><strong>Mother's Qualification Proof</strong></td>
+  <td><strong>Mother's Qualification Proof:</strong></td>
   <td><%= @registration_form.mother_data.qualification_proof %></td>
   </tr>
   <!-- <tr> -->

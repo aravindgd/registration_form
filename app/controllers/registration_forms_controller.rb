@@ -9,15 +9,7 @@ class RegistrationFormsController < ApplicationController
 
   def pdf_to
     @registration_forms = RegistrationForm.all
-    # respond_to do |format|    
-    #   format.pdf do
-    #     pdf = RegistrationFormPdf.new(@registration_form)   
-    #     # html = render_to_string(:action => "show.html.erb") 
-    #     # kit = PDFKit.new(html) 
-    #     # kit.stylesheets << "#{Rails.root}/public/stylesheets/print.css" 
-    #     send_data pdf.render, :filename => "registration_forms.pdf", :type => 'application/pdf' 
-    #   }
-    # end
+    
   end
 
   # GET /registration_forms/1
@@ -50,8 +42,8 @@ class RegistrationFormsController < ApplicationController
     @registration_form.build_student_cat_reg_form(student_category_id: params[:registration_form][:student_category].to_i)
     #nil.test!
     @registration_form.build_sibling_existing_parent(name: params[:registration_form][:sibling_existing_parents][:name], class_of_sibling: params[:registration_form][:sibling_existing_parents][:class_of_sibling],sec: params[:registration_form][:sibling_existing_parents][:sec], admission_num: params[:registration_form][:sibling_existing_parents][:admission_num],school_name: params[:registration_form][:sibling_existing_parents][:school_name])
-    @registration_form.build_father_data(name: params[:registration_form][:father_datas][:name],qualification: params[:registration_form][:father_datas][:qualification],qualification_proof: params[:registration_form][:father_datas][:qualification_proof],annual_income: params[:registration_form][:father_datas][:annual_income],occupation_designation: params[:registration_form][:father_datas][:occupation_designation],organisation_name: params[:registration_form][:father_datas][:organisation_name],organisation_address: params[:registration_form][:father_datas][:organisation_address],organisation_type: params[:registration_form][:father_datas][:organisation_type])
-    @registration_form.build_mother_data(name: params[:registration_form][:mother_datas][:name],qualification: params[:registration_form][:mother_datas][:qualification],qualification_proof: params[:registration_form][:mother_datas][:qualification_proof],annual_income: params[:registration_form][:mother_datas][:annual_income],occupation_designation: params[:registration_form][:mother_datas][:occupation_designation],organisation_name: params[:registration_form][:mother_datas][:organisation_name],organisation_address: params[:registration_form][:mother_datas][:organisation_address],organisation_type: params[:registration_form][:mother_datas][:organisation_type])
+    @registration_form.build_father_data(name: params[:registration_form][:father_datas][:name],qualification: params[:registration_form][:father_datas][:qualification],qualification_proof: params[:registration_form][:father_datas][:qualification_proof],annual_income: params[:registration_form][:father_datas][:annual_income],occupation_designation: params[:registration_form][:father_datas][:occupation_designation],organisation_name: params[:registration_form][:father_datas][:organisation_name],organisation_address: params[:registration_form][:father_datas][:organisation_address],organisation_address2: params[:registration_form][:father_datas][:organisation_address2],organisation_type: params[:registration_form][:father_datas][:organisation_type],income_proof: params[:registration_form][:father_datas][:income_proof])
+    @registration_form.build_mother_data(name: params[:registration_form][:mother_datas][:name],qualification: params[:registration_form][:mother_datas][:qualification],qualification_proof: params[:registration_form][:mother_datas][:qualification_proof],annual_income: params[:registration_form][:mother_datas][:annual_income],occupation_designation: params[:registration_form][:mother_datas][:occupation_designation],organisation_name: params[:registration_form][:mother_datas][:organisation_name],organisation_address: params[:registration_form][:mother_datas][:organisation_address],organisation_address2: params[:registration_form][:mother_datas][:organisation_address2],professional: params[:registration_form][:mother_datas][:professional],organisation_type: params[:registration_form][:mother_datas][:organisation_type],income_proof: params[:registration_form][:mother_datas][:income_proof])
     respond_to do |format|
       if @registration_form.save
         student_category_id = params[:registration_form][:student_category].to_i
@@ -63,19 +55,19 @@ class RegistrationFormsController < ApplicationController
         # nil.test! 
         type = "SBIGP"     
       when 3
-        SbiOfficer.create(membership_number: params[:registration_form][:sbi_officer_membership_no],branch: params[:registration_form][:sbi_officer_branch],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
+        SbiOfficer.create(membership_number: params[:registration_form][:sbi_officer_membership_no],branch: params[:registration_form][:sbi_officer_branch],sbi_id_proof: params[:registration_form][:sbi_id_proof],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
         type = "SBIC"        
       when 4
-        PreSchool.create(copy_of_fee_chalan: params[:registration_form][:pre_school_proof],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
+        PreSchool.create(admission_number: params[:registration_form][:admission_number],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
         type = "PS"
       when 5
-        Alumni.create(year_of_passing:params[:registration_form][:alumni_year_of_passing],mark_sheet_proof: params[:registration_form][:alumni_marksheet_proof],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
-        type = "SIB"
+        Alumni.create(year_of_passing:params[:registration_form][:alumni_year_of_passing],mark_sheet_proof: params[:registration_form][:alumni_marksheet_proof],alumni_category:params[:registration_form][:alumni_category],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
+        type = "AL"
       when 6
         StaffChild.create(branch: params[:registration_form][:staff_child],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
         type = "SC"
       when 7
-        TieUp.create(rbi_or_sbi_proof: params[:registration_form][:tie_up],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
+        TieUp.create(rbi_proof: params[:registration_form][:tie_up],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
         type = "TP"
       end
         @registration_form.application_number = "SBOAJC/"+"#{@registration_form.id+1000}"+"/#{type}"
@@ -92,12 +84,12 @@ class RegistrationFormsController < ApplicationController
   # PATCH/PUT /registration_forms/1
   # PATCH/PUT /registration_forms/1.json
   def update
-    @registration_form = RegistrationForm.create(name_of_student: params[:registration_form][:name_of_student], date_of_birth: params[:registration_form][:date_of_birth], gender: params[:registration_form][:gender],nationality:  params[:registration_form][:nationality],religion:  params[:registration_form][:religion],caste: params[:registration_form][:caste],community_category: params[:registration_form][:community_category],community_category_proof: params[:registration_form][:community_category_proof],residental_address_proof: params[:registration_form][:residental_address_proof],child_with_special_needs_proof: params[:registration_form][:child_with_special_needs_proof],child_with_special_needs: params[:registration_form][:child_with_special_needs],locality: params[:registration_form][:locality], residental_address: params[:registration_form][:residental_address],residental_address2: params[:registration_form][:residental_address2],pincode: params[:registration_form][:pincode],mobile_number: params[:registration_form][:mobile_number],landline_number: params[:registration_form][:landline_number],email: params[:registration_form][:email],tie_up: params[:registration_form][:tie_up],rbi_proof: params[:registration_form][:rbi_proof],sail_proof: params[:registration_form][:sail_proof],reference: params[:registration_form][:reference],remarks: params[:registration_form][:remarks],sibling: params[:registration_form][:sibling],child_special: params[:registration_form][:child_special])
+    @registration_form = RegistrationForm.new(name_of_student: params[:registration_form][:name_of_student], date_of_birth: params[:registration_form][:date_of_birth], gender: params[:registration_form][:gender],nationality:  params[:registration_form][:nationality],religion:  params[:registration_form][:religion],caste: params[:registration_form][:caste],community_category: params[:registration_form][:community_category],community_category_proof: params[:registration_form][:community_category_proof],residental_address_proof: params[:registration_form][:residental_address_proof],child_with_special_needs_proof: params[:registration_form][:child_with_special_needs_proof],child_with_special_needs: params[:registration_form][:child_with_special_needs],locality: params[:registration_form][:locality], residental_address: params[:registration_form][:residental_address],residental_address2: params[:registration_form][:residental_address2],pincode: params[:registration_form][:pincode],mobile_number: params[:registration_form][:mobile_number],landline_number: params[:registration_form][:landline_number],email: params[:registration_form][:email],tie_up: params[:registration_form][:tie_up],rbi_proof: params[:registration_form][:rbi_proof],sail_proof: params[:registration_form][:sail_proof],reference: params[:registration_form][:reference],remarks: params[:registration_form][:remarks],sibling: params[:registration_form][:sibling],child_special: params[:registration_form][:child_special])
     @registration_form.date_of_birth_proof = params[:registration_form][:date_of_birth_proof] 
     @registration_form.build_student_cat_reg_form(student_category_id: params[:registration_form][:student_category].to_i)
     @registration_form.build_sibling_existing_parent(name: params[:registration_form][:sibling_existing_parents][:name], class_of_sibling: params[:registration_form][:sibling_existing_parents][:class_of_sibling],sec: params[:registration_form][:sibling_existing_parents][:sec], admission_num: params[:registration_form][:sibling_existing_parents][:admission_num],school_name: params[:registration_form][:sibling_existing_parents][:school_name])
-    @registration_form.build_father_data(name: params[:registration_form][:father_datas][:name],qualification: params[:registration_form][:father_datas][:qualification],qualification_proof: params[:registration_form][:father_datas][:qualification_proof],annual_income: params[:registration_form][:father_datas][:annual_income],occupation_designation: params[:registration_form][:father_datas][:occupation_designation],organisation_name: params[:registration_form][:father_datas][:organisation_name],organisation_address: params[:registration_form][:father_datas][:organisation_address])
-    @registration_form.build_mother_data(name: params[:registration_form][:mother_datas][:name],qualification: params[:registration_form][:mother_datas][:qualification],qualification_proof: params[:registration_form][:mother_datas][:qualification_proof],annual_income: params[:registration_form][:mother_datas][:annual_income],occupation_designation: params[:registration_form][:mother_datas][:occupation_designation],organisation_name: params[:registration_form][:mother_datas][:organisation_name],organisation_address: params[:registration_form][:mother_datas][:organisation_address])
+    @registration_form.build_father_data(name: params[:registration_form][:father_datas][:name],qualification: params[:registration_form][:father_datas][:qualification],qualification_proof: params[:registration_form][:father_datas][:qualification_proof],annual_income: params[:registration_form][:father_datas][:annual_income],occupation_designation: params[:registration_form][:father_datas][:occupation_designation],organisation_name: params[:registration_form][:father_datas][:organisation_name],organisation_address: params[:registration_form][:father_datas][:organisation_address],organisation_type: params[:registration_form][:father_datas][:organisation_type],income_proof: params[:registration_form][:father_datas][:income_proof])
+    @registration_form.build_mother_data(name: params[:registration_form][:mother_datas][:name],qualification: params[:registration_form][:mother_datas][:qualification],qualification_proof: params[:registration_form][:mother_datas][:qualification_proof],annual_income: params[:registration_form][:mother_datas][:annual_income],occupation_designation: params[:registration_form][:mother_datas][:occupation_designation],organisation_name: params[:registration_form][:mother_datas][:organisation_name],organisation_address: params[:registration_form][:mother_datas][:organisation_address],organisation_type: params[:registration_form][:mother_datas][:organisation_type],income_proof: params[:registration_form][:mother_datas][:income_proof])
     respond_to do |format|
       if @registration_form.save
         student_category_id = params[:registration_form][:student_category].to_i

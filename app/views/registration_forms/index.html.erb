@@ -10,6 +10,7 @@
   <thead>
     <tr>
       <!-- <th><%#= model_class.human_attribute_name(:id) %></th> -->
+      <th><%= model_class.human_attribute_name(:application_number) %></th>
       <th><%= model_class.human_attribute_name(:name_of_student) %></th>
       <th><%= model_class.human_attribute_name(:date_of_birth) %></th>
       <th><%= model_class.human_attribute_name(:gender) %></th>
@@ -17,37 +18,41 @@
       <th><%= model_class.human_attribute_name(:religion) %></th>
       <th><%= model_class.human_attribute_name(:caste) %></th>
       <th><%= model_class.human_attribute_name(:community_category) %></th>
+      <!-- <th><%#= model_class.human_attribute_name(:student_category) %></th> -->
       <!-- <th><%#= model_class.human_attribute_name(:student_category_id) %></th> -->
       <!-- <th><%#= model_class.human_attribute_name(:sibling_existing_parent_id) %></th> -->
       <!-- <th><%#= model_class.human_attribute_name(:child_with_special_needs) %></th> -->
       <th><%= model_class.human_attribute_name(:locality) %></th>
-      <!-- <th><%#= model_class.human_attribute_name(:residental_address) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:pincode) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:landmark) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:mobile_number) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:landline_number) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:email) %></th> -->
+      <th><%= model_class.human_attribute_name(:residental_address) %></th>
+      <th><%= model_class.human_attribute_name(:residental_address2) %></th>
+      <th><%= model_class.human_attribute_name(:pincode) %></th>
+      <th><%= model_class.human_attribute_name(:mobile_number) %></th>
+      <th><%= model_class.human_attribute_name(:landline_number) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
       <!-- <th><%#= model_class.human_attribute_name(:father_data_id) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:name) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:qualification) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:qualification_proof) %></th> -->
+      <th>Father's Name</th>
+      <th><%= model_class.human_attribute_name(:qualification) %></th>
+      <th><%= model_class.human_attribute_name(:qualification_proof) %></th>
       <th><%= model_class.human_attribute_name(:father_annual_income) %></th>
       <th><%= model_class.human_attribute_name(:father_occupation_designation) %></th>
-      <!-- <th><%#= model_class.human_attribute_name(:organisation_name) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:organisation_address) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:application_number) %></th> -->
+      <th><%= model_class.human_attribute_name(:organisation_name) %></th>
+      <th><%= model_class.human_attribute_name(:organisation_address) %></th>
+      <th><%= model_class.human_attribute_name(:organisation_address2) %></th>
+      <th>Father's Organisation Type</th>
       <!-- <th><%#= model_class.human_attribute_name(:mother_data_id) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:name) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:qualification) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:qualification_proof) %></th> -->
+      <th>Mother's Name</th>
+      <th><%= model_class.human_attribute_name(:qualification) %></th>
+      <th><%= model_class.human_attribute_name(:qualification_proof) %></th>
       <th><%= model_class.human_attribute_name(:mother_annual_income) %></th>
       <th><%= model_class.human_attribute_name(:mother_occupation_designation) %></th>
-      <!-- <th><%#= model_class.human_attribute_name(:organisation_name) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:organisation_address) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:date_of_birth_proof) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:community_category_proof) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:residental_address_proof) %></th> -->
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:organisation_name) %></th>
+      <th><%= model_class.human_attribute_name(:organisation_address) %></th>
+      <th><%= model_class.human_attribute_name(:organisation_address2) %></th>
+      <th>Mother's Organisation Type</th>
+      <th><%= model_class.human_attribute_name(:date_of_birth_proof) %></th>
+      <th><%= model_class.human_attribute_name(:community_category_proof) %></th>
+      <th><%= model_class.human_attribute_name(:residental_address_proof) %></th>
+      <!-- <th><%#= model_class.human_attribute_name(:created_at) %></th> -->
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -55,6 +60,7 @@
     <%@registration_forms.each do |registration_form| %>
       <tr>
         <!-- <td><%#= link_to registration_form.id, registration_form_path(registration_form) %></td> -->
+        <td><%= registration_form.application_number %></td>
         <td><%= registration_form.name_of_student %></td>
         <td><%= registration_form.date_of_birth %></td>
         <% if registration_form.gender %>
@@ -66,38 +72,45 @@
         <td><%= registration_form.religion %></td>
         <td><%= registration_form.caste %></td>
         <td><%= registration_form.community_category %></td>
+        <!-- <td><%#= @registration_form.student_category.name if@registration_form %></td> -->
         <!-- <td><%#= registration_form.student_category_id %></td> -->
         <!-- <td><%#= registration_form.sibling_existing_parent_id %></td> -->
         <!-- <td><%#= registration_form.child_with_special_needs %></td> -->
         <td><%= registration_form.locality %></td>
-        <!-- <td><%#= registration_form.residental_address %></td> -->
-        <!-- <td><%#= registration_form.pincode %></td> -->
-        <!-- <td><%#= registration_form.landmark %></td> -->
-        <!-- <td><%#= registration_form.mobile_number %></td> -->
-        <!-- <td><%#= registration_form.landline_number %></td> -->
-        <!-- <td><%#= registration_form.email %></td> -->
-        <!-- <td><%#= registration_form.father_data_id %></td> -->
-        <!-- <td><%#= registration_form.father_data.name %></td> -->
+         <td><%= registration_form.residental_address %></td>
+          <td><%= registration_form.residental_address2 %></td>
+        <td><%= registration_form.pincode %></td>
+        <td><%= registration_form.mobile_number %></td>
+        <td><%= registration_form.landline_number %></td>
+        <td><%= registration_form.email %></td>
+        
+        <td><%= registration_form.father_data.name if registration_form.father_data%></td> 
+        <td><%= registration_form.father_data.qualification if registration_form.father_data %></td>
+        <td><%= registration_form.father_data.qualification_proof if registration_form.father_data%></td>
         <td><%= registration_form.father_data.annual_income if registration_form.father_data %></td>
         <td><%= registration_form.father_data.occupation_designation if registration_form.father_data%></td>
-        <!-- <td><%#= registration_form.father_data.organisation_name %></td> -->
-        <!-- <td><%#= registration_form.father_data.organisation_address %></td> -->
-        <!-- <td><%#= registration_form.application_number %></td> -->
+        <td><%= registration_form.father_data.organisation_name if registration_form.father_data%></td>
+        <td><%= registration_form.father_data.organisation_address if registration_form.father_data%></td>
+         <td><%= registration_form.father_data.organisation_address2 if registration_form.father_data%></td>
+         <td><%= registration_form.father_data.organisation_type if registration_form.father_data%></td>
+        
         <!-- <td><%#= registration_form.mother_data_id %></td> -->
-        <!-- <td><%#= registration_form.mother_data.name %></td> -->
-        <!-- <td><%#= registration_form.mother_data.qualification %></td> -->
-        <!-- <td><%#= registration_form.mother_data.qualification_proof %></td> -->
+        <td><%= registration_form.mother_data.name if registration_form.mother_data%></td>
+        <td><%= registration_form.mother_data.qualification if registration_form.mother_data%></td>
+        <td><%= registration_form.mother_data.qualification_proof if registration_form.mother_data%></td>
         <td><%= registration_form.mother_data.annual_income if registration_form.mother_data%></td>
         <td><%= registration_form.mother_data.occupation_designation if registration_form.mother_data %></td>
-        <!-- <td><%#= registration_form.mother_data.organisation_name %></td> -->
-        <!-- <td><%#= registration_form.mother_data.organisation_address %></td> -->
-        <!-- <td><%#= registration_form.date_of_birth_proof %></td> -->
-        <!-- <td><%#= registration_form.community_category_proof %></td> -->
-        <!-- <td><%#= registration_form.residental_address_proof %></td> -->
-        <td><%=l registration_form.created_at %></td>
+        <td><%= registration_form.mother_data.organisation_name if registration_form.mother_data%></td>
+        <td><%= registration_form.mother_data.organisation_address if registration_form.mother_data%></td>
+        <td><%= registration_form.mother_data.organisation_address2 if registration_form.mother_data%></td>
+        <td><%= registration_form.mother_data.organisation_type if registration_form.mother_data%></td>
+        <td><%= registration_form.date_of_birth_proof %></td>
+        <td><%= registration_form.community_category_proof %></td>
+        <td><%= registration_form.residental_address_proof %></td>
+        <!-- <td><%=l registration_form.created_at %></td> -->
         <td>
           
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%#= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_registration_form_path(registration_form), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       registration_form_path(registration_form),

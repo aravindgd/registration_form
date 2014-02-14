@@ -8,23 +8,23 @@
   <li>Proof of Sibling - Copy of id card / fee challan</li>
   <li>For all categories except "OC", Attested Community Ceritificate has to be enclosed</li>
   <li>Medical Ceritificate of the Child(for children with special needs)</li>
-  <li>Proof if Income</li>
-  <li>Proof of Alumni - copy of 12th Marksheet</li>
+  <li>Proof of Income</li>
+  <li>Proof of Alumni - copy of 10th / 12th Marksheet</li>
 </p><br/>
 <h4>Student Details</h4><br/>
 <div class="new-page" align="left">
-<%= simple_form_for @registration_form, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @registration_form, :defaults => {:required => false},:html => { :class => 'form-horizontal' } do |f| %>
 
-  <%= f.input :name_of_student %><br/>
-  <%= f.input :date_of_birth, input_html: { id: 'dob'} %>
+  <%= f.input :name_of_student,:required => true %><br/>
+  <%= f.input :date_of_birth, input_html: { id: 'dob'},:required => true %><br/>
   
-  <%= f.input :date_of_birth_proof, as: :file %><br/>
+  <%= f.input :date_of_birth_proof, as: :file ,:required => true %><br/>
   <%= f.input :gender , as: :select, label: 'Gender', :collection => [['Male',true],['Female',false]]%><br/>
   <%= f.input :nationality %><br/>
   <%= f.input :religion %><br/>
   <%= f.input :caste %><br/>
   <%= f.input :community_category , as: :select, label: 'Community Category', :collection => [['OC','OC'],['BC','BC'],['MBC','MBC'],['SC','SC'],['ST','ST'],['DNC','DNC']]%><br/>
-  <%= f.input :community_category_proof, as: :file %><br/>
+  <%= f.input :community_category_proof, as: :file,label: 'Community Category Proof' %><br/><br/>
   <div id="student"><p>Student Category</p></div>
   <div id="student_category">
   <%= f.collection_select(:student_category, StudentCategory.all, :id, :name) %><br/></div><br/>
@@ -32,25 +32,31 @@
     <%= f.input :staff_child, :collection => [ "SBOA JC","SBOA MAT","SBOA MDU","SBOA CBE","SBOA MODEL","SBOA TRY","SBOA CENOFF","SBOA ERK"] %><br>
   </div>
   <div id="pre_school" style="display: none;">
-  <%= f.input :pre_school_proof, label:'Copy of Fee challan',as: :file %><br/></div>
+  <%= f.input :admission_number, label:'Admission Number' %><br/></div>
   <div id="sbi-grand" style="display: none;">
   <%= f.input :grand_membership_no,label:'Membership No' %><br>
-  <%= f.input :grandfather_name, label:'Grandfather Name' %><br>
-  <%= f.input :grand_branch,label:'Branch' %><br>
-  <%= f.input :grand_service_retirement,as: :file, label:'Service Retirement' %><br></div>
+  <%= f.input :grandfather_name, label:'GrandFather Name' %><br>
+  <%= f.input :grand_branch,label:'Branch Last Worked / Working' %><br>
+  <%= f.input :grand_service_retirement,as: :file, label:'Service Retirement' %><br>
+  
+  </div>
   <div id="alumni" style="display: none;">
-  <%= f.input :alumni_year_of_passing %><br>
-  <%= f.input :alumni_marksheet_proof, as: :file %><br></div>
+  <%= f.input :alumni_year_of_passing, label:'Year Of Passing' %><br>
+  <%= f.input :alumni_category, label:'Category',:collection => [ "SBOA JC","SBOA MAT","SBOA MDU","SBOA CBE","SBOA MODEL","SBOA TRY","SBOA CENOFF","SBOA ERK"] %><br>
+  <%= f.input :alumni_marksheet_proof, as: :file,label:'Marksheet Proof' %><br>
+</div>
   <div id="sbi-officers" style="display: none;">
   <%= f.input :sbi_officer_membership_no, label:'Membership No' %><br>
-  <%= f.input :sbi_officer_branch, label:'Branch' %><br/></div>
+  <%= f.input :sbi_officer_branch, label:'Branch' %><br/>
+  <%= f.input :sbi_id_proof, as: :file ,label:'ID Proof' %><br/>
+  </div>
   
-  <div id="rbi_proof" style="display: none;"><%= f.input :rbi_or_sbi_proof, as: :file ,label:'RBI / SAIL Proof'%><br/></div>
+  <div id="rbi_proof" style="display: none;"><%= f.input :rbi_proof, as: :file ,label:'RBI / SAIL Proof'%><br/></div>
   <!-- <div id="sail_proof" style="display: none;"><%#= f.input :sail_proof, as: :file,label:'SAIL Proof' %><br/></div> -->
   
   <div class="sibling-detail">
     <%# f.input, as: :radio%>
-    <h5>Slibing / Existing Parents(SBOA School Junior College Only)</h5>
+    <h4>Slibing(SBOA School Junior College Only)</h4>
      <p>
       <%= f.input :sibling,as: :radio_buttons, collection: [['Yes',true],['No',false]]%><br/>
 
@@ -63,7 +69,7 @@
   <div id="showpage">
     <%= f.simple_fields_for :sibling_existing_parents do |sibling_existing_parent|%>
     <%= sibling_existing_parent.input :name %><br/>
-    <%= sibling_existing_parent.input :class_of_sibling%><br/>
+    <%= sibling_existing_parent.input :class%><br/>
     <%= sibling_existing_parent.input :sec,label: "Section"%><br/>
     <%= sibling_existing_parent.input :admission_num,label: "Admission Number"%><br/>
     
@@ -71,49 +77,57 @@
   </div>
   <div id="child_need">
     
-    <p><%= f.input :child_special,as: :radio_buttons, label:"Child with special needs",collection: [['Yes',true],['No',false]]%><br/></p>
+    <p><%= f.input :child_special,as: :radio_buttons, label:"Child With Special Needs",collection: [['Yes',true],['No',false]]%><br/></p>
   </div>
   <div id="child_proof">
-  <%= f.input :child_with_special_needs_proof, as: :file %><br/>
+  <%= f.input :child_with_special_needs_proof,label:"Child With Special Needs Proof", as: :file %><br/>
  </div><br>
   <div class="comm-detail"><h4>Communication Details</h4></div>
-  <%= f.input :locality, as: :select, :collection=>[['Anna Nagar(West/Extn)','0-3 kilometers'],['Anna Nagar(East)','0-1 kilometers'],['Padi','0-3 kilometers'],['Koyambedu','0-3 kilometers'],['Villivakkam','4-5 kilometers'],['ICF','4-5 kilometers'],['Kilpauk','4-5 kilometers'],['MMDA','4-5 kilometers'],['Choolaimedu','4-5 kilometers'],['Kellys','4-5 kilometers'],['Perambur','4-5 kilometers'],['Shenoynagar','4-5 kilometers'],['Kolathur','4-5 kilometers'],['GKM Colony','4-5 kilometers'],['Retteri','4-5 kilometers'],['Mogappair(East/West)','4-5 kilometers'],['Arumbakkam','4-5 kilometers'],['Aminjikarai','4-5 kilometers'],['Korattur','4-5 kilometers'],['Ambattur','4-5 kilometers'],['Agaram','4-5 kilometers'],['Metha Nagar','4-5 kilometers'],['Ayanavaram','4-5 kilometers'],['Ambattur OT','6-8 kilometers'],['Redhills','6-8 kilometers'],['Athipet','6-8 kilometers'],['Periar Nagar','6-8 kilometers'],['Choolai','6-8 kilometers'],['Vadapalani','6-8 kilometers'],['Nungambakkam','6-8 kilometers'],['Chinmaya Nagar','6-8 kilometers'],['Nolambur','6-8 kilometers'],['Kodambakkam','6-8 kilometers'],['KK Nagar','6-8 kilometers'],['Virugambakkam','6-8 kilometers'],['Saligramam','6-8 kilometers'],['Moolakadai','6-8 kilometers'],['Madhavaram','6-8 kilometers'],['Jawahar Nagar','6-8 kilometers'],['Purasawalkkam','9-10 kilometers'],['Ashok Nagar','9-10 kilometers'],['Chetpet','9-10 kilometers'],['Ayyapakkam','9-10 kilometers'],['Madhuravoyal','9-10 kilometers'],['Other Places','Above 10']] %><br/>
-  
-  <%= f.input :residental_address,label:'Residental Address1'%><br/>
-  <%= f.input :residental_address2,label:'Address2' %><br/>
-  <%= f.input :residental_address_proof, as: :file %><br/>
+  <%= f.input :locality, as: :select, :collection=>[['Anna Nagar(West/Extn)','Anna Nagar(West/Extn)'],['Anna Nagar(East)','Anna Nagar(East)'],['Padi','Padi'],['Koyambedu','Koyambedu'],['Villivakkam','Villivakkam'],['ICF','ICF'],['Kilpauk','Kilpauk'],['MMDA','MMDA'],['Choolaimedu','Choolaimedu'],['Kellys','Kellys'],['Perambur','Perambur'],['Shenoynagar','Shenoynagar'],['Kolathur','Kolathur'],['GKM Colony','GKM Colony'],['Retteri','Retteri'],['Mogappair(East/West)','Mogappair(East/West)'],['Arumbakkam','Arumbakkam'],['Aminjikarai','Aminjikarai'],['Korattur','Korattur'],['Ambattur','Ambattur'],['Agaram','Agaram'],['Metha Nagar','Metha Nagar'],['Ayanavaram','Ayanavaram'],['Ambattur OT','Ambattur OT'],['Redhills','Redhills'],['Athipet','Athipet'],['Periar Nagar','Periar Nagar'],['Choolai','Choolai'],['Vadapalani','Vadapalani'],['Nungambakkam','Nungambakkam'],['Chinmaya Nagar','Chinmaya Nagar'],['Nolambur','Nolambur'],['Kodambakkam','Kodambakkam'],['KK Nagar','KK Nagar'],['Virugambakkam','Virugambakkam'],['Saligramam','Saligramam'],['Moolakadai','Moolakadai'],['Madhavaram','Madhavaram'],['Jawahar Nagar','Jawahar Nagar'],['Purasawalkkam','Purasawalkkam'],['Ashok Nagar','Ashok Nagar'],['Chetpet','Chetpet'],['Ayyapakkam','Ayyapakkam'],['Madhuravoyal','Madhuravoyal'],['Other Places','Other Places']] ,:required => true%><br/>
+  <h5>Residential Address</h5>
+  <%= f.input :residental_address,label:'Line 1'%><br/>
+  <%= f.input :residental_address2,label:'Line 2' %><br/>
+  <%= f.input :residental_address_proof, as: :file ,label:'Residential Address Proof'%><br/>
   <%= f.input :pincode%><br/>
-  <%= f.input :mobile_number, as: :tel %><br/>
-  <%= f.input :landline_number , as: :tel%><br/>
-  <%= f.input :email , as: :email%><br/>
-  <div class="parent-detail"><h4>Parent's / Guardian Occupation</h4></div>
+  <%= f.input :mobile_number, as: :tel, label:"Mobile Number" ,:required => true%><br/>
+  <%= f.input :landline_number , as: :tel,label:"Landline Number" %><br/>
+  <%= f.input :email , as: :email ,:required => true %><br/>
+  <div class="parent-detail"><h4>Parents / Guardian Occupation</h4></div>
   <div class="father-detail"><h4> a) Father's / Guardian Occupation</h4></div>
   <%= f.simple_fields_for :father_datas do |father_data|%>
-    <%= father_data.input :name,:label => "Father's / Gaurdian's Name"%><br/>
+    <%= father_data.input :name,:label => "Father's / Guardian's Name",:required => true%><br/>
     <%= father_data.input :qualification, as: :select, :collection => [['Graduate','Graduate'],['Post Graduate','Post Graduate'],['Professional','Professional'],['Diploma Holders / Others','Diploma Holders / Others']]%><br/>
-    <%= father_data.input :qualification_proof, as: :file %><br/>
-    <%= father_data.input :annual_income, as: :select, :collection => [['Below One Lakh','Below One Lakh'],['1 to 2 Lakhs','1 to 2 Lakhs'],['2 to 3 Lakhs','2 to 3 Lakhs'],['3 to 4 Lakhs','3 to 4 Lakhs'],['4 to 5 Lakhs','4 to 5 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs']]%><br/>
+    <%= father_data.input :qualification_proof, as: :file, label:"Qualification Proof" %><br/>
+    <%= father_data.input :annual_income, label:"Annual Income", as: :select, :collection => [['Below One Lakh','Below One Lakh'],['1 to 2 Lakhs','1 to 2 Lakhs'],['2 to 3 Lakhs','2 to 3 Lakhs'],['3 to 4 Lakhs','3 to 4 Lakhs'],['4 to 5 Lakhs','4 to 5 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs']]%><br/>
+    <%= father_data.input :income_proof, as: :file, label:"Income Proof" %><br/>
     <%= father_data.input :occupation_designation, :label => "Occupation / Designation"%><br/>
-    <%= father_data.input :organisation_name%><br/>
-    <%= father_data.input :organisation_address%><br/>
-    <%= father_data.input :organisation_address%><br/>
-      <%= father_data.input :organisation_type,as: :radio_buttons, collection: [['Private','Private'],['Central','Central'],['State','State'],['Defence','Defence'],['Public Sector','Public Sector']] %><br/>
+    <%= father_data.input :organisation_name,label:"Organisation Name"%><br/>
+    <h5>Organisation Address</h5>
+    <%= father_data.input :organisation_address,label:"Line 1"%><br/>
+    <%= father_data.input :organisation_address2,label:"Line 2"%><br/>
+      <%= father_data.input :organisation_type,label:"Organisation Type",as: :radio_buttons, collection: [['Private','Private'],['Central','Central'],['State','State'],['Defence','Defence'],['Public Sector','Public Sector']] %><br/>
   <% end %><br/>
   <div class="Mother-detail"><h4> b) Mother's Occupation</h4></div>
   <%= f.simple_fields_for :mother_datas do |mother_data|%>
-    <%= mother_data.input :name,:label => "Mother's Name"%><br/>
+    <%= mother_data.input :name,:label => "Mother's Name",:required => true%><br/>
     <%= mother_data.input :qualification, as: :select, :collection => [['Graduate','Graduate'],['Post Graduate','Post Graduate'],['Professional','Professional'],['Diploma Holders / Others','Diploma Holders / Others']]%><br/>
-    <%= mother_data.input :qualification_proof, as: :file %><br/>
-    <%= mother_data.input :annual_income, as: :select, :collection => [['Below One Lakh','Below One Lakh'],['1 to 2 Lakhs','1 to 2 Lakhs'],['2 to 3 Lakhs','2 to 3 Lakhs'],['3 to 4 Lakhs','3 to 4 Lakhs'],['4 to 5 Lakhs','4 to 5 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs']]%><br/>
-    <%= mother_data.input :occupation_designation, :label => "Occupation / Designation"%><br/>
-    <%= mother_data.input :organisation_name%><br/>
-    <%= mother_data.input :organisation_address%><br/>
-      <%= mother_data.input :organisation_type,as: :radio_buttons, collection: [['Private','Private'],['Central','Central'],['State','State'],['Defence','Defence'],['Public Sector','Public Sector']] %><br/>
-  <% end %><br/>
     
+    <%= mother_data.input :qualification_proof, as: :file, label:"Qualification Proof" %><br/>
+    <%= mother_data.input :professional,label:"Professional",as: :radio_buttons,:collection=>[['Home Maker','Home Maker']]%><br/><br/>
+    <div id="mother_qual">
+    <%= mother_data.input :annual_income,  label:"Annual Income",as: :select, :collection => [['Below One Lakh','Below One Lakh'],['1 to 2 Lakhs','1 to 2 Lakhs'],['2 to 3 Lakhs','2 to 3 Lakhs'],['3 to 4 Lakhs','3 to 4 Lakhs'],['4 to 5 Lakhs','4 to 5 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs']]%><br/>
+    <%= mother_data.input :income_proof, as: :file, label:"Income Proof" %><br/>
+    <%= mother_data.input :occupation_designation, :label => "Occupation / Designation"%><br/>
+    <%= mother_data.input :organisation_name,label:"Organisation Name"%><br/>
+    <h5>Organisation Address</h5>
+    <%= mother_data.input :organisation_address,label:"Line 1"%><br/>
+    <%= mother_data.input :organisation_address2,label:"Line 2"%><br/>
+      <%= mother_data.input :organisation_type,label:"Organisation Type",as: :radio_buttons, collection: [['Private','Private'],['Central','Central'],['State','State'],['Defence','Defence'],['Public Sector','Public Sector']] %><br/>
+  <% end %><br/>
+    </div>
   </div>
   <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= f.button :submit, value:"Submit",:class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 registration_forms_path, :class => 'btn' %>
   </div>

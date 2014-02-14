@@ -60,8 +60,8 @@
 	    padding-left: 180px;
 }
 .simple_form #student p{
-  font-style: normal;
-  padding-left: 20px;
+  position: absolute;
+  padding-left: 57px;
 
   }
   /*.simple_form #sibling-detail label.collection_radio{*/

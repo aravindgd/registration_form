@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212131836) do
+ActiveRecord::Schema.define(version: 20140213150346) do
 
   create_table "alumnis", force: true do |t|
     t.integer  "year_of_passing"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140212131836) do
     t.integer  "student_cat_reg_form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "alumni_category"
   end
 
   add_index "alumnis", ["student_cat_reg_form_id"], name: "index_alumnis_on_student_cat_reg_form_id"
@@ -36,6 +37,8 @@ ActiveRecord::Schema.define(version: 20140212131836) do
     t.integer  "registration_form_id"
     t.string   "work_category"
     t.string   "organisation_type"
+    t.string   "income_proof"
+    t.string   "organisation_address2"
   end
 
   add_index "father_data", ["registration_form_id"], name: "index_father_data_on_registration_form_id"
@@ -53,12 +56,15 @@ ActiveRecord::Schema.define(version: 20140212131836) do
     t.integer  "registration_form_id"
     t.string   "work_category"
     t.string   "organisation_type"
+    t.string   "income_proof"
+    t.string   "professional"
+    t.string   "organisation_address2"
   end
 
   add_index "mother_data", ["registration_form_id"], name: "index_mother_data_on_registration_form_id"
 
   create_table "pre_schools", force: true do |t|
-    t.string   "copy_of_fee_chalan"
+    t.string   "admission_number"
     t.integer  "student_cat_reg_form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -127,6 +133,7 @@ ActiveRecord::Schema.define(version: 20140212131836) do
     t.integer  "student_cat_reg_form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "sbi_id_proof"
   end
 
   add_index "sbi_officers", ["student_cat_reg_form_id"], name: "index_sbi_officers_on_student_cat_reg_form_id"
@@ -181,7 +188,7 @@ ActiveRecord::Schema.define(version: 20140212131836) do
   end
 
   create_table "tie_ups", force: true do |t|
-    t.string   "rbi_or_sbi_proof"
+    t.string   "rbi_proof"
     t.integer  "student_cat_reg_form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
