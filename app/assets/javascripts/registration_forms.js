@@ -2,6 +2,8 @@ ready = function(){
 $(document).ready(function(){
 $('#dob').datepicker( {
 	format: 'dd/mm/yyyy'
+    	
+
   });
 });
 };

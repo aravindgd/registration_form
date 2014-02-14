@@ -11,18 +11,99 @@
   <td><%= @registration_form.application_number %></td>
   </tr>
 </div>
+<style>
+@media print{
+.hide-button{
+  display:none !important;
 
+}
+.brand{
+  display:none !important;
+}
+.container-fluid nav-collapse{
+  display:none !important;
+}
+body{
+  background-color: green;
+}
+.prooflist {
+   display:none !important;
+}
+#mother_sign h5{
+  text-align:right;
+  font-size: 12px;
+}
+#father_sign h5{
+  font-size: 12px;
+}
+.father_name{
+  font-size: 11px;
+}
+.mother_name{
+  font-size: 11px;
+}
+#declare h5{
+  text-align: center;
+}
+.page-header {
+border-bottom: 1px solid #ffffff;
+
+}
+.navbar-inner{
+  border: 1px solid #ffffff;
+}
+.navbar .btn-navbar {
+  display: none;
+  border-color:#ffffff;
+}
+.student_detail{
+  font-size: 12px;
+}
+.student_detail h5{
+     font-size: 13px;
+}
+#declare p{
+  font-size: 10px;
+}
+#detail_list h5{
+  font-size: 13px;
+}
+#detail_list ul{
+  font-size: 12px;
+}
+#show-page h3{
+   font-size: 17px;
+}
+#show-page h4{
+   font-size: 15px;
+}
+}
+</style>
 <div id="show-page" align="center">
   <h3>SBOA SCHOOL JUNIOR COLLEGE,CHENNAI-600101</h3>
 <h4>Registration form for LKG Admission 2013-2014</h4>
 </div>
+<div id="detail_list">
+<h5><strong>Eligibility:Children who are born between 30 November 2010 and 30 November 2011.</strong></h5>
+<p>
+<h5>List of supporting Documents to be attached with the registration form at the time of submission.</h5>
+<ul>
+  <li>Attested Photocopy of Birth Certificate of the child</li>
+  <li>Proof of Residence (Photo copy of Ration Card / EB Card / Passport / Voter Id / Gas Bill / Aadhar Card / Telephone Bill only)</li>
+  <li>Proof of Sibling - Copy of id card / fee challan</li>
+  <li>For all categories except "OC", Attested Community Ceritificate has to be enclosed</li>
+  <li>Medical Ceritificate of the Child(for children with special needs)</li>
+  <li>Proof of Income</li>
+  <li>Proof of Alumni - copy of 10th / 12th Marksheet</li>
+</p><br/>
+  </div>
+ <div class="student_detail">
   <table>
     <tbody>
+      <div><h5>Student Details</h5></div>
   <tr>
-  <p>
   <td><strong><%= model_class.human_attribute_name(:name_of_student) %>:</strong></td>
   <td><%= @registration_form.name_of_student %></td>
-  </p>
   </tr>
   <tr>
     <td><strong><%= model_class.human_attribute_name(:date_of_birth) %>:</strong></td>
@@ -167,6 +248,7 @@
   <!-- <td>No</td> -->
   <!-- </tr> -->
   <%# end %>
+  
   <tr>
   <td><strong><%= model_class.human_attribute_name(:locality) %>:</strong></td>
   <td><%= @registration_form.locality %></td>
@@ -207,10 +289,7 @@
   <td><strong>Father's Annual Income:</strong></td>
   <td><%= @registration_form.father_data.annual_income %></td>
   </tr>
-  <tr>
-  <td><strong>Father's Income Proof:</strong></td>
-  <td><%= @registration_form.father_data.income_proof %></td>
-  </tr>
+  
   <tr>
   <td><strong>Father's Occupation / Designation:</strong></td>
   <td><%= @registration_form.father_data.occupation_designation %></td>
@@ -247,10 +326,7 @@
   <td><strong>Mother's Annual Income:</strong></td>
   <td><%= @registration_form.mother_data.annual_income %></td>
   </tr>
-  <tr>
-  <td><strong>Mother's Income Proof:</strong></td>
-  <td><%= @registration_form.mother_data.income_proof %></td>
-  </tr>
+  
   <tr>
   <td><strong>Mother's Occupation / Designation:</strong></td>
   <td><%= @registration_form.mother_data.occupation_designation %></td>
@@ -273,14 +349,7 @@
   <td><strong>Mother's Organisation Type:</strong></td>
   <td><%= @registration_form.mother_data.organisation_type %></td>
   </tr>
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:reference) %>:</strong></td>
-  <td><%= @registration_form.reference %></td>
-  </tr>
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:remarks) %>:</strong></td>
-  <td><%= @registration_form.remarks %></td>
-  </tr>
+  <div class="prooflist">
   <tr>
   <td><strong><%= model_class.human_attribute_name(:date_of_birth_proof) %>:</strong></td>
   <td><%= @registration_form.date_of_birth_proof %></td>
@@ -297,6 +366,14 @@
   <!-- <td><%#= @registration_form.student_category_proof %></td> -->
   <!-- </tr> -->
   <tr>
+  <td><strong>Father's Income Proof:</strong></td>
+  <td><%= @registration_form.father_data.income_proof %></td>
+  </tr>
+  <tr>
+  <td><strong>Mother's Income Proof:</strong></td>
+  <td><%= @registration_form.mother_data.income_proof %></td>
+  </tr>
+  <tr>
   <td><strong>Father's Qualification Proof:</strong></td>
   <td><%= @registration_form.father_data.qualification_proof %></td>
   </tr>
@@ -304,6 +381,7 @@
   <td><strong>Mother's Qualification Proof:</strong></td>
   <td><%= @registration_form.mother_data.qualification_proof %></td>
   </tr>
+  </div>
   <!-- <tr> -->
   <!-- <td><strong><%#= model_class.human_attribute_name(:marksheet_proof) %>:</strong></td> -->
   <!-- <td><%# @registration_form.student_categories.marksheet_proof %></td> -->
@@ -315,8 +393,25 @@
   
   
    </tbody>
-</table>
-
+</table></div>
+<br/>
+<div id="declare">
+  <h5>DECLARATION BY THE PARENT</h5>
+  <p>I/We hereby certify that the above information provided by me/us is correct and I/we understand that if the information found to be incorrect or false, the application shall be automatically rejected from registration process without any correspondence in this regard. I/We understand that short listing of this registration form does not guarantee admission to my ward. I/We accept the process of admission undertaken by the school and I/we will abide by the decision taken by the school authorities.
+  </p><br/></div>
+  <div id="father_sign">
+    <h5>Signature of the Father / Guardian's</h5> </div>
+    <div id="mother_sign" ><h5>Signature of the Mother / Guardian's </h5></div>
+<br/>
+<div class="father_name">
+<p>Father Name : <%= @registration_form.father_data.name %></p>
+</div>
+<div class="mother_name" align="right">
+<p>Mother Name: <%= @registration_form.mother_data.organisation_name %></p>
+</div>
+<div class="submit">
+<p>Submit Date :</p>
+</div>
 <div class="hide-button">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               registration_forms_path, :class => 'btn'  %>
@@ -327,6 +422,7 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-  <%= link_to "Download PDF", registration_form_path(@registration_form, :format => 'pdf'),:class => 'btn' %>
+              <button><%=link_to_function("Download PDF", "javascript:print()")%></button>
+  <%#= link_to "Download PDF", registration_form_path(@registration_form, :format => 'pdf'),:class => 'btn' %>
   </div>            
 </div>

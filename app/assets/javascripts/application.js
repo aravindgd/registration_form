@@ -19,6 +19,9 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/extras/TableTools
 //= require dataTables/extras/ZeroClipboard.js
+//= require Parsley/parsley
+//= require Parsley/parsley.extend
+// require parsley.i18n.fr
 //= require custom
 //= require showhide
 //= require child_show

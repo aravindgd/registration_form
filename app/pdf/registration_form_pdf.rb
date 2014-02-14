@@ -182,7 +182,7 @@ class RegistrationFormPdf < Prawn::Document
           text "Mother's Organisation Type :"
           end
           text " "
-          text "Other Details",:style => :bold
+          
           text " "
           text " "
           text " "

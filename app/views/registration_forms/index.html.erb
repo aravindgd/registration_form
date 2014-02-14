@@ -18,7 +18,20 @@
       <th><%= model_class.human_attribute_name(:religion) %></th>
       <th><%= model_class.human_attribute_name(:caste) %></th>
       <th><%= model_class.human_attribute_name(:community_category) %></th>
-      <!-- <th><%#= model_class.human_attribute_name(:student_category) %></th> -->
+      <th><%= model_class.human_attribute_name(:student_category) %></th>
+      <th>SBIGP Membership No</th>
+      <th>SBIGP Grandfather Name</th>
+      <th>SBIGP Branch</th>
+      <th>SBIGP Service Retirement</th>
+      <th>SBIC Membership No</th>
+      <th>SBIC Branch</th>
+      <th>SBIC Id Proof</th>
+      <th>AL Admission Number</th>
+      <th>AL Year Of Passing) %></th>
+      <th>Alumni Category</th>
+      <th>AL Mark Sheet Proof</th>
+      <th>AL Branch</th>
+      
       <!-- <th><%#= model_class.human_attribute_name(:student_category_id) %></th> -->
       <!-- <th><%#= model_class.human_attribute_name(:sibling_existing_parent_id) %></th> -->
       <!-- <th><%#= model_class.human_attribute_name(:child_with_special_needs) %></th> -->
@@ -72,7 +85,27 @@
         <td><%= registration_form.religion %></td>
         <td><%= registration_form.caste %></td>
         <td><%= registration_form.community_category %></td>
-        <!-- <td><%#= @registration_form.student_category.name if@registration_form %></td> -->
+        <td><%= registration_form.student_category.name %></td>
+        <% case registration_form.student_category.id %>
+        <% when 2 %>
+        <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.membership_number %></td>
+        <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.grandfather_name %></td>
+        <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.branch %></td>
+        <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.service_retirement %></td>
+        <% when 3 %>
+        <td><%= registration_form.student_cat_reg_form.sbi_officer.membership_number %></td>
+        <td><%= registration_form.student_cat_reg_form.sbi_officer.branch %></td>
+        <td><%= registration_form.student_cat_reg_form.sbi_officer.sbi_id_proof %></td>
+        <% when 4 %>
+        <td><%= registration_form.student_cat_reg_form.pre_school.admission_number %></td>
+        <% when 5 %>
+        <td><%= registration_form.student_cat_reg_form.alumni.year_of_passing %></td>
+        <td><%= registration_form.student_cat_reg_form.alumni.alumni_category %></td>
+        <td><%= registration_form.student_cat_reg_form.alumni.mark_sheet_proof %></td>
+        <% when 6 %>
+        <td><%= registration_form.student_cat_reg_form.staff_child.branch %></td>
+        <% end %>
+
         <!-- <td><%#= registration_form.student_category_id %></td> -->
         <!-- <td><%#= registration_form.sibling_existing_parent_id %></td> -->
         <!-- <td><%#= registration_form.child_with_special_needs %></td> -->
