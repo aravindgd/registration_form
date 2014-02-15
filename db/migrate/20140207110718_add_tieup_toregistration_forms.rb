@@ -1,6 +1,5 @@
 class AddTieupToregistrationForms < ActiveRecord::Migration
   def change
-  	add_column :registration_forms, :tie_up, :string
   	add_column :registration_forms, :rbi_proof, :string
   	add_column :registration_forms, :sail_proof, :string
   	add_column :registration_forms, :residental_address2, :string
