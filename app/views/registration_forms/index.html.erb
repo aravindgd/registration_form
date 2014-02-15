@@ -22,19 +22,25 @@
       <th>SBIGP Membership No</th>
       <th>SBIGP Grandfather Name</th>
       <th>SBIGP Branch</th>
-      <th>SBIGP Service Retirement</th>
+      <!-- <th>SBIGP Service Retirement</th> -->
       <th>SBIC Membership No</th>
       <th>SBIC Branch</th>
-      <th>SBIC Id Proof</th>
+      <!-- <th>SBIC Id Proof</th> -->
       <th>AL Admission Number</th>
       <th>AL Year Of Passing) %></th>
       <th>Alumni Category</th>
-      <th>AL Mark Sheet Proof</th>
+      <!-- <th>AL Mark Sheet Proof</th> -->
       <th>AL Branch</th>
+      <!-- <th>RBI / SAIL Proof</th> -->
+      <th><%= model_class.human_attribute_name(:sibling) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th>Class</th>
+      <th>Section</th>
+      <th><%= model_class.human_attribute_name(:admission_number) %></th>
+      <th>Child with special needs</th>
+      <!-- <th><%#= model_class.human_attribute_name(:child_with_special_needs_proof) %></th> -->
       
-      <!-- <th><%#= model_class.human_attribute_name(:student_category_id) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:sibling_existing_parent_id) %></th> -->
-      <!-- <th><%#= model_class.human_attribute_name(:child_with_special_needs) %></th> -->
+      
       <th><%= model_class.human_attribute_name(:locality) %></th>
       <th><%= model_class.human_attribute_name(:residental_address) %></th>
       <th><%= model_class.human_attribute_name(:residental_address2) %></th>
@@ -42,29 +48,32 @@
       <th><%= model_class.human_attribute_name(:mobile_number) %></th>
       <th><%= model_class.human_attribute_name(:landline_number) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
-      <!-- <th><%#= model_class.human_attribute_name(:father_data_id) %></th> -->
+      
       <th>Father's Name</th>
       <th><%= model_class.human_attribute_name(:qualification) %></th>
-      <th><%= model_class.human_attribute_name(:qualification_proof) %></th>
+      <!-- <th><%#= model_class.human_attribute_name(:qualification_proof) %></th> -->
       <th><%= model_class.human_attribute_name(:father_annual_income) %></th>
+      <!-- <th>Father's Income Proof</th> -->
       <th><%= model_class.human_attribute_name(:father_occupation_designation) %></th>
       <th><%= model_class.human_attribute_name(:organisation_name) %></th>
       <th><%= model_class.human_attribute_name(:organisation_address) %></th>
       <th><%= model_class.human_attribute_name(:organisation_address2) %></th>
       <th>Father's Organisation Type</th>
-      <!-- <th><%#= model_class.human_attribute_name(:mother_data_id) %></th> -->
+      
       <th>Mother's Name</th>
       <th><%= model_class.human_attribute_name(:qualification) %></th>
-      <th><%= model_class.human_attribute_name(:qualification_proof) %></th>
+      <!-- <th><%#= model_class.human_attribute_name(:qualification_proof) %></th> -->
+      <th>Mother's Professional</th>
       <th><%= model_class.human_attribute_name(:mother_annual_income) %></th>
+      <!-- <th>Mother's Income Proof</th> -->
       <th><%= model_class.human_attribute_name(:mother_occupation_designation) %></th>
       <th><%= model_class.human_attribute_name(:organisation_name) %></th>
       <th><%= model_class.human_attribute_name(:organisation_address) %></th>
       <th><%= model_class.human_attribute_name(:organisation_address2) %></th>
       <th>Mother's Organisation Type</th>
-      <th><%= model_class.human_attribute_name(:date_of_birth_proof) %></th>
-      <th><%= model_class.human_attribute_name(:community_category_proof) %></th>
-      <th><%= model_class.human_attribute_name(:residental_address_proof) %></th>
+      <!-- <th><%#= model_class.human_attribute_name(:date_of_birth_proof) %></th> -->
+      <!-- <th><%#= model_class.human_attribute_name(:community_category_proof) %></th> -->
+      <!-- <th><%#= model_class.human_attribute_name(:residental_address_proof) %></th> -->
       <!-- <th><%#= model_class.human_attribute_name(:created_at) %></th> -->
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -86,26 +95,121 @@
         <td><%= registration_form.caste %></td>
         <td><%= registration_form.community_category %></td>
         <td><%= registration_form.student_category.name %></td>
-        <% case registration_form.student_category.id %>
-        <% when 2 %>
-        <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.membership_number %></td>
+        <% if registration_form.student_cat_reg_form.sbi_grand_parent%>
+        <% if registration_form.student_cat_reg_form.sbi_grand_parent.membership_number%>
+        <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.membership_number  %></td>
+        <% else%>
+        <td> </td>
+        <% end%>
+        <% if registration_form.student_cat_reg_form.sbi_grand_parent.grandfather_name%>
         <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.grandfather_name %></td>
+        <% else%>
+        <td> </td>
+        <% end%>
+        <% if registration_form.student_cat_reg_form.sbi_grand_parent.branch%>
         <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.branch %></td>
-        <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.service_retirement %></td>
-        <% when 3 %>
+        <% else%>
+        <td> </td>
+        <% end%>
+        <!-- <%# if registration_form.student_cat_reg_form.sbi_grand_parent.service_retirement%> -->
+        <!-- <td><%#= registration_form.student_cat_reg_form.sbi_grand_parent.service_retirement %></td> -->
+      <!-- <%# else%> -->
+        <!-- <td> </td> -->
+        <!-- <%# end%> -->
+        <% else%>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <!-- <td> </td> -->
+        <% end%>
+        <% if registration_form.student_cat_reg_form.sbi_officer%>
+        <% if registration_form.student_cat_reg_form.sbi_officer.membership_number%>
         <td><%= registration_form.student_cat_reg_form.sbi_officer.membership_number %></td>
+        <% else%>
+        <td> </td>
+        <% end%>
+        <% if registration_form.student_cat_reg_form.sbi_officer.branch%>
         <td><%= registration_form.student_cat_reg_form.sbi_officer.branch %></td>
-        <td><%= registration_form.student_cat_reg_form.sbi_officer.sbi_id_proof %></td>
-        <% when 4 %>
+        <% else%>
+        <td> </td>
+        <% end%>
+        <!-- <%# if registration_form.student_cat_reg_form.sbi_officer.sbi_id_proof%> -->
+        <!-- <td><%#= registration_form.student_cat_reg_form.sbi_officer.sbi_id_proof %></td> -->
+       <!-- <%# else%> -->
+        <!-- <td> </td> -->
+        <!-- <%# end%> -->
+        <% else%>
+        <td> </td>
+        <td> </td>
+        <!-- <td> </td> -->
+        <% end%>
+        <% if registration_form.student_cat_reg_form.pre_school%>
+        <% if registration_form.student_cat_reg_form.pre_school.admission_number%>
         <td><%= registration_form.student_cat_reg_form.pre_school.admission_number %></td>
-        <% when 5 %>
+        <% else%>
+        <td> </td>
+        <% end%>
+        <% else%>
+        <td> </td>
+        
+        <% end%>
+        <% if registration_form.student_cat_reg_form.alumni%>
+        <% if registration_form.student_cat_reg_form.alumni.year_of_passing%>
         <td><%= registration_form.student_cat_reg_form.alumni.year_of_passing %></td>
+        <% else%>
+        <td> </td>
+        <% end%>
+        <% if registration_form.student_cat_reg_form.alumni.alumni_category%>
         <td><%= registration_form.student_cat_reg_form.alumni.alumni_category %></td>
-        <td><%= registration_form.student_cat_reg_form.alumni.mark_sheet_proof %></td>
-        <% when 6 %>
+        <% else%>
+        <td> </td>
+        <% end%>
+        <!-- <%# if registration_form.student_cat_reg_form.alumni.mark_sheet_proof%> -->
+        <!-- <td><%#= registration_form.student_cat_reg_form.alumni.mark_sheet_proof %></td> -->
+        <!-- <%# else%> -->
+        <!-- <td> </td> -->
+        <!-- <%# end%> -->
+        <% else%>
+        <td> </td>
+        <td> </td>
+        <!-- <td> </td> -->
+        <% end%>
+        <% if registration_form.student_cat_reg_form.staff_child%>
+        <% if registration_form.student_cat_reg_form.staff_child.branch%>
         <td><%= registration_form.student_cat_reg_form.staff_child.branch %></td>
+        <% else%>
+        <td> </td>
+        <% end%>
+        <% else%>
+        <td> </td>
+        <% end%>
+        <!-- <%# if registration_form.student_cat_reg_form.tie_up%> -->
+        <!-- <%# if registration_form.student_cat_reg_form.tie_up.rbi_proof%> -->
+        <!-- <td><%#= @registration_form.student_cat_reg_form.tie_up.rbi_proof %></td> -->
+        <!-- <%# else%> -->
+        <!-- <td> </td> -->
+        <!-- <%# end%> -->
+        <!-- <%# else%> -->
+        <!-- <td> </td> -->
+        <!-- <%# end%> -->
+        <%if registration_form.sibling %>
+        <td>Yes</td>
+        <td><%= registration_form.sibling_existing_parent.name %></td>
+        <td><%= registration_form.sibling_existing_parent.class_of_sibling %>
+        <td><%= registration_form.sibling_existing_parent.sec %></td>
+        <td><%= @registration_form.sibling_existing_parent.admission_num %></td>
+        <%else %>
+        <td>No</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
         <% end %>
-
+        <%if registration_form.child_special %>
+        <td>Yes</td>
+        <%else %>
+        <td>No</td>
+        <% end %>
         <!-- <td><%#= registration_form.student_category_id %></td> -->
         <!-- <td><%#= registration_form.sibling_existing_parent_id %></td> -->
         <!-- <td><%#= registration_form.child_with_special_needs %></td> -->
@@ -119,8 +223,9 @@
         
         <td><%= registration_form.father_data.name if registration_form.father_data%></td> 
         <td><%= registration_form.father_data.qualification if registration_form.father_data %></td>
-        <td><%= registration_form.father_data.qualification_proof if registration_form.father_data%></td>
+        <!-- <td><%#= registration_form.father_data.qualification_proof if registration_form.father_data%></td> -->
         <td><%= registration_form.father_data.annual_income if registration_form.father_data %></td>
+        <!-- <td><%#= registration_form.father_data.income_proof if registration_form.father_data%></td> -->
         <td><%= registration_form.father_data.occupation_designation if registration_form.father_data%></td>
         <td><%= registration_form.father_data.organisation_name if registration_form.father_data%></td>
         <td><%= registration_form.father_data.organisation_address if registration_form.father_data%></td>
@@ -130,16 +235,22 @@
         <!-- <td><%#= registration_form.mother_data_id %></td> -->
         <td><%= registration_form.mother_data.name if registration_form.mother_data%></td>
         <td><%= registration_form.mother_data.qualification if registration_form.mother_data%></td>
-        <td><%= registration_form.mother_data.qualification_proof if registration_form.mother_data%></td>
+        <!-- <td><%#= registration_form.mother_data.qualification_proof if registration_form.mother_data%></td> -->
+        <% if registration_form.mother_data.professional %>
+        <td>Home Maker</td>
+         <% else %>
+         <td>Others</td>
+        <% end %>
         <td><%= registration_form.mother_data.annual_income if registration_form.mother_data%></td>
+        <!-- <td><%#= registration_form.mother_data.income_proof if registration_form.mother_data%></td> -->
         <td><%= registration_form.mother_data.occupation_designation if registration_form.mother_data %></td>
         <td><%= registration_form.mother_data.organisation_name if registration_form.mother_data%></td>
         <td><%= registration_form.mother_data.organisation_address if registration_form.mother_data%></td>
         <td><%= registration_form.mother_data.organisation_address2 if registration_form.mother_data%></td>
         <td><%= registration_form.mother_data.organisation_type if registration_form.mother_data%></td>
-        <td><%= registration_form.date_of_birth_proof %></td>
-        <td><%= registration_form.community_category_proof %></td>
-        <td><%= registration_form.residental_address_proof %></td>
+        <!-- <td><%= registration_form.date_of_birth_proof %></td> -->
+        <!-- <td><%= registration_form.community_category_proof %></td> -->
+        <!-- <td><%= registration_form.residental_address_proof %></td> -->
         <!-- <td><%=l registration_form.created_at %></td> -->
         <td>
           

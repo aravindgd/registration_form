@@ -67,7 +67,7 @@ class RegistrationFormsController < ApplicationController
         StaffChild.create(branch: params[:registration_form][:staff_child],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
         type = "SC"
       when 7
-        TieUp.create(rbi_proof: params[:registration_form][:tie_up],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
+        TieUp.create(rbi_proof: params[:registration_form][:rbi_proof],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
         type = "TP"
       end
         @registration_form.application_number = "SBOAJC/"+"#{@registration_form.id+1000}"+"/#{type}"
@@ -112,6 +112,9 @@ class RegistrationFormsController < ApplicationController
       when 6
         StaffChild.create(branch: params[:registration_form][:staff_child],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
         type = "SC"
+      when 7
+        TieUp.create(rbi_proof: params[:registration_form][:tie_up],student_cat_reg_form_id: @registration_form.student_cat_reg_form.id)
+        type = "TP"
       end 
       @registration_form.application_number = "SBOAJC/"+"#{@registration_form.id+1000}"+"/#{type}" 
       @registration_form.save!

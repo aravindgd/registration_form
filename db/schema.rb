@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213150346) do
+ActiveRecord::Schema.define(version: 20140214174927) do
 
   create_table "alumnis", force: true do |t|
     t.integer  "year_of_passing"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140213150346) do
     t.string   "work_category"
     t.string   "organisation_type"
     t.string   "income_proof"
-    t.string   "professional"
+    t.boolean  "professional",           limit: 255
     t.string   "organisation_address2"
   end
 

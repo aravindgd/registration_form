@@ -23,11 +23,17 @@
 .container-fluid nav-collapse{
   display:none !important;
 }
+.container-fluid a{
+  display:none !important;
+}
 body{
   background-color: green;
 }
-.prooflist {
-   display:none !important;
+table{
+  
+}
+.prooflist p{
+ display:none !important;  
 }
 #mother_sign h5{
   text-align:right;
@@ -41,6 +47,9 @@ body{
 }
 .mother_name{
   font-size: 11px;
+}
+.submit p{
+   font-size: 11px;
 }
 #declare h5{
   text-align: center;
@@ -150,10 +159,10 @@ border-bottom: 1px solid #ffffff;
   <td><strong><%= model_class.human_attribute_name(:branch) %>:</strong></td>
   <td><%= @registration_form.student_cat_reg_form.sbi_grand_parent.branch %></td>
   </tr>
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:service_retirement) %>:</strong></td>
-  <td><%= @registration_form.student_cat_reg_form.sbi_grand_parent.service_retirement %></td>
-  </tr>
+  <!-- <tr> -->
+  <!-- <td><strong><%#= model_class.human_attribute_name(:service_retirement) %>:</strong></td> -->
+  <!-- <td><%#= @registration_form.student_cat_reg_form.sbi_grand_parent.service_retirement %></td> -->
+  <!-- </tr> -->
   <% when 3 %>
   <tr>
   <td><strong><%= model_class.human_attribute_name(:membership_number) %>:</strong></td>
@@ -163,10 +172,10 @@ border-bottom: 1px solid #ffffff;
   <td><strong><%= model_class.human_attribute_name(:branch) %>:</strong></td>
   <td><%= @registration_form.student_cat_reg_form.sbi_officer.branch %></td>
   </tr>
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:sbi_id_proof) %>:</strong></td>
-  <td><%= @registration_form.student_cat_reg_form.sbi_officer.sbi_id_proof %></td>
-  </tr>
+  <!-- <tr> -->
+  <!-- <td><strong><%#= model_class.human_attribute_name(:sbi_id_proof) %>:</strong></td> -->
+  <!-- <td><%#= @registration_form.student_cat_reg_form.sbi_officer.sbi_id_proof %></td> -->
+  <!-- </tr> -->
   <% when 4 %>
   <tr>
   <td><strong><%= model_class.human_attribute_name(:admission_number) %>:</strong></td>
@@ -181,21 +190,21 @@ border-bottom: 1px solid #ffffff;
   <td><strong>Category:</strong></td>
   <td><%= @registration_form.student_cat_reg_form.alumni.alumni_category %></td>
   </tr>
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:mark_sheet_proof) %>:</strong></td>
-  <td><%= @registration_form.student_cat_reg_form.alumni.mark_sheet_proof %></td>
-  </tr>
+  <!-- <tr> -->
+  <!-- <td><strong><%#= model_class.human_attribute_name(:mark_sheet_proof) %>:</strong></td> -->
+  <!-- <td><%#= @registration_form.student_cat_reg_form.alumni.mark_sheet_proof %></td> -->
+  <!-- </tr> -->
   <% when 6 %>
   <tr>
   <td><strong><%= model_class.human_attribute_name(:branch) %>:</strong></td>
   <td><%= @registration_form.student_cat_reg_form.staff_child.branch %></td>
   </tr>
-  <% when 7 %>
-  <tr>
-  <td><strong>RBI / SAIL Proof:</strong></td>
-  <td><%= @registration_form.student_cat_reg_form.tie_up.rbi_proof %></td>
-  </tr>
-  <tr>
+  <%# when 7 %>
+  <!-- <tr> -->
+  <!-- <td><strong>RBI / SAIL Proof:</strong></td> -->
+  <!-- <td><%#= @registration_form.student_cat_reg_form.tie_up.rbi_proof %></td> -->
+  <!-- </tr> -->
+  <!-- <tr> -->
   <% end %>
   <tr>
   <td><strong><%= model_class.human_attribute_name(:sibling) %>:</strong></td>
@@ -206,7 +215,7 @@ border-bottom: 1px solid #ffffff;
   <td><%= @registration_form.sibling_existing_parent.name %></td>
   </tr>
   <tr>
-  <td><strong><%= model_class.human_attribute_name(:class_of_sibling) %>:</strong></td>
+  <td><strong>Class:</strong></td>
   <td><%= @registration_form.sibling_existing_parent.class_of_sibling %></td>
   </tr>
   <tr>
@@ -229,10 +238,10 @@ border-bottom: 1px solid #ffffff;
   <td><strong>Child with special needs:</strong></td>
   <%if @registration_form.child_special %>
   <td>Yes</td>
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:child_with_special_needs_proof) %>:</strong></td>
-  <td><%= @registration_form.child_with_special_needs_proof %></td>
-  </tr>
+  <!-- <tr> -->
+  <!-- <td><strong><%#= model_class.human_attribute_name(:child_with_special_needs_proof) %>:</strong></td> -->
+  <!-- <td><%= @registration_form.child_with_special_needs_proof %></td> -->
+  <!-- </tr> -->
   <%else %>
  <td>No</td>
   <% end %>
@@ -320,7 +329,11 @@ border-bottom: 1px solid #ffffff;
   </tr>
   <tr>
   <td><strong>Mother's Professional:</strong></td>
-  <td><%= @registration_form.mother_data.professional %></td>
+  <% if @registration_form.mother_data.professional %>
+  <td>Home Maker</td>
+  <% else %>
+  <td>Others</td>
+
   </tr>
    <tr>
   <td><strong>Mother's Annual Income:</strong></td>
@@ -349,39 +362,46 @@ border-bottom: 1px solid #ffffff;
   <td><strong>Mother's Organisation Type:</strong></td>
   <td><%= @registration_form.mother_data.organisation_type %></td>
   </tr>
-  <div class="prooflist">
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:date_of_birth_proof) %>:</strong></td>
-  <td><%= @registration_form.date_of_birth_proof %></td>
-  </tr>
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:community_category_proof) %>:</strong></td>
-  <td><%= @registration_form.community_category_proof %></td>
-  </tr>
-  <tr>
-  <td><strong><%= model_class.human_attribute_name(:residental_address_proof) %>:</strong></td>
-  <td><%= @registration_form.residental_address_proof %></td>
-  </tr>
+  
+  <% end %>
+</tbody>
+ </table>
+ <!-- <table1> -->
+  <!-- <div class="prooflist"> -->
+  <!-- <p><tr> -->
+  <!-- <td><strong><%#= model_class.human_attribute_name(:date_of_birth_proof) %>:</strong></td> -->
+  <!-- <td><%= @registration_form.date_of_birth_proof %></td><br/> -->
+  <!-- </tr> -->
+  <!-- <tr> -->
+  <!-- <td><strong><%#= model_class.human_attribute_name(:community_category_proof) %>:</strong></td> -->
+  <!-- <td><%= @registration_form.community_category_proof %></td><br/> -->
+  <!-- </tr> -->
+  <!-- <tr> -->
+  <!-- <td><strong><%#= model_class.human_attribute_name(:residental_address_proof) %>:</strong></td> -->
+  <!-- <td><%= @registration_form.residental_address_proof %></td><br/> -->
+  <!-- </tr> -->
   <!-- <td><strong>Copy of Fee challan:</strong></td> -->
   <!-- <td><%#= @registration_form.student_category_proof %></td> -->
   <!-- </tr> -->
-  <tr>
-  <td><strong>Father's Income Proof:</strong></td>
-  <td><%= @registration_form.father_data.income_proof %></td>
-  </tr>
-  <tr>
-  <td><strong>Mother's Income Proof:</strong></td>
-  <td><%= @registration_form.mother_data.income_proof %></td>
-  </tr>
-  <tr>
-  <td><strong>Father's Qualification Proof:</strong></td>
-  <td><%= @registration_form.father_data.qualification_proof %></td>
-  </tr>
-  <tr>
-  <td><strong>Mother's Qualification Proof:</strong></td>
-  <td><%= @registration_form.mother_data.qualification_proof %></td>
-  </tr>
-  </div>
+  <!-- <tr> -->
+  <!-- <td><strong>Father's Income Proof:</strong></td> -->
+  <!-- <td><%#= @registration_form.father_data.income_proof %></td><br/> -->
+  <!-- </tr> -->
+  
+  <!-- <tr> -->
+  <!-- <td><strong>Father's Qualification Proof:</strong></td> -->
+  <!-- <td><%#= @registration_form.father_data.qualification_proof %></td><br/> -->
+  <!-- </tr> -->
+  <!-- <tr> -->
+  <!-- <td><strong>Mother's Qualification Proof:</strong></td> -->
+  <!-- <td><%#= @registration_form.mother_data.qualification_proof %></td><br/> -->
+  <!-- </tr> -->
+ <!-- <tr> -->
+  <!-- <td><strong>Mother's Income Proof:</strong></td> -->
+  <!-- <td><%#= @registration_form.mother_data.income_proof %></td> -->
+  <!-- </tr> -->
+<!-- </p> -->
+  <!-- </div> -->
   <!-- <tr> -->
   <!-- <td><strong><%#= model_class.human_attribute_name(:marksheet_proof) %>:</strong></td> -->
   <!-- <td><%# @registration_form.student_categories.marksheet_proof %></td> -->
@@ -392,8 +412,8 @@ border-bottom: 1px solid #ffffff;
   <!-- </tr> -->
   
   
-   </tbody>
-</table></div>
+   
+</table1></div>
 <br/>
 <div id="declare">
   <h5>DECLARATION BY THE PARENT</h5>
@@ -401,7 +421,7 @@ border-bottom: 1px solid #ffffff;
   </p><br/></div>
   <div id="father_sign">
     <h5>Signature of the Father / Guardian's</h5> </div>
-    <div id="mother_sign" ><h5>Signature of the Mother / Guardian's </h5></div>
+    <div id="mother_sign" align="right"><h5>Signature of the Mother / Guardian's </h5></div>
 <br/>
 <div class="father_name">
 <p>Father Name : <%= @registration_form.father_data.name %></p>
@@ -410,7 +430,7 @@ border-bottom: 1px solid #ffffff;
 <p>Mother Name: <%= @registration_form.mother_data.organisation_name %></p>
 </div>
 <div class="submit">
-<p>Submit Date :</p>
+<p>Submit Date :<%=Date.today%></p>
 </div>
 <div class="hide-button">
   <%= link_to t('.back', :default => t("helpers.links.back")),
@@ -422,7 +442,8 @@ border-bottom: 1px solid #ffffff;
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-              <button><%=link_to_function("Download PDF", "javascript:print()")%></button>
+              <input type="button" value="Download PDF" onClick="window.print();">
+              <!-- <button><%#=link_to_function("Download PDF", "window.print();")%></button> -->
   <%#= link_to "Download PDF", registration_form_path(@registration_form, :format => 'pdf'),:class => 'btn' %>
   </div>            
 </div>

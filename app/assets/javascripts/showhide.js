@@ -10,6 +10,17 @@ ready = function(){
     $('#showpage').hide('fast');
     
   });
+$('#mother_qual').show();
+ // shows the slickbox on clicking the noted link  
+  $('#registration_form_mother_datas_professional_true').click(function() {
+    $('#mother_qual').hide('slow');
+  });
+ // hides the slickbox on clicking the noted link  
+  $('#registration_form_mother_datas_professional_false').click(function() {
+    $('#mother_qual').show('fast');
+    
+  });
+
   
 };
 $(document).ready(ready);

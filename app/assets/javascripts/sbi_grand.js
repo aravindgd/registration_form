@@ -85,20 +85,7 @@ $("#registration_form_student_category").change(function() {
     }
   }
 });
-$("#registration_form_mother_datas_professional_home_maker").change(function() {
-  console.log($("#registration_form_mother_datas_professional_home_maker").val())
-  if($("#registration_form_mother_datas_professional_home_maker").val()=="Home Maker")
-  {
-    $("#mother_qual").hide();
-  }
-  else
-  {
-    if($("#mother_qual").length)
-    {
-      $("#mother_qual").show();
-    }
-  }
-});
+
 
 };
 $(document).ready(ready);
