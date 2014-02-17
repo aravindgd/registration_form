@@ -8,7 +8,7 @@
   <h5>Note:</h5>
 <p>Enclose the printed original registration form with required documents in a sealed envelope superscribed with registration number on the envelop and drop it in the box provided at the school office on or before 24/2/2014
 </p>
-</div>
+</div><br/>
 <div class="appnum-head" align="right">
 <tr>
   <td><strong><%= model_class.human_attribute_name(:application_number) %>:</strong></td>
@@ -97,12 +97,19 @@ border-bottom: 1px solid #ffffff;
    font-size: 15px;
 }
 #show-page {
-  background-image:url(".images/logo.jpeg");
-   visibility: visible;
+  background-image:url(".images/logo.jpg");
+   
 }
 .simple_form #form_title {
   display:none !important;   
 }
+.header{
+  { visibility: hidden }
+}
+a:link:after, a:visited:after {  
+      display: none;
+      content: "";    
+    }
 }
 </style>
 <div class="logo-show">
