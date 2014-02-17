@@ -19,6 +19,9 @@
   text-align: right;
   margin: 2px 10px;
 }
+.form-horizontal .control-label {
+  text-align: left;
+}
 
 .simple_form div.input {
   margin-bottom: 10px;
@@ -61,7 +64,7 @@
 }
 .simple_form #student p{
   position: absolute;
-  padding-left: 57px;
+  padding-left: 10px;
 
   }
   /*.simple_form #sibling-detail label.collection_radio{*/
@@ -79,6 +82,12 @@
 }
 .page-header{
 display:none;
+}
+.logo-show img{
+  padding-left: 210px;
+  position: absolute;
+  top: 155px;
+  width: 85px;
 }
 input.upper { text-transform: uppercase; }
 .logo img{

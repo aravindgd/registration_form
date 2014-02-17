@@ -3,6 +3,14 @@ ready = function(){
         caseValue: 'upper',
         changeonFocusout: true
     });
+    $("#father_upper").Setcase({
+        caseValue: 'upper',
+        changeonFocusout: true
+    });
+    $("#mother_upper").Setcase({
+        caseValue: 'upper',
+        changeonFocusout: true
+    });
     $("#nation_upper").Setcase({
         caseValue: 'upper',
         changeonFocusout: true

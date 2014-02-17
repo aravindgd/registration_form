@@ -4,7 +4,11 @@
 <!-- <div class="page-header"> -->
   
 <!-- </thead> -->
-
+<div id="sboa-info">
+  <h5>Note:</h5>
+<p>Enclose the printed original registration form with required documents in a sealed envelope superscribed with registration number on the envelop and drop it in the box provided at the school office on or before 24/2/2014
+</p>
+</div>
 <div class="appnum-head" align="right">
 <tr>
   <td><strong><%= model_class.human_attribute_name(:application_number) %>:</strong></td>
@@ -16,6 +20,12 @@
 .hide-button{
   display:none !important;
 
+}
+#sboa-info{
+  font-size: 10px;
+}
+#sboa-info{
+  font-size: 12px;
 }
 .brand{
   display:none !important;
@@ -88,10 +98,14 @@ border-bottom: 1px solid #ffffff;
 }
 #show-page {
   background-image:url(".images/logo.jpeg");
+   visibility: visible;
+}
+.simple_form #form_title {
+  display:none !important;   
 }
 }
 </style>
-<div class="logo">
+<div class="logo-show">
 <%= link_to(image_tag("logo.jpg", :alt => "logo", :title => "Home"), "/") %>
 </div>
 <div id="show-page" align="center">
@@ -99,7 +113,7 @@ border-bottom: 1px solid #ffffff;
 <h4>Registration form for LKG Admission 2013-2014</h4>
 </div>
 <div id="detail_list">
-<h5><strong>Eligibility:Children who are born between 30 November 2010 and 30 November 2011.</strong></h5>
+<h5><strong>Eligibility:Children who are born between 01 December 2009 and 13 November 2010.</strong></h5>
 <p>
 <h5>List of supporting Documents to be attached with the registration form at the time of submission.</h5>
 <ul>
@@ -134,6 +148,14 @@ border-bottom: 1px solid #ffffff;
   <tr>
   <td><strong><%= model_class.human_attribute_name(:nationality) %>:</strong></td>
   <td><%= @registration_form.nationality %></td>
+  </tr>
+  <tr>
+  <td><strong>Father's / Guardian's Name:</strong></td>
+  <td><%= @registration_form.father_name %></td>
+  </tr>
+  <tr>
+  <td><strong>Mother's Name:</strong></td>
+  <td><%= @registration_form.mother_name %></td>
   </tr>
   <tr>
   <td><strong><%= model_class.human_attribute_name(:religion) %>:</strong></td>
@@ -334,7 +356,7 @@ border-bottom: 1px solid #ffffff;
   <td><%= @registration_form.mother_data.qualification %></td>
   </tr>
   <tr>
-  <td><strong>Mother's Professional:</strong></td>
+  <td><strong>Mother's Profession:</strong></td>
   <% if @registration_form.mother_data.professional %>
   <td>Home Maker</td>
   <% else %>

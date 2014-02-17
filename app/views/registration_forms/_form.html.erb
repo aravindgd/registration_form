@@ -4,19 +4,8 @@
 <div id="show-page" align="center">
 <h3>SBOA SCHOOL JUNIOR COLLEGE,CHENNAI-600101</h3>
 <h4>Registration form for LKG Admission 2013-2014</h4>
-</div>
-<h5><strong>Eligibility:Children who are born between 30 November 2010 and 30 November 2011.</strong></h5>
-<p>
-<h5>List of supporting Documents to be attached with the registration form at the time of submission.</h5>
-<ul>
-  <li>Attested Photocopy of Birth Certificate of the child</li>
-  <li>Proof of Residence (Photo copy of Ration Card / EB Card / Passport / Voter Id / Gas Bill / Aadhar Card / Telephone Bill only)</li>
-  <li>Proof of Sibling - Copy of id card / fee challan</li>
-  <li>For all categories except "OC", Attested Community Ceritificate has to be enclosed</li>
-  <li>Medical Ceritificate of the Child(for children with special needs)</li>
-  <li>Proof of Income</li>
-  <li>Proof of Alumni - copy of 10th / 12th Marksheet</li>
-</p><br/>
+</div><br/><br/>
+
 <h4>Student Details</h4><br/>
 <div class="new-page" align="left">
 <%= simple_form_for @registration_form, :defaults => {:required => false},:html => { :class => 'form-horizontal' } do |f| %>
@@ -26,6 +15,8 @@
   
   <%#= f.input :date_of_birth_proof, as: :file ,:required => true %>
   <%= f.input :gender ,:required => true, as: :select, label: 'Gender', :collection => [['MALE',true],['FEMALE',false]]%><br/>
+  <%= f.input :father_name , :label=>"Father's / Guardian's Name",input_html: { id: 'father_upper'},:required => true%><br/>
+  <%= f.input :mother_name ,:label=>"Mother's Name",input_html: { id: 'mother_upper'},:required => true%><br/>
   <%= f.input :nationality ,input_html: { id: 'nation_upper'},:required => true%><br/>
   <%= f.input :religion ,input_html: { id: 'religion_upper'},:required => true%><br/>
   <%= f.input :caste ,input_html: { id: 'caste_upper'},:required => true%><br/>
@@ -75,7 +66,7 @@
   <div id="showpage">
     <%= f.simple_fields_for :sibling_existing_parents do |sibling_existing_parent|%>
     <%= sibling_existing_parent.input :name,input_html: { id: 'sibling_name_upper'} %><br/>
-    <%= sibling_existing_parent.input :class,input_html: { id: 'sibling_class_upper'}%><br/>
+    <%= sibling_existing_parent.input :class,input_html: { id: 'sibling_class_upper'},as: :select, :collection=>[['UKG','UKG'],['1st std','1st std'],['2nd std','2nd std'],['3rd std','3rd std'],['4th std','4th std'],['5th std','5th std'],['6th std','6th std'],['7th std','7th std'],['8th std','8th std'],['9th std','9th std'],['10th std','10th std'],['11th std','11th std'],['12th std','12th std']]%><br/>
     <%= sibling_existing_parent.input :sec,input_html: { id: 'section_upper'},label: "Section"%><br/>
     <%= sibling_existing_parent.input :admission_num,label: "Admission Number"%><br/>
     
@@ -111,7 +102,7 @@
     <h5>Organisation Address</h5>
     <%= father_data.input :organisation_address,input_html: { id: 'father_addr1_upper'},label:"Line 1"%><br/>
     <%= father_data.input :organisation_address2,input_html: { id: 'father_addr2_upper'},label:"Line 2"%><br/>
-      <%= father_data.input :organisation_type,label:"Organisation Type",as: :radio_buttons, collection: [['Private','Private'],['Central','Central'],['State','State'],['Defence','Defence'],['Public Sector','Public Sector']] %><br/>
+      <%= father_data.input :organisation_type,label:"Organisation Type",as: :radio_buttons, collection: [['Private','Private'],['Central Government','Central Government'],['State Government','State Government'],['Defence','Defence'],['Public Sector','Public Sector']] %><br/>
   <% end %><br/>
   <div class="Mother-detail"><h4> b) Mother's Occupation</h4></div>
   <%= f.simple_fields_for :mother_datas do |mother_data|%>
@@ -119,7 +110,7 @@
     <%= mother_data.input :qualification, as: :select, :collection => [['Graduate','Graduate'],['Post Graduate','Post Graduate'],['Professional','Professional'],['Diploma Holders / Others','Diploma Holders / Others']]%><br/>
     
     <!-- <%#= mother_data.input :qualification_proof, as: :file, label:"Qualification Proof" %><br/> -->
-    <%= mother_data.input :professional,label:"Professional",as: :radio_buttons,:collection=>[['Home Maker',true],['Others',false]]%><br/><br/>
+    <%= mother_data.input :professional,label:"Profession",as: :radio_buttons,:collection=>[['Home Maker',true],['Others',false]]%><br/><br/>
     <div id="mother_qual">
     <%= mother_data.input :annual_income,  label:"Annual Income",as: :select, :collection => [['Below One Lakh','Below One Lakh'],['1 to 2 Lakhs','1 to 2 Lakhs'],['2 to 3 Lakhs','2 to 3 Lakhs'],['3 to 4 Lakhs','3 to 4 Lakhs'],['4 to 5 Lakhs','4 to 5 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs']]%><br/>
     <!-- <%#= mother_data.input :income_proof, as: :file, label:"Income Proof" %><br/> -->
@@ -128,7 +119,7 @@
     <h5>Organisation Address</h5>
     <%= mother_data.input :organisation_address,input_html: { id: 'mother_addr1_upper'},label:"Line 1"%><br/>
     <%= mother_data.input :organisation_address2,input_html: { id: 'mother_addr2_upper'},label:"Line 2"%><br/>
-      <%= mother_data.input :organisation_type,label:"Organisation Type",as: :radio_buttons, collection: [['Private','Private'],['Central','Central'],['State','State'],['Defence','Defence'],['Public Sector','Public Sector']] %><br/>
+      <%= mother_data.input :organisation_type,label:"Organisation Type",as: :radio_buttons, collection: [['Private','Private'],['Central Government','Central Government'],['State Government','State Government'],['Defence','Defence'],['Public Sector','Public Sector']] %><br/>
   <% end %><br/>
     </div>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140214174927) do
+ActiveRecord::Schema.define(version: 20140217080430) do
 
   create_table "alumnis", force: true do |t|
     t.integer  "year_of_passing"
@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(version: 20140214174927) do
     t.boolean  "tie_up"
     t.boolean  "sibling"
     t.boolean  "child_special"
+    t.string   "father_name"
+    t.string   "mother_name"
   end
 
   create_table "sbi_grand_parents", force: true do |t|
