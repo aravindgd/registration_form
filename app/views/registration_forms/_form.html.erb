@@ -13,10 +13,9 @@
   <%= f.input :name_of_student,input_html: { id: 'change_upper'},:required => true %><br/></div>
   <%= f.input :date_of_birth, input_html: { id: 'dob'},:required => true %><br/>
   
-  <%#= f.input :date_of_birth_proof, as: :file ,:required => true %>
   <%= f.input :gender ,:required => true, as: :select, label: 'Gender', :collection => [['MALE',true],['FEMALE',false]]%><br/>
-  <%= f.input :father_name , :label=>"Father's / Guardian's Name",input_html: { id: 'father_upper'},:required => true%><br/>
-  <%= f.input :mother_name ,:label=>"Mother's Name",input_html: { id: 'mother_upper'},:required => true%><br/>
+  <%= f.input :father_name , label:"Father's / Guardian's Name",input_html: { id: 'father_upper'},:required => true%><br/>
+  <%= f.input :mother_name ,label:"Mother's Name",input_html: { id: 'mother_upper'},:required => true%><br/>
   <%= f.input :nationality ,input_html: { id: 'nation_upper'},:required => true%><br/>
   <%= f.input :religion ,input_html: { id: 'religion_upper'},:required => true%><br/>
   <%= f.input :caste ,input_html: { id: 'caste_upper'},:required => true%><br/>
