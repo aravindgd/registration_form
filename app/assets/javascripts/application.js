@@ -22,8 +22,10 @@
 //= require Parsley/parsley
 //= require Parsley/parsley.extend
 // require parsley.i18n.fr
+//= require SetCase.js
 //= require custom
 //= require showhide
-//= require child_show
+
 //= require registration_forms
 //= require sbi_grand
+//= require uppercase

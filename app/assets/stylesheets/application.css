@@ -77,7 +77,15 @@
 .simple_form #child_need p{
   padding-left: 250px;
 }
-
+.page-header{
+display:none;
+}
+input.upper { text-transform: uppercase; }
+.logo img{
+  padding-left: 210px;
+  position: absolute;
+  top: 55px;
+  width: 85px;
 @media print{
   body{
     background-color: #fff;

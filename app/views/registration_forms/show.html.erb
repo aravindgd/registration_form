@@ -1,9 +1,9 @@
 <%- model_class = RegistrationForm -%>
 
   <thead>
-<div class="page-header">
+<!-- <div class="page-header"> -->
   
-</thead>
+<!-- </thead> -->
 
 <div class="appnum-head" align="right">
 <tr>
@@ -86,10 +86,16 @@ border-bottom: 1px solid #ffffff;
 #show-page h4{
    font-size: 15px;
 }
+#show-page {
+  background-image:url(".images/logo.jpeg");
+}
 }
 </style>
+<div class="logo">
+<%= link_to(image_tag("logo.jpg", :alt => "logo", :title => "Home"), "/") %>
+</div>
 <div id="show-page" align="center">
-  <h3>SBOA SCHOOL JUNIOR COLLEGE,CHENNAI-600101</h3>
+<h3>SBOA SCHOOL JUNIOR COLLEGE,CHENNAI-600101</h3>
 <h4>Registration form for LKG Admission 2013-2014</h4>
 </div>
 <div id="detail_list">
@@ -120,9 +126,9 @@ border-bottom: 1px solid #ffffff;
   <tr>
   <td><strong><%= model_class.human_attribute_name(:gender) %>:</strong></td>
   <% if @registration_form.gender %>
-  <td>Male</td>
+  <td>MALE</td>
   <% else %>
-  <td>Female</td>
+  <td>FEMALE</td>
   <% end %>
   </tr>
   <tr>
@@ -434,7 +440,7 @@ border-bottom: 1px solid #ffffff;
 </div>
 <div class="hide-button">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              registration_forms_path, :class => 'btn'  %>
+              new_registration_form_path, :class => 'btn'  %>
   <%#= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_registration_form_path(@registration_form), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -443,6 +449,7 @@ border-bottom: 1px solid #ffffff;
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
               <input type="button" value="Download PDF" onClick="window.print();">
+              
               <!-- <button><%#=link_to_function("Download PDF", "window.print();")%></button> -->
   <%#= link_to "Download PDF", registration_form_path(@registration_form, :format => 'pdf'),:class => 'btn' %>
   </div>            
