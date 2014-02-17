@@ -146,17 +146,18 @@ border-bottom: 1px solid #ffffff;
   <% end %>
   </tr>
   <tr>
+  <td><strong>Father's name:</strong></td>
+  <td><%= @registration_form.father_data.name %></td>
+  </tr>
+  <tr>
+  <td><strong>Mother's name:</strong></td>
+  <td><%= @registration_form.mother_data.name %></td>
+  </tr>
+  <tr>
   <td><strong><%= model_class.human_attribute_name(:nationality) %>:</strong></td>
   <td><%= @registration_form.nationality %></td>
   </tr>
-  <tr>
-  <td><strong>Father's / Guardian's Name:</strong></td>
-  <td><%= @registration_form.student_father_name %></td>
-  </tr>
-  <tr>
-  <td><strong>Mother's Name:</strong></td>
-  <td><%= @registration_form.student_mother_name %></td>
-  </tr>
+  
   <tr>
   <td><strong><%= model_class.human_attribute_name(:religion) %>:</strong></td>
   <td><%= @registration_form.religion %></td>

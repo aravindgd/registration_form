@@ -14,8 +14,12 @@
   <%= f.input :date_of_birth, input_html: { id: 'dob'},:required => true %><br/>
   
   <%= f.input :gender ,:required => true, as: :select, label: 'Gender', :collection => [['MALE',true],['FEMALE',false]]%><br/>
-  <%= f.input :student_father_name , label:"Father's / Guardian's Name",input_html: { id: 'father_upper'},:required => true%><br/>
-  <%= f.input :student_mother_name ,label:"Mother's Name",input_html: { id: 'mother_upper'},:required => true%><br/>
+  <%= f.simple_fields_for :father_datas do |father_data|%>
+    <%= father_data.input :name,input_html: { id: 'father_name_upper'},:label => "Father's / Guardian's Name"%><br/>
+    <% end %>
+  <%= f.simple_fields_for :mother_datas do |mother_data|%>
+  <%= mother_data.input :name,input_html: { id: 'mother_name_upper'},:label => "Mother's Name"%><br/>
+  <% end %>
   <%= f.input :nationality ,input_html: { id: 'nation_upper'},:required => true%><br/>
   <%= f.input :religion ,input_html: { id: 'religion_upper'},:required => true%><br/>
   <%= f.input :caste ,input_html: { id: 'caste_upper'},:required => true%><br/>

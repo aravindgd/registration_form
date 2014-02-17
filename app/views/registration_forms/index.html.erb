@@ -15,8 +15,6 @@
       <th><%= model_class.human_attribute_name(:name_of_student) %></th>
       <th><%= model_class.human_attribute_name(:date_of_birth) %></th>
       <th><%= model_class.human_attribute_name(:gender) %></th>
-      <th><%= model_class.human_attribute_name(:father_name) %></th>
-      <th><%= model_class.human_attribute_name(:mother_name) %></th>
       <th><%= model_class.human_attribute_name(:nationality) %></th>
       <th><%= model_class.human_attribute_name(:religion) %></th>
       <th><%= model_class.human_attribute_name(:caste) %></th>
@@ -93,8 +91,6 @@
         <% else %>
         <td>Female</td>
         <% end %>
-        <td><%= registration_form.student_father_name %></td>
-        <td><%= registration_form.student_mother_name %></td>
         <td><%= registration_form.nationality %></td>
         <td><%= registration_form.religion %></td>
         <td><%= registration_form.caste %></td>
