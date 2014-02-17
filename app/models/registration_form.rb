@@ -18,12 +18,12 @@ class RegistrationForm < ActiveRecord::Base
   mount_uploader :child_with_special_needs_proof, DocumentUploader
   mount_uploader :student_category_proof, DocumentUploader
   
-  # validates :name_of_student,:gender, :nationality,:locality, :religion,:caste,:community_category,presence: true
-  # validates :date_of_birth, presence: true
-  # validates :mobile_number, numericality: {only_integer: true},:length => { :minimum => 10, :maximum => 10 }
-  # validates :email, :email => {:strict_mode => true}
-  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  # validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+  validates :name_of_student,:gender, :nationality,:locality, :religion,:caste,:community_category,presence: true
+  validates :date_of_birth, presence: true
+  validates :mobile_number, numericality: {only_integer: true},:length => { :minimum => 10, :maximum => 10 }
+  validates :email, :email => {:strict_mode => true}
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   
   
   
