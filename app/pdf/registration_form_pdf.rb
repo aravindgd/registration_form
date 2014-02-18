@@ -57,6 +57,25 @@ class RegistrationFormPdf < Prawn::Document
           table(data1, :width => 260, :cell_style => { :size => 9, :inline_format => true, :border_color => "FFFFFF"}) do
           end
           print_mother_data
+          print_last_few_lines
+     end
+
+     def print_last_few_lines
+          text " "
+          text " "
+          text "DECLARATION BY THE PARENT",:style => :bold, :align=> :center
+          text " "
+          text " I/We hereby certify that the above information provided by me/us is correct and I/we understand that if the information found to be incorrect or false, the application shall be automatically rejected from registration process without any correspondence in this regard. I/We understand that short listing of this registration form does not guarantee admission to my ward. I/We accept the process of admission undertaken by the school and I/we will abide by the decision taken by the school authorities.", :size => 9
+          text " "
+          text " "
+          text " "
+          text "Signature of the Mother / Guardian's ",:style => :bold , :size => 9
+          text "Signature of the Father / Guardian's ",:style => :bold,:align=> :right, :size => 9 
+          text "Name :"+@registration_form.mother_data.name, :size => 9
+          text "Name :"+@registration_form.father_data.name,:align=> :right, :size => 9
+          # tDateTime.now.to_date.striftime('%d%m%y')ext " "
+          text " "
+          text "Submission Date : #{Date.today.strftime('%d/%m/%Y')}", :size => 9
      end
 
      def print_sibling_data
