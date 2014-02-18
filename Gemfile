@@ -43,8 +43,8 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
- gem 'prawn'
- gem 'pdfkit'
+gem 'prawn'
+gem 'pdfkit'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'carrierwave'
 gem 'simple_form'
@@ -55,7 +55,18 @@ gem 'binding_of_caller'
 gem 'email_validator'
 gem 'parsley_simple_form', github: 'formaweb/parsley_simple_form'
 gem "parsley-rails"
-#gem 'sqlite3'
+
 gem 'thin'
-gem 'pg'
+gem "quiet_assets"
+group :development do
+  gem 'capistrano', '~> 3.0.1'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-rvm', '~> 0.1.0'
+  gem 'sqlite3'
+end
+group :production do
+  gem 'unicorn'
+  gem 'pg'
+end
 gem 'rails_12factor', group: :production
