@@ -125,6 +125,11 @@ input.upper { text-transform: uppercase; }
   margin: 10px 0px 0px 0px;
 }
 .student-details td{
-  width: 230px;
-
+  width: 250px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#sboa-info {
+  border: 1px solid #666 ;
+  padding: 5px;
 }
