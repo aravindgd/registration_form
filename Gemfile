@@ -53,9 +53,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'email_validator'
-gem 'parsley_simple_form', github: 'formaweb/parsley_simple_form'
-gem "parsley-rails"
-#gem 'sqlite3'
+gem 'sqlite3'
 gem 'thin'
-gem 'pg'
+#gem 'pg'
 gem 'rails_12factor', group: :production

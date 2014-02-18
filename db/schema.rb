@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217114542) do
+ActiveRecord::Schema.define(version: 20140218141940) do
 
   create_table "alumnis", force: true do |t|
-    t.integer  "year_of_passing"
+    t.string   "year_of_passing"
     t.string   "mark_sheet_proof"
     t.integer  "student_cat_reg_form_id"
     t.datetime "created_at"
