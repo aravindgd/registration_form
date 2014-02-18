@@ -1,3 +1,103 @@
 // Place all the styles related to the registration_forms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@media print{
+.hide-button{
+  display:none !important;
+
+}
+#sboa-info{
+  font-size: 10px;
+}
+#sboa-info{
+  font-size: 12px;
+}
+.brand{
+  display:none !important;
+}
+.container-fluid nav-collapse{
+  display:none !important;
+}
+.container-fluid a{
+  display:none !important;
+}
+body{
+  background-color: green;
+}
+table{
+  
+}
+.prooflist p{
+ display:none !important;  
+}
+#mother_sign h5{
+  text-align:right;
+  font-size: 12px;
+}
+#father_sign h5{
+  font-size: 12px;
+}
+.father_name{
+  font-size: 11px;
+}
+.mother_name{
+  font-size: 11px;
+}
+.submit p{
+   font-size: 11px;
+}
+#declare h5{
+  text-align: center;
+}
+.page-header {
+border-bottom: 1px solid #ffffff;
+
+}
+.navbar-inner{
+  border: 1px solid #ffffff;
+}
+.navbar .btn-navbar {
+  display: none;
+  border-color:#ffffff;
+}
+.student_detail{
+  font-size: 12px;
+}
+.student_detail h5{
+     font-size: 13px;
+}
+#declare p{
+  font-size: 10px;
+}
+#detail_list h5{
+  font-size: 13px;
+}
+#detail_list ul{
+  font-size: 12px;
+}
+#show-page h3{
+   font-size: 17px;
+}
+#show-page h4{
+   font-size: 15px;
+}
+#show-page {
+  background-image:url(".images/logo.jpg");
+   
+}
+.simple_form #form_title {
+  display:none !important;   
+}
+.header{
+  visibility: hidden 
+}
+a:link:after, a:visited:after {  
+      display: none;
+      content: "";    
+    }
+}
+
+.show-page {
+	text-align: center;
+}

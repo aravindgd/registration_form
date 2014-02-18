@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
@@ -48,7 +48,9 @@ gem 'pdfkit'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'carrierwave'
 gem 'simple_form'
-gem "twitter-bootstrap-rails"
+# gem "therubyracer"
+ # sass-rails needs to be higher than 3.2
+gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bootstrap-datepicker-rails'
 gem 'better_errors'
 gem 'binding_of_caller'
