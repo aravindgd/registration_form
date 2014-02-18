@@ -79,6 +79,7 @@ class RegistrationFormsController < ApplicationController
         format.json { render json: @registration_form.errors, status: :unprocessable_entity }
       end
     end
+  
   end
 
   # PATCH/PUT /registration_forms/1
