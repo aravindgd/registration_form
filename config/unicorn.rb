@@ -1,4 +1,4 @@
-root = "/home/ubuntu/apps/ianda/current"
+root = "/home/talkingslate/apps/registration_form/"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
