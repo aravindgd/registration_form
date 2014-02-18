@@ -69,7 +69,7 @@
   <div id="showpage">
     <%= f.simple_fields_for :sibling_existing_parents do |sibling_existing_parent|%>
     <%= sibling_existing_parent.input :name,input_html: { id: 'sibling_name_upper'} %><br/>
-    <%= sibling_existing_parent.input :class,input_html: { id: 'sibling_class_upper'},as: :select, :collection=>[['UKG','UKG'],['1st std','1st std'],['2nd std','2nd std'],['3rd std','3rd std'],['4th std','4th std'],['5th std','5th std'],['6th std','6th std'],['7th std','7th std'],['8th std','8th std'],['9th std','9th std'],['10th std','10th std'],['11th std','11th std'],['12th std','12th std']]%><br/>
+    <%= sibling_existing_parent.input :class_of_sibling,label:"Class",as: :select, :collection=>[['UKG','UKG'],['1st std','1st std'],['2nd std','2nd std'],['3rd std','3rd std'],['4th std','4th std'],['5th std','5th std'],['6th std','6th std'],['7th std','7th std'],['8th std','8th std'],['9th std','9th std'],['10th std','10th std'],['11th std','11th std'],['12th std','12th std']]%><br/>
     <%= sibling_existing_parent.input :sec,input_html: { id: 'section_upper'},label: "Section"%><br/>
     <%= sibling_existing_parent.input :admission_num,label: "Admission Number"%><br/>
     
