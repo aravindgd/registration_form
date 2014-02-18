@@ -6,7 +6,7 @@
 <!-- </thead> -->
 <div id="sboa-info">
   <h5>Note:</h5>
-<p>Enclose the printed original registration form with required documents in a sealed envelope superscribed with registration number on the envelop and drop it in the box provided at the school office on or before 24/2/2014
+<p>Enclose the printed original registration form with required documents in a sealed envelope superscribed with registration number on the envelope and drop it in the box provided at the school office on or before 24/2/2014
 </p>
 </div><br/>
 <div class="appnum-head" align="right">
@@ -120,7 +120,7 @@ a:link:after, a:visited:after {
 <h4>Registration form for LKG Admission 2014-2015</h4>
 </div>
 <div id="detail_list">
-<h5><strong>Eligibility:Children who are born between 01 December 2009 and 13 November 2010.</strong></h5>
+<h5><strong>Eligibility:Children who are born between 01 December 2009 and 30 November 2010.</strong></h5>
 <p>
 <h5>List of supporting Documents to be attached with the registration form at the time of submission.</h5>
 <ul>
@@ -478,9 +478,9 @@ a:link:after, a:visited:after {
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-              <input type="button" value="Download PDF" onClick="window.print();">
+              <!-- <input type="button" value="Download PDF" onClick="window.print();"> -->
               
               <!-- <button><%#=link_to_function("Download PDF", "window.print();")%></button> -->
-  <%#= link_to "Download PDF", registration_form_path(@registration_form, :format => 'pdf'),:class => 'btn' %>
+  <%= link_to "Download PDF", registration_form_path(@registration_form, :format => 'pdf'),:class => 'btn' %>
   </div>            
 </div>
