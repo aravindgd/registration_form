@@ -39,30 +39,10 @@
   </head></div>
   <body>
 
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">SboaRegistrationForm</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "New", "/registration_forms/new"  %></li>
-              <!-- <li><%#= link_to "", "/registration_forms"  %></li> -->
-              <!-- <li><%#= link_to "Link3", "/path3"  %></li> -->
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+    <%= render "layouts/navbar" %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="col-md-12">
           <%= yield %>
-        </div>
       </div><!--/row-->
 
       <footer>

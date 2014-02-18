@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217114542) do
+ActiveRecord::Schema.define(version: 20140217095850) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "alumnis", force: true do |t|
     t.integer  "year_of_passing"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140217114542) do
     t.string   "alumni_category"
   end
 
-  add_index "alumnis", ["student_cat_reg_form_id"], name: "index_alumnis_on_student_cat_reg_form_id"
+  add_index "alumnis", ["student_cat_reg_form_id"], name: "index_alumnis_on_student_cat_reg_form_id", using: :btree
 
   create_table "father_data", force: true do |t|
     t.string   "name"
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140217114542) do
     t.string   "organisation_address2"
   end
 
-  add_index "father_data", ["registration_form_id"], name: "index_father_data_on_registration_form_id"
+  add_index "father_data", ["registration_form_id"], name: "index_father_data_on_registration_form_id", using: :btree
 
   create_table "mother_data", force: true do |t|
     t.string   "name"
@@ -55,11 +58,11 @@ ActiveRecord::Schema.define(version: 20140217114542) do
     t.integer  "registration_form_id"
     t.string   "organisation_type"
     t.string   "income_proof"
-    t.boolean  "professional",           limit: 255
+    t.string   "professional"
     t.string   "organisation_address2"
   end
 
-  add_index "mother_data", ["registration_form_id"], name: "index_mother_data_on_registration_form_id"
+  add_index "mother_data", ["registration_form_id"], name: "index_mother_data_on_registration_form_id", using: :btree
 
   create_table "pre_schools", force: true do |t|
     t.string   "admission_number"
@@ -68,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140217114542) do
     t.datetime "updated_at"
   end
 
-  add_index "pre_schools", ["student_cat_reg_form_id"], name: "index_pre_schools_on_student_cat_reg_form_id"
+  add_index "pre_schools", ["student_cat_reg_form_id"], name: "index_pre_schools_on_student_cat_reg_form_id", using: :btree
 
   create_table "registration_forms", force: true do |t|
     t.string   "name_of_student"
@@ -109,6 +112,8 @@ ActiveRecord::Schema.define(version: 20140217114542) do
     t.boolean  "tie_up"
     t.boolean  "sibling"
     t.boolean  "child_special"
+    t.string   "student_father_name"
+    t.string   "student_mother_name"
   end
 
   create_table "sbi_grand_parents", force: true do |t|
@@ -121,7 +126,7 @@ ActiveRecord::Schema.define(version: 20140217114542) do
     t.datetime "updated_at"
   end
 
-  add_index "sbi_grand_parents", ["student_cat_reg_form_id"], name: "index_sbi_grand_parents_on_student_cat_reg_form_id"
+  add_index "sbi_grand_parents", ["student_cat_reg_form_id"], name: "index_sbi_grand_parents_on_student_cat_reg_form_id", using: :btree
 
   create_table "sbi_officers", force: true do |t|
     t.string   "membership_number"
@@ -132,7 +137,7 @@ ActiveRecord::Schema.define(version: 20140217114542) do
     t.string   "sbi_id_proof"
   end
 
-  add_index "sbi_officers", ["student_cat_reg_form_id"], name: "index_sbi_officers_on_student_cat_reg_form_id"
+  add_index "sbi_officers", ["student_cat_reg_form_id"], name: "index_sbi_officers_on_student_cat_reg_form_id", using: :btree
 
   create_table "sibling_existing_parents", force: true do |t|
     t.string   "sec"
@@ -145,7 +150,7 @@ ActiveRecord::Schema.define(version: 20140217114542) do
     t.string   "school_name"
   end
 
-  add_index "sibling_existing_parents", ["registration_form_id"], name: "index_sibling_existing_parents_on_registration_form_id"
+  add_index "sibling_existing_parents", ["registration_form_id"], name: "index_sibling_existing_parents_on_registration_form_id", using: :btree
 
   create_table "staff_children", force: true do |t|
     t.string   "branch"
@@ -154,7 +159,7 @@ ActiveRecord::Schema.define(version: 20140217114542) do
     t.datetime "updated_at"
   end
 
-  add_index "staff_children", ["student_cat_reg_form_id"], name: "index_staff_children_on_student_cat_reg_form_id"
+  add_index "staff_children", ["student_cat_reg_form_id"], name: "index_staff_children_on_student_cat_reg_form_id", using: :btree
 
   create_table "student_cat_reg_forms", force: true do |t|
     t.integer  "student_category_id"
@@ -163,8 +168,8 @@ ActiveRecord::Schema.define(version: 20140217114542) do
     t.datetime "updated_at"
   end
 
-  add_index "student_cat_reg_forms", ["registration_form_id"], name: "index_student_cat_reg_forms_on_registration_form_id"
-  add_index "student_cat_reg_forms", ["student_category_id"], name: "index_student_cat_reg_forms_on_student_category_id"
+  add_index "student_cat_reg_forms", ["registration_form_id"], name: "index_student_cat_reg_forms_on_registration_form_id", using: :btree
+  add_index "student_cat_reg_forms", ["student_category_id"], name: "index_student_cat_reg_forms_on_student_category_id", using: :btree
 
   create_table "student_categories", force: true do |t|
     t.string   "name"
@@ -173,12 +178,12 @@ ActiveRecord::Schema.define(version: 20140217114542) do
   end
 
   create_table "tie_ups", force: true do |t|
-    t.string   "rbi_proof"
+    t.string   "rbi_or_sbi_proof"
     t.integer  "student_cat_reg_form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "tie_ups", ["student_cat_reg_form_id"], name: "index_tie_ups_on_student_cat_reg_form_id"
+  add_index "tie_ups", ["student_cat_reg_form_id"], name: "index_tie_ups_on_student_cat_reg_form_id", using: :btree
 
 end

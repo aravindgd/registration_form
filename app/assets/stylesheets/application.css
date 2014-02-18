@@ -8,11 +8,13 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *= require dataTables/jquery.dataTables
+ *= require bootstrap
  *= require dataTables/extras/TableTools
- *= require bootstrap_and_overrides
  *= require bootstrap-datepicker
  *= require_self
+ *= require registration_forms
  */
+
 .simple_form label {
   float: left;
   /*width: 100px;*/
@@ -115,4 +117,14 @@ input.upper { text-transform: uppercase; }
     padding: 0;
     border: none;
   }
+}
+.required-docs ol li{
+  margin: 5px 0px;
+}
+.student-details {
+  margin: 10px 0px 0px 0px;
+}
+.student-details td{
+  width: 230px;
+
 }
