@@ -83,19 +83,19 @@
 .page-header{
 display:none;
 }
-.logo-show img{
-  padding-left: 210px;
-  position: absolute;
-  top: 155px;
-  width: 85px;
-}
+/*.logo-show img{*/
+  /*padding-left: 210px;*/
+  /*position: absolute;*/
+  /*top: 155px;*/
+  /*width: 85px;*/
+/*}*/
 input.upper { text-transform: uppercase; }
-.logo img{
-  padding-left: 210px;
-  position: absolute;
-  top: 55px;
-  width: 85px;
-}
+/*.logo img{*/
+  /*padding-left: 210px;*/
+  /*position: absolute;*/
+  /*top: 55px;*/
+  /*width: 85px;*/
+/*}*/
 @media print{
   body{
     background-color: #fff;

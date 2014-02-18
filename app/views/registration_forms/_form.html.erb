@@ -1,8 +1,8 @@
-<div class="logo">
+<div class="logo" align="center">
 <%= link_to(image_tag("logo.jpg", :alt => "logo", :title => "Home"), "/") %>
 </div>
 <div id="show-page" align="center">
-<h3>SBOA SCHOOL JUNIOR COLLEGE,CHENNAI-600101</h3>
+<h3>SBOA SCHOOL AND JUNIOR COLLEGE,CHENNAI-600101</h3>
 <h4>Registration form for LKG Admission 2014-2015</h4>
 </div><br/><br/>
 
@@ -15,10 +15,10 @@
   
   <%= f.input :gender ,:required => true, as: :select, label: 'Gender', :collection => [['MALE',true],['FEMALE',false]]%><br/>
   <%= f.simple_fields_for :father_datas do |father_data|%>
-    <%= father_data.input :name,input_html: { id: 'father_name_upper'},:label => "Father's / Guardian's Name"%><br/>
+    <%= father_data.input :name,input_html: { id: 'father_name_upper'},:label => "Father's / Guardian's Name",:required => true%><br/>
     <% end %>
   <%= f.simple_fields_for :mother_datas do |mother_data|%>
-  <%= mother_data.input :name,input_html: { id: 'mother_name_upper'},:label => "Mother's Name"%><br/>
+  <%= mother_data.input :name,input_html: { id: 'mother_name_upper'},:label => "Mother's Name",:required => true%><br/>
   <% end %>
   <%= f.input :nationality ,input_html: { id: 'nation_upper'},:required => true%><br/>
   <%= f.input :religion ,input_html: { id: 'religion_upper'},:required => true%><br/>

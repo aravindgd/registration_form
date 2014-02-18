@@ -18,7 +18,7 @@ class RegistrationForm < ActiveRecord::Base
   mount_uploader :child_with_special_needs_proof, DocumentUploader
   mount_uploader :student_category_proof, DocumentUploader
   
-  validates :name_of_student,:gender, :nationality,:locality, :religion,:caste,:community_category,presence: true
+  validates :name_of_student, :nationality,:locality, :religion,:caste,:community_category,presence: true
   validates :date_of_birth, presence: true
   validates :mobile_number, numericality: {only_integer: true},:length => { :minimum => 10, :maximum => 10 }
   validates :email, :email => {:strict_mode => true}
