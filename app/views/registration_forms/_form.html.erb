@@ -5,7 +5,7 @@
 <h3>SBOA SCHOOL AND JUNIOR COLLEGE,CHENNAI-600101</h3>
 <h4>Registration form for LKG Admission 2014-2015</h4>
 </div><br/><br/>
-
+<div class="col-md-10 col-md-offset-2">
 <h4>Student Details</h4><br/>
 <div class="new-page" align="left">
 <%= simple_form_for @registration_form, :defaults => {:required => false},:html => { :class => 'form-horizontal' } do |f| %>
@@ -55,7 +55,7 @@
   <!-- <div id="sail_proof" style="display: none;"><%#= f.input :sail_proof, as: :file,label:'SAIL Proof' %><br/></div> -->
   
   <div class="sibling-detail">
-    <%# f.input, as: :radio%>
+    <%# f.input, as: :radio%><br/>
     <h4>Slibing(SBOA School & Junior College Only)</h4>
      <p>
       <%= f.input :sibling,:required => true,as: :radio_buttons, collection: [['Yes',true],['No',false]]%><br/>
@@ -78,11 +78,11 @@
   <div id="child_need">
     
     <p><%= f.input :child_special,:required => true,as: :radio_buttons, label:"Child With Special Needs",collection: [['Yes',true],['No',false]]%><br/></p>
-  </div><br/>
-  <div id="child_proof">
-  <!-- <%#= f.input :child_with_special_needs_proof,label:"Child With Special Needs Proof", as: :file %><br/> -->
- </div><br>
-  <div class="comm-detail"><h4>Communication Details</h4></div>
+  </div>
+  <!--div id="child_proof">
+   <%#= f.input :child_with_special_needs_proof,label:"Child With Special Needs Proof", as: :file %><br/> -->
+ <!--/div--><br/>
+  <!--div class="comm-detail"--><h4>Communication Details</h4><!--/div-->
   <%= f.input :locality,:required => true, as: :select, :collection=>[['Anna Nagar(West/Extn)','Anna Nagar(West/Extn)'],['Anna Nagar(East)','Anna Nagar(East)'],['Padi','Padi'],['Koyambedu','Koyambedu'],['Villivakkam','Villivakkam'],['ICF','ICF'],['Kilpauk','Kilpauk'],['MMDA','MMDA'],['Choolaimedu','Choolaimedu'],['Kellys','Kellys'],['Perambur','Perambur'],['Shenoynagar','Shenoynagar'],['Kolathur','Kolathur'],['GKM Colony','GKM Colony'],['Retteri','Retteri'],['Mogappair(East/West)','Mogappair(East/West)'],['Arumbakkam','Arumbakkam'],['Aminjikarai','Aminjikarai'],['Korattur','Korattur'],['Ambattur','Ambattur'],['Agaram','Agaram'],['Metha Nagar','Metha Nagar'],['Ayanavaram','Ayanavaram'],['Ambattur OT','Ambattur OT'],['Redhills','Redhills'],['Athipet','Athipet'],['Periar Nagar','Periar Nagar'],['Choolai','Choolai'],['Vadapalani','Vadapalani'],['Nungambakkam','Nungambakkam'],['Chinmaya Nagar','Chinmaya Nagar'],['Nolambur','Nolambur'],['Kodambakkam','Kodambakkam'],['KK Nagar','KK Nagar'],['Virugambakkam','Virugambakkam'],['Saligramam','Saligramam'],['Moolakadai','Moolakadai'],['Madhavaram','Madhavaram'],['Jawahar Nagar','Jawahar Nagar'],['Purasawalkkam','Purasawalkkam'],['Ashok Nagar','Ashok Nagar'],['Chetpet','Chetpet'],['Ayyapakkam','Ayyapakkam'],['Madhuravoyal','Madhuravoyal'],['Other Places','Other Places']],input_html: { class: "form-control" } %><br/>
   <h5>Residential Address</h5>
   <%= f.input :residental_address,input_html: { class: "form-control", id: 'line1_upper'},label:'Line 1'%><br/>
@@ -124,9 +124,12 @@
   <% end %><br/>
     </div>
   </div>
+  </div>
+  <div class="col-md-3 col-md-offset-4">
   <div class="form-actions">
     <%= f.button :submit, value:"Submit",:class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 new_registration_form_path, :class => 'btn' %>
+  </div>
   </div>
 <% end %>
