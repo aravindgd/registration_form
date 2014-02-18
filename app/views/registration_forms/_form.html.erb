@@ -10,7 +10,7 @@
 <div class="new-page" align="left">
 <%= simple_form_for @registration_form, :defaults => {:required => false},:html => { :class => 'form-horizontal' } do |f| %>
 <div id="student_name">
-  <%= f.input :name_of_student,label: 'Name Of The Student',input_html: { id: 'change_upper'},:required => true %><br/></div>
+  <%= f.input :name_of_student, label: 'Name Of The Student',input_html: { id: 'change_upper'},:required => true %><br/></div>
   <%= f.input :date_of_birth, input_html: { id: 'dob'},:required => true %><br/>
   
   <%= f.input :gender ,:required => true, as: :select, label: 'Gender', :collection => [['MALE',true],['FEMALE',false]]%><br/>

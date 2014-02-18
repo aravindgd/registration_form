@@ -24,7 +24,8 @@ class RegistrationForm < ActiveRecord::Base
   validates :email, :email => {:strict_mode => true}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
-  
-  
+ # validates :date_of_birth, uniqueness: true
+  validates :date_of_birth, uniqueness: { scope: :name_of_student, case_sensitive: false,
+    message: "Already registered with these details" }
   
 end
