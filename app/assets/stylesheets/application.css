@@ -89,6 +89,15 @@ display:none;
   /*top: 155px;*/
   /*width: 85px;*/
 /*}*/
+.student_detail {
+ padding-left: 40px;
+}
+.student_detail h5{
+  font-size: 20px;
+}
+#detail{
+  width: 200px;
+}
 input.upper { text-transform: uppercase; }
 /*.logo img{*/
   /*padding-left: 210px;*/

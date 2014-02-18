@@ -97,8 +97,8 @@ class RegistrationFormPdf < Prawn::Document
           text "Email :"+@registration_form.email,:size => 9
           text " "
           text " "
-          text "Parents / Guardian Occupation",:style => :bold
-          text "a) Father's / Guardian Occupation",:style => :bold
+          text "Parents Details",:style => :bold
+          text "a) Father's / Guardian's Occupation",:style => :bold
           text " "
           if @registration_form.father_data.qualification
           text "Father's Qualification :" + @registration_form.father_data.qualification,:size => 9

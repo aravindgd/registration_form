@@ -10,7 +10,7 @@
 <div class="new-page" align="left">
 <%= simple_form_for @registration_form, :defaults => {:required => false},:html => { :class => 'form-horizontal' } do |f| %>
 <div id="student_name">
-  <%= f.input :name_of_student,input_html: { id: 'change_upper'},:required => true %><br/></div>
+  <%= f.input :name_of_student,label: 'Name Of The Student',input_html: { id: 'change_upper'},:required => true %><br/></div>
   <%= f.input :date_of_birth, input_html: { id: 'dob'},:required => true %><br/>
   
   <%= f.input :gender ,:required => true, as: :select, label: 'Gender', :collection => [['MALE',true],['FEMALE',false]]%><br/>
@@ -23,7 +23,7 @@
   <%= f.input :nationality ,input_html: { id: 'nation_upper'},:required => true%><br/>
   <%= f.input :religion ,input_html: { id: 'religion_upper'},:required => true%><br/>
   <%= f.input :caste ,input_html: { id: 'caste_upper'},:required => true%><br/>
-  <%= f.input :community_category ,:required => true, as: :select, label: 'Community Category', :collection => [['OC','OC'],['BC','BC'],['MBC','MBC'],['SC','SC'],['ST','ST'],['DNC','DNC']]%><br/>
+  <%= f.input :community_category ,:required => true, as: :select, label: 'Community', :collection => [['OC','OC'],['BC','BC'],['MBC','MBC'],['SC','SC'],['ST','ST'],['DNC','DNC']]%><br/>
   <!-- <%#= f.input :community_category_proof,:required => true, as: :file,label: 'Community Category Proof' %><br/><br/> -->
   <div id="student"><p>* Student Category</p></div>
   <div id="student_category">
@@ -35,14 +35,14 @@
   <%= f.input :admission_number, label:'Admission Number' ,:required => true%><br/></div>
   <div id="sbi-grand" style="display: none;">
   <%= f.input :grand_membership_no,label:'Membership No',:required => true %><br>
-  <%= f.input :grandfather_name, label:'GrandFather Name',input_html: { id: 'grandfather_upper'},:required => true %><br>
+  <%= f.input :grandfather_name, :label=>"Grand Father's Name",input_html: { id: 'grandfather_upper'},:required => true %><br>
   <%= f.input :grand_branch,label:'Branch Last Worked / Working',input_html: { id: 'branch_upper'},:required => true %><br>
   <!-- <%#= f.input :grand_service_retirement,as: :file, label:'Service Retirement',:required => true %><br> -->
   
   </div>
   <div id="alumni" style="display: none;">
   <%= f.input :alumni_year_of_passing, label:'Year Of Passing',:required => true %><br>
-  <%= f.input :alumni_category,:required => true, label:'Category',:collection => [ "SBOA JC","SBOA MAT","SBOA MDU","SBOA CBE","SBOA MODEL","SBOA TRY","SBOA CENOFF","SBOA ERK"] %><br>
+  <%= f.input :alumni_category,:required => true, label:'School',:collection => [ "SBOA JC","SBOA MAT","SBOA MDU","SBOA CBE","SBOA MODEL","SBOA TRY","SBOA CENOFF","SBOA ERK"] %><br>
   <!-- <%#= f.input :alumni_marksheet_proof, as: :file,label:'Marksheet Proof',:required => true %><br> -->
 </div>
   <div id="sbi-officers" style="display: none;">
@@ -56,7 +56,7 @@
   
   <div class="sibling-detail">
     <%# f.input, as: :radio%>
-    <h4>Slibing(SBOA School Junior College Only)</h4>
+    <h4>Slibing(SBOA School & Junior College Only)</h4>
      <p>
       <%= f.input :sibling,:required => true,as: :radio_buttons, collection: [['Yes',true],['No',false]]%><br/>
 
@@ -91,9 +91,9 @@
   <%= f.input :pincode%><br/>
   <%= f.input :mobile_number, as: :tel, label:"Mobile Number" ,:required => true,:limit=>'10'%><br/>
   <%= f.input :landline_number , as: :tel,label:"Landline Number" %><br/>
-  <%= f.input :email , as: :email ,:required => true %><br/>
-  <div class="parent-detail"><h4>Parents / Guardian Occupation</h4></div>
-  <div class="father-detail"><h4> a) Father's / Guardian Occupation</h4></div>
+  <%= f.input :email , as: :email%><br/>
+  <div class="parent-detail"><h4>Parents Details</h4></div>
+  <div class="father-detail"><h4> a) Father's / Guardian's Occupation</h4></div>
   <%= f.simple_fields_for :father_datas do |father_data|%>
     <%= father_data.input :qualification, as: :select, :collection => [['Graduate','Graduate'],['Post Graduate','Post Graduate'],['Professional','Professional'],['Diploma Holders / Others','Diploma Holders / Others']]%><br/>
     <!-- <%#= father_data.input :qualification_proof, as: :file, label:"Qualification Proof" %><br/> -->
