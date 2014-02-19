@@ -141,6 +141,18 @@ end
     end
   end
 
+  def search
+
+    @results = []
+    @results = RegistrationForm.search(params[:search])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @conferences }
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_registration_form

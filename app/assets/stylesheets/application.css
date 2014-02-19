@@ -133,3 +133,20 @@ input.upper { text-transform: uppercase; }
   border: 1px solid #666 ;
   padding: 5px;
 }
+
+table.search-result tbody tr td{
+  min-width: 180px;
+  text-align: center;
+  padding: 3px;
+}
+
+
+table.search-result thead {
+  border-bottom: 1px solid #ccc;
+}
+
+table.search-result thead th {
+   min-width: 180px;
+  padding-bottom: 2px;
+  text-align: center;
+}

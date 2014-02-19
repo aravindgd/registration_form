@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="col-sm-8 col-sm-offset-2">
+		<center><h4>Enter the Mobile Number to track your application form</h4></center>
+		<%= render 'search_form' %>
+	</div>
+	<div class="col-sm-8 col-sm-offset-2" style="margin-top: 20px;">
+		
+		<div class="col-sm-12">
+			<table class="search-result">
+				<thead>
+					<th>Name Of Student</th>
+					<th>Mobile Number</th>
+					<th>Father's Name</th>
+					<th>Mother's Name</th>
+					<th></th>
+				</thead>
+				<tbody>
+					<% @results.each do |r| %>
+					<tr>
+						<td><%= r.name_of_student %></td>
+						<td><%= r.mobile_number %></td>
+						<td><%= r.father_data.name %></td>
+						<td><%= r.mother_data.name %></td>
+						<td><%= link_to "Show", registration_form_path(r) %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+</div>

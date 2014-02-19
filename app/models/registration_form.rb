@@ -28,4 +28,13 @@ class RegistrationForm < ActiveRecord::Base
   validates :date_of_birth, uniqueness: { scope: :name_of_student, case_sensitive: false,
     message: "Already registered with these details" }
   
+  def self.search(search)
+    if search.empty?
+      []
+    elsif search
+      where('mobile_number LIKE ?', "%#{search}%")
+    else
+      []
+    end
+  end
 end
