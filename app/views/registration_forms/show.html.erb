@@ -434,7 +434,8 @@
     &nbsp;<br/>&nbsp;<br/>
     <div class="hide-button">
       <%= link_to t('.back', :default => t("helpers.links.back")),
-      new_registration_form_path, :class => 'btn'  %>
+      new_registration_form_path, :class => 'btn btn-md btn-default'  %>
+      <%= link_to "Edit", edit_registration_form_path(@registration_form), class: "btn btn-md btn-success" %>
   <%#= link_to t('.edit', :default => t("helpers.links.edit")),
   edit_registration_form_path(@registration_form), :class => 'btn' %>
   <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),

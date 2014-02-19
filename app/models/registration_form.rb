@@ -5,7 +5,7 @@ class RegistrationForm < ActiveRecord::Base
   has_one :mother_data
   has_one :student_cat_reg_form, dependent: :destroy
   has_one :student_category, through: :student_cat_reg_form
-  attr_accessor :staff_child, :admission_number,:grand_membership_no, :grandfather_name,:grand_branch,:grand_service_retirement,:alumni_year_of_passing,:alumni_marksheet_proof,:sbi_officer_membership_no,:sbi_officer_branch,:alumni_category,:sbi_id_proof,:rbi_proof
+  attr_accessor :staff_child, :admission_number,:grand_membership_no, :grandfather_name,:grand_branch,:grand_service_retirement,:alumni_year_of_passing,:alumni_marksheet_proof,:sbi_officer_membership_no,:sbi_officer_branch,:alumni_category,:sbi_id_proof,:rbi_proof#, :name_of_student, :date_of_birth, :gender, :nationality, :religion, :caste, :community_category, :community_category_proof, :residental_address_proof, :child_with_special_needs_proof, :child_with_special_needs, :locality, :residental_address, :residental_address2,:pincode,:mobile_number,:landline_number,:email,:tie_up,:rbi_proof,:sail_proof,:reference,:remarks,:sibling,:child_special
   
   accepts_nested_attributes_for :sibling_existing_parent
   accepts_nested_attributes_for :father_data
@@ -29,7 +29,9 @@ class RegistrationForm < ActiveRecord::Base
     message: "Already registered with these details" }
   
   def self.search(search)
-    if search.empty?
+    if search.nil? 
+      []
+    elsif search.empty?
       []
     elsif search
       where('mobile_number LIKE ?', "%#{search}%")

@@ -1,5 +1,5 @@
 SboaRegisterationProject::Application.routes.draw do
-  resources :registration_forms
+  resources :registration_forms, except: :index
  
   match '/search', to: "registration_forms#search", via: "GET"
 
