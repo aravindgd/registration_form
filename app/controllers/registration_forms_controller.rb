@@ -18,8 +18,9 @@ class RegistrationFormsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = RegistrationFormPdf.new(@registration_form)   
-        send_data pdf.render, :filename => "registration_forms.pdf", :type => 'application/pdf' , disposition: "inline" 
+        render :pdf => "registration_forms.pdf"
+        # pdf = RegistrationFormPdf.new(@registration_form)   
+        # send_data pdf.render, :filename => "registration_forms.pdf", :type => 'application/pdf' , disposition: "inline" 
       end
     end
   end

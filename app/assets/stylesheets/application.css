@@ -59,7 +59,11 @@
   display: block;
   font-style: italic;
 }
-
+.form-control {
+display: block;
+width: 75%;
+height: 28px;
+}
 .simple_form #student_category{
   font-style: normal;
 	    padding-left: 180px;
@@ -99,6 +103,9 @@ display:none;
 }
 #detail{
   width: 200px;
+}
+#student{
+font-weight: bold;
 }
 input.upper { text-transform: uppercase; }
 /*.logo img{*/

@@ -23,9 +23,9 @@ class RegistrationFormPdf < Prawn::Document
           ["Community category", "#{@registration_form.community_category}" ],
           ["Student category", "#{@registration_form.student_category.name}" ]]
           student_cat_data = print_student_cat_data
-
-          data.concat(student_cat_data)
-
+          if student_cat_data
+               data.concat(student_cat_data)
+          end
           data.concat(print_sibling_data)
           
           table(data, :width => 260, :cell_style => { :size => 9, :inline_format => true, :border_color => "FFFFFF"}) do

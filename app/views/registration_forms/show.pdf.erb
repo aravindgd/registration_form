@@ -14,7 +14,7 @@
 
 </div>
 <div class="logo-show" align="center">
-  <%= link_to(image_tag("logo.jpg", :alt => "logo", :title => "Home"), "/") %>
+  <%= link_to(wicked_pdf_image_tag("logo.jpg", :alt => "logo", :title => "Home"), "/") %>
 </div>
 <div id="show-page" align="center">
   <h3>SBOA SCHOOL AND JUNIOR COLLEGE,CHENNAI-600101</h3>
@@ -424,19 +424,5 @@
       <p>&nbsp;<br/>&nbsp;<br/>Submit Date :<%=Date.today%></p>
     </div>
     &nbsp;<br/>&nbsp;<br/>
-    <div class="hide-button">
-      <%= link_to t('.back', :default => t("helpers.links.back")),
-      new_registration_form_path, :class => 'btn'  %>
-  <%#= link_to t('.edit', :default => t("helpers.links.edit")),
-  edit_registration_form_path(@registration_form), :class => 'btn' %>
-  <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              registration_form_path(@registration_form),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-              <input type="button" value="Print PDF" onClick="window.print();">
-              
-              <!-- <button><%#=link_to_function("Download PDF", "window.print();")%></button> -->
-              <%= link_to "Download PDF", registration_form_path(@registration_form, :format => 'pdf'),:class => 'btn' %>
-      </div>            
+    
       </div>

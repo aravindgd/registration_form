@@ -10,7 +10,7 @@
 <div class="new-page" align="left">
 <%= simple_form_for @registration_form, :defaults => {:required => false},:html => { :class => 'form-horizontal' } do |f| %>
 <div id="student_name">
-  <%= f.input :name_of_student,label: 'Name Of The Student',input_html: { class: "form-control", id: 'change_upper'},:required => true %><br/></div>
+  <%= f.input :name_of_student,label: 'Name of the Student',input_html: { class: "form-control", id: 'change_upper'},:required => true %><br/></div>
   <%= f.input :date_of_birth, input_html: { class: "form-control",id: 'dob'},:required => true %><br/>
   
   <%= f.input :gender ,:required => true, as: :select, label: 'Gender', :collection => [['MALE',true],['FEMALE',false]], input_html: { class: "form-control" }%><br/>
@@ -27,7 +27,7 @@
   <!-- <%#= f.input :community_category_proof,:required => true, as: :file,label: 'Community Category Proof' %><br/><br/> -->
   <div id="student"><p>* Student Category</p></div>
   <div id="student_category">
-  <%= f.collection_select(:student_category, StudentCategory.all, :id, :name) %><br/></div><br/>
+  <%= f.collection_select(:student_category, StudentCategory.all, :id, :name,{:prompt=>true}, {:class=>'form-control'}) %><br/></div><br/>
   <div id="staff_child" style="display: none;">
     <%= f.input :staff_child,:required => true, :collection => [ "SBOA JC","SBOA MAT","SBOA MDU","SBOA CBE","SBOA MODEL","SBOA TRY","SBOA CENOFF","SBOA ERK"], input_html: { class: "form-control" } %><br>
   </div>
@@ -111,7 +111,7 @@
     <%= mother_data.input :qualification, as: :select, :collection => [['Graduate','Graduate'],['Post Graduate','Post Graduate'],['Professional','Professional'],['Diploma Holders / Others','Diploma Holders / Others']], input_html: { class: "form-control" } %><br/>
     
     <!-- <%#= mother_data.input :qualification_proof, as: :file, label:"Qualification Proof" %><br/> -->
-    <%= mother_data.input :professional,label:"Profession",as: :radio_buttons,:collection=>[['Home Maker',true],['Others',false]]%><br/><br/>
+    <%= mother_data.input :professional,:required => true,label:"Profession",as: :radio_buttons,:collection=>[['Home Maker',true],['Others',false]]%><br/><br/>
     <div id="mother_qual">
     <%= mother_data.input :annual_income,  label:"Annual Income",as: :select, :collection => [['Below One Lakh','Below One Lakh'],['1 to 2 Lakhs','1 to 2 Lakhs'],['2 to 3 Lakhs','2 to 3 Lakhs'],['3 to 4 Lakhs','3 to 4 Lakhs'],['4 to 5 Lakhs','4 to 5 Lakhs'],['Above 5 Lakhs','Above 5 Lakhs']], input_html: { class: "form-control" }%><br/>
     <!-- <%#= mother_data.input :income_proof, as: :file, label:"Income Proof" %><br/> -->
