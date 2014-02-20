@@ -5,7 +5,11 @@ class RegistrationForm < ActiveRecord::Base
   has_one :mother_data
   has_one :student_cat_reg_form, dependent: :destroy
   has_one :student_category, through: :student_cat_reg_form
+<<<<<<< HEAD
+  attr_accessor :staff_child, :admission_number,:grand_membership_no, :grandfather_name,:grand_branch,:grand_service_retirement,:alumni_year_of_passing,:alumni_marksheet_proof,:sbi_officer_membership_no,:sbi_officer_branch,:alumni_category,:sbi_id_proof,:rbi_proof,:professional
+=======
   attr_accessor :staff_child, :admission_number,:grand_membership_no, :grandfather_name,:grand_branch,:grand_service_retirement,:alumni_year_of_passing,:alumni_marksheet_proof,:sbi_officer_membership_no,:sbi_officer_branch,:alumni_category,:sbi_id_proof,:rbi_proof#, :name_of_student, :date_of_birth, :gender, :nationality, :religion, :caste, :community_category, :community_category_proof, :residental_address_proof, :child_with_special_needs_proof, :child_with_special_needs, :locality, :residental_address, :residental_address2,:pincode,:mobile_number,:landline_number,:email,:tie_up,:rbi_proof,:sail_proof,:reference,:remarks,:sibling,:child_special
+>>>>>>> search
   
   accepts_nested_attributes_for :sibling_existing_parent
   accepts_nested_attributes_for :father_data
@@ -21,12 +25,13 @@ class RegistrationForm < ActiveRecord::Base
   validates :name_of_student, :nationality,:locality, :religion,:caste,:community_category,presence: true
   validates :date_of_birth, presence: true
   validates :mobile_number, numericality: {only_integer: true},:length => { :minimum => 10, :maximum => 10 }
-  validates :email, :email => {:strict_mode => true}
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+  # validates :email, :email => {:strict_mode => true}
+  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  # validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
  # validates :date_of_birth, uniqueness: true
   validates :date_of_birth, uniqueness: { scope: :name_of_student, case_sensitive: false,
     message: "Already registered with these details" }
+   validates :professional, presence: true
   
   def self.search(search)
     if search.nil? 
