@@ -33,10 +33,8 @@ class RegistrationForm < ActiveRecord::Base
       []
     elsif search.empty?
       []
-    elsif search
-      where('mobile_number LIKE ?', "%#{search}%")
     else
-      []
+      where('mobile_number LIKE ?', "%#{search}%")
     end
   end
 end

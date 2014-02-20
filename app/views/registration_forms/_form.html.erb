@@ -27,7 +27,7 @@
   <!-- <%#= f.input :community_category_proof,:required => true, as: :file,label: 'Community Category Proof' %><br/><br/> -->
   <div id="student"><p>* Student Category</p></div>
   <div id="student_category">
-  <%= f.collection_select(:student_category, StudentCategory.all, :id, :name,{:prompt=>true}, {:class=>'form-control'}) %><br/></div><br/>
+  <%= f.collection_select(:student_category, StudentCategory.all, :id, :name,{:prompt=>true}, :class=>'form-control') %><br/></div><br/>
   <div id="staff_child" style="display: none;">
     <%= f.input :staff_child,:required => true, :collection => [ "SBOA JC","SBOA MAT","SBOA MDU","SBOA CBE","SBOA MODEL","SBOA TRY","SBOA CENOFF","SBOA ERK"], input_html: { class: "form-control" } %><br>
   </div>

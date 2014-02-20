@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-datepicker
-//= require turbolinks
 //= require dataTables/jquery.dataTables
 //= require dataTables/extras/TableTools
 //= require dataTables/extras/ZeroClipboard.js
