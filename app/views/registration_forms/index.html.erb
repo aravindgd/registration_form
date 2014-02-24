@@ -98,18 +98,18 @@
       <td><%= registration_form.caste %></td>
       <td><%= registration_form.community_category %></td>
       <td><%= registration_form.student_category.name if registration_form.student_category%></td>
-      <% if registration_form.student_cat_reg_form%>
-      <% if registration_form.student_cat_reg_form.sbi_grand_parent.membership_number%>
-      <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.membership_number  %></td>
+      <% if registration_form.student_cat_reg_form.student_category_id  == 0 %>
+      <% if registration_form.student_cat_reg_form.sbi_grand_parent %>
+      <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.membership_number %>
       <% else%>
       <td> </td>
       <% end%>
-      <% if registration_form.student_cat_reg_form.sbi_grand_parent.grandfather_name%>
+      <% if registration_form.student_cat_reg_form.sbi_grand_parent%>
       <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.grandfather_name %></td>
       <% else%>
       <td> </td>
       <% end%>
-      <% if registration_form.student_cat_reg_form.sbi_grand_parent.branch%>
+      <% if registration_form.student_cat_reg_form.sbi_grand_parent %>
       <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.branch %></td>
       <% else%>
       <td> </td>
