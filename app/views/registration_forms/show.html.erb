@@ -90,7 +90,7 @@
     <tr>
       <td><strong><%= model_class.human_attribute_name(:student_category) %>:</strong></td>
       <td>
-        <%= @registration_form.student_category.name %>
+        <%= @registration_form.student_category.name if @registration_form.student_category %>
         <% case @registration_form.student_category.id %>
         <% when 2 %>
         <tr>
