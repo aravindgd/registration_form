@@ -201,7 +201,7 @@
         <% if registration_form.mother_data %>
           <td><%= registration_form.mother_data.name if registration_form.mother_data%></td>
           <td><%= registration_form.mother_data.qualification if registration_form.mother_data%></td>
-          <% if registration_form.mother_data.professional %>
+          <% if not (registration_form.mother_data.annual_income or registration_form.mother_data.occupation_designation || registration_form.mother_data.organisation_name) %>
           <td>Home Maker</td>
           <% else %>
           <td>Others</td>
