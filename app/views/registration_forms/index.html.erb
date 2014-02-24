@@ -98,7 +98,7 @@
       <td><%= registration_form.caste %></td>
       <td><%= registration_form.community_category %></td>
       <td><%= registration_form.student_category.name if registration_form.student_category%></td>
-      <% if registration_form.student_cat_reg_form.student_category_id  == 0 %>
+      <% if registration_form.student_cat_reg_form.student_category_id  != 0 %>
       <% if registration_form.student_cat_reg_form.sbi_grand_parent %>
       <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.membership_number %>
       <% else%>
