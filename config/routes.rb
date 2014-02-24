@@ -3,7 +3,7 @@ SboaRegisterationProject::Application.routes.draw do
  
   match '/search', to: "registration_forms#search", via: "GET"
 
-  root :to => "registration_forms#new"
+  root :to => "registration_forms#index"
 
   get "pdf_to" => "registration_forms#pdf_to"
   

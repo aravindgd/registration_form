@@ -1,14 +1,49 @@
 ready = function(){
-$('.table-striped').dataTable({
+$('#all_forms').dataTable({
  "sDom": 'T<"clear">lfrtip',
         "oTableTools": {
-            "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": "/swf/copy_csv_xls_pdf.swf",
+            "sRowSelect": "multi",
+             "aButtons": [
+                {
+                    "sExtends": "csv",
+                    "bSelectedOnly": true
+                },
+                {
+                    "sExtends": "xls",
+                    "bSelectedOnly": true
+                },
+                {
+                    "sExtends": "pdf",
+                    "bSelectedOnly": true
+                },
+                {
+                    "sExtends": "copy",
+                    "bSelectedOnly": true
+                },
+                "select_all", "select_none"
+            ]
+            
             }
+
+
+      
+// "aoColumnDefs"  : [
+// {
+    // aTargets: [50],    // Column number which needs to be modified
+    // fnRender: function (o, v) {   // o, v contains the object and value for the column
+        // return '<input type="checkbox" class="table-striped" name="someCheckbox" />';
+    // },
+    // sClass: 'tableCell'    // Optional - class to be applied to this table cell
+// }]
+            
 });
+
 }
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
 
 
 ready = function(){
