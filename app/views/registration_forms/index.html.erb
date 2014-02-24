@@ -2,14 +2,16 @@
 <div id="index-page" align="center">
   <%= link_to(image_tag("logo.jpg", :alt => "logo", :title => "Home"), "/") %>
   <h3>SBOA SCHOOL JUNIOR COLLEGE,CHENNAI-600101</h3>
-<h4>Registration form for LKG Admission 2014-2015</h4>
+  <h4>Registration form for LKG Admission 2014-2015</h4>
 </div>
 <!-- <div class="page-header"> -->
-  <!-- <h1><%#=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1> -->
+<!-- <h1><%#=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1> -->
 <!-- </div> -->
-<table class="table table-striped">
+<table class="table" id = "all_forms">
   <thead>
     <tr>
+
+      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:application_number) %></th>
       <th><%= model_class.human_attribute_name(:name_of_student) %></th>
       <th><%= model_class.human_attribute_name(:date_of_birth) %></th>
@@ -74,127 +76,129 @@
       <!-- <th><%#= model_class.human_attribute_name(:community_category_proof) %></th> -->
       <!-- <th><%#= model_class.human_attribute_name(:residental_address_proof) %></th> -->
       <!-- <th><%#= model_class.human_attribute_name(:created_at) %></th> -->
+      <th>Approved</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <%@registration_forms.each do |registration_form| %>
-      <tr>
-        <!-- <td><%#= link_to registration_form.id, registration_form_path(registration_form) %></td> -->
-        <td><%= registration_form.application_number %></td>
-        <td><%= registration_form.name_of_student %></td>
-        <td><%= registration_form.date_of_birth %></td>
-        <% if registration_form.gender %>
-        <td>Male</td>
-        <% else %>
-        <td>Female</td>
-        <% end %>
-        <td><%= registration_form.nationality %></td>
-        <td><%= registration_form.religion %></td>
-        <td><%= registration_form.caste %></td>
-        <td><%= registration_form.community_category %></td>
-        <td><%= registration_form.student_category.name if registration_form.student_category%></td>
-        <% if registration_form.student_cat_reg_form.sbi_grand_parent%>
-        <% if registration_form.student_cat_reg_form.sbi_grand_parent.membership_number%>
-        <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.membership_number  %></td>
-        <% else%>
-        <td> </td>
-        <% end%>
-        <% if registration_form.student_cat_reg_form.sbi_grand_parent.grandfather_name%>
-        <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.grandfather_name %></td>
-        <% else%>
-        <td> </td>
-        <% end%>
-        <% if registration_form.student_cat_reg_form.sbi_grand_parent.branch%>
-        <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.branch %></td>
-        <% else%>
-        <td> </td>
-        <% end%>
-        <!-- <%# if registration_form.student_cat_reg_form.sbi_grand_parent.service_retirement%> -->
-        <!-- <td><%#= registration_form.student_cat_reg_form.sbi_grand_parent.service_retirement %></td> -->
+    <tr>
+
+      <td><%= link_to registration_form.id, registration_form_path(registration_form) %></td>
+      <td><%= registration_form.application_number %></td>
+      <td><%= registration_form.name_of_student %></td>
+      <td><%= registration_form.date_of_birth %></td>
+      <% if registration_form.gender %>
+      <td>Male</td>
+      <% else %>
+      <td>Female</td>
+      <% end %>
+      <td><%= registration_form.nationality %></td>
+      <td><%= registration_form.religion %></td>
+      <td><%= registration_form.caste %></td>
+      <td><%= registration_form.community_category %></td>
+      <td><%= registration_form.student_category.name if registration_form.student_category%></td>
+      <% if registration_form.student_cat_reg_form%>
+      <% if registration_form.student_cat_reg_form.sbi_grand_parent.membership_number%>
+      <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.membership_number  %></td>
+      <% else%>
+      <td> </td>
+      <% end%>
+      <% if registration_form.student_cat_reg_form.sbi_grand_parent.grandfather_name%>
+      <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.grandfather_name %></td>
+      <% else%>
+      <td> </td>
+      <% end%>
+      <% if registration_form.student_cat_reg_form.sbi_grand_parent.branch%>
+      <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.branch %></td>
+      <% else%>
+      <td> </td>
+      <% end%>
+      <!-- <%# if registration_form.student_cat_reg_form.sbi_grand_parent.service_retirement%> -->
+      <!-- <td><%#= registration_form.student_cat_reg_form.sbi_grand_parent.service_retirement %></td> -->
       <!-- <%# else%> -->
-        <!-- <td> </td> -->
-        <!-- <%# end%> -->
-        <% else%>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <!-- <td> </td> -->
-        <% end%>
-        <% if registration_form.student_cat_reg_form.sbi_officer%>
-        <% if registration_form.student_cat_reg_form.sbi_officer.membership_number%>
-        <td><%= registration_form.student_cat_reg_form.sbi_officer.membership_number %></td>
-        <% else%>
-        <td> </td>
-        <% end%>
-        <% if registration_form.student_cat_reg_form.sbi_officer.branch%>
-        <td><%= registration_form.student_cat_reg_form.sbi_officer.branch %></td>
-        <% else%>
-        <td> </td>
-        <% end%>
-        <!-- <%# if registration_form.student_cat_reg_form.sbi_officer.sbi_id_proof%> -->
-        <!-- <td><%#= registration_form.student_cat_reg_form.sbi_officer.sbi_id_proof %></td> -->
-       <!-- <%# else%> -->
-        <!-- <td> </td> -->
-        <!-- <%# end%> -->
-        <% else%>
-        <td> </td>
-        <td> </td>
-        <!-- <td> </td> -->
-        <% end%>
-        <% if registration_form.student_cat_reg_form.pre_school%>
-        <% if registration_form.student_cat_reg_form.pre_school.admission_number%>
-        <td><%= registration_form.student_cat_reg_form.pre_school.admission_number %></td>
-        <% else%>
-        <td> </td>
-        <% end%>
-        <% else%>
-        <td> </td>
-        
-        <% end%>
-        <% if registration_form.student_cat_reg_form.alumni%>
-        <% if registration_form.student_cat_reg_form.alumni.year_of_passing%>
-        <td><%= registration_form.student_cat_reg_form.alumni.year_of_passing %></td>
-        <% else%>
-        <td> </td>
-        <% end%>
-        <% if registration_form.student_cat_reg_form.alumni.alumni_category%>
-        <td><%= registration_form.student_cat_reg_form.alumni.alumni_category %></td>
-        <% else%>
-        <td> </td>
-        <% end%>
-        <!-- <%# if registration_form.student_cat_reg_form.alumni.mark_sheet_proof%> -->
-        <!-- <td><%#= registration_form.student_cat_reg_form.alumni.mark_sheet_proof %></td> -->
-        <!-- <%# else%> -->
-        <!-- <td> </td> -->
-        <!-- <%# end%> -->
-        <% else%>
-        <td> </td>
-        <td> </td>
-        <!-- <td> </td> -->
-        <% end%>
-        <% if registration_form.student_cat_reg_form.staff_child%>
-        <% if registration_form.student_cat_reg_form.staff_child.branch%>
-        <td><%= registration_form.student_cat_reg_form.staff_child.branch %></td>
-        <% else%>
-        <td> </td>
-        <% end%>
-        <% else%>
-        <td> </td>
-        <% end%>
-        <!-- <%# if registration_form.student_cat_reg_form.tie_up%> -->
-        <!-- <%# if registration_form.student_cat_reg_form.tie_up.rbi_proof%> -->
-        <!-- <td><%#= @registration_form.student_cat_reg_form.tie_up.rbi_proof %></td> -->
-        <!-- <%# else%> -->
-        <!-- <td> </td> -->
-        <!-- <%# end%> -->
-        <!-- <%# else%> -->
-        <!-- <td> </td> -->
-        <!-- <%# end%> -->
-        <%if registration_form.sibling %>
-        <td>Yes</td>
-        <td><%= registration_form.sibling_existing_parent.name %></td>
-        <td><%= registration_form.sibling_existing_parent.class_of_sibling %>
+      <!-- <td> </td> -->
+      <!-- <%# end%> -->
+      <% else%>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <!-- <td> </td> -->
+      <% end%>
+      <% if registration_form.student_cat_reg_form.sbi_officer%>
+      <% if registration_form.student_cat_reg_form.sbi_officer.membership_number%>
+      <td><%= registration_form.student_cat_reg_form.sbi_officer.membership_number %></td>
+      <% else%>
+      <td> </td>
+      <% end%>
+      <% if registration_form.student_cat_reg_form.sbi_officer.branch%>
+      <td><%= registration_form.student_cat_reg_form.sbi_officer.branch %></td>
+      <% else%>
+      <td> </td>
+      <% end%>
+      <!-- <%# if registration_form.student_cat_reg_form.sbi_officer.sbi_id_proof%> -->
+      <!-- <td><%#= registration_form.student_cat_reg_form.sbi_officer.sbi_id_proof %></td> -->
+      <!-- <%# else%> -->
+      <!-- <td> </td> -->
+      <!-- <%# end%> -->
+      <% else%>
+      <td> </td>
+      <td> </td>
+      <!-- <td> </td> -->
+      <% end%>
+      <% if registration_form.student_cat_reg_form.pre_school%>
+      <% if registration_form.student_cat_reg_form.pre_school.admission_number%>
+      <td><%= registration_form.student_cat_reg_form.pre_school.admission_number %></td>
+      <% else%>
+      <td> </td>
+      <% end%>
+      <% else%>
+      <td> </td>
+
+      <% end%>
+      <% if registration_form.student_cat_reg_form.alumni%>
+      <% if registration_form.student_cat_reg_form.alumni.year_of_passing%>
+      <td><%= registration_form.student_cat_reg_form.alumni.year_of_passing %></td>
+      <% else%>
+      <td> </td>
+      <% end%>
+      <% if registration_form.student_cat_reg_form.alumni.alumni_category%>
+      <td><%= registration_form.student_cat_reg_form.alumni.alumni_category %></td>
+      <% else%>
+      <td> </td>
+      <% end%>
+      <!-- <%# if registration_form.student_cat_reg_form.alumni.mark_sheet_proof%> -->
+      <!-- <td><%#= registration_form.student_cat_reg_form.alumni.mark_sheet_proof %></td> -->
+      <!-- <%# else%> -->
+      <!-- <td> </td> -->
+      <!-- <%# end%> -->
+      <% else%>
+      <td> </td>
+      <td> </td>
+      <!-- <td> </td> -->
+      <% end%>
+      <% if registration_form.student_cat_reg_form.staff_child%>
+      <% if registration_form.student_cat_reg_form.staff_child.branch%>
+      <td><%= registration_form.student_cat_reg_form.staff_child.branch %></td>
+      <% else%>
+      <td> </td>
+      <% end%>
+      <% else%>
+      <td> </td>
+      <% end%>
+      <!-- <%# if registration_form.student_cat_reg_form.tie_up%> -->
+      <!-- <%# if registration_form.student_cat_reg_form.tie_up.rbi_proof%> -->
+      <!-- <td><%#= @registration_form.student_cat_reg_form.tie_up.rbi_proof %></td> -->
+      <!-- <%# else%> -->
+      <!-- <td> </td> -->
+      <!-- <%# end%> -->
+      <!-- <%# else%> -->
+      <!-- <td> </td> -->
+      <!-- <%# end%> -->
+      <%if registration_form.sibling %>
+      <td>Yes</td>
+      <td><%= registration_form.sibling_existing_parent.name %></td>
+      <td><%= registration_form.sibling_existing_parent.class_of_sibling %>
         <td><%= registration_form.sibling_existing_parent.sec %></td>
         <td><%= registration_form.sibling_existing_parent.admission_num %></td>
         <%else %>
@@ -213,8 +217,8 @@
         <!-- <td><%#= registration_form.sibling_existing_parent_id %></td> -->
         <!-- <td><%#= registration_form.child_with_special_needs %></td> -->
         <td><%= registration_form.locality %></td>
-         <td><%= registration_form.residental_address %></td>
-          <td><%= registration_form.residental_address2 %></td>
+        <td><%= registration_form.residental_address %></td>
+        <td><%= registration_form.residental_address2 %></td>
         <td><%= registration_form.pincode %></td>
         <td><%= registration_form.mobile_number %></td>
         <td><%= registration_form.landline_number %></td>
@@ -228,8 +232,8 @@
         <td><%= registration_form.father_data.occupation_designation if registration_form.father_data%></td>
         <td><%= registration_form.father_data.organisation_name if registration_form.father_data%></td>
         <td><%= registration_form.father_data.organisation_address if registration_form.father_data%></td>
-         <td><%= registration_form.father_data.organisation_address2 if registration_form.father_data%></td>
-         <td><%= registration_form.father_data.organisation_type if registration_form.father_data%></td>
+        <td><%= registration_form.father_data.organisation_address2 if registration_form.father_data%></td>
+        <td><%= registration_form.father_data.organisation_type if registration_form.father_data%></td>
         
         <!-- <td><%#= registration_form.mother_data_id %></td> -->
         <td><%= registration_form.mother_data.name if registration_form.mother_data%></td>
@@ -237,8 +241,8 @@
         <!-- <td><%#= registration_form.mother_data.qualification_proof if registration_form.mother_data%></td> -->
         <% if registration_form.mother_data.professional %>
         <td>Home Maker</td>
-         <% else %>
-         <td>Others</td>
+        <% else %>
+        <td>Others</td>
         <% end %>
         <td><%= registration_form.mother_data.annual_income if registration_form.mother_data%></td>
         <!-- <td><%#= registration_form.mother_data.income_proof if registration_form.mother_data%></td> -->
@@ -251,22 +255,26 @@
         <!-- <td><%= registration_form.community_category_proof %></td> -->
         <!-- <td><%= registration_form.residental_address_proof %></td> -->
         <!-- <td><%=l registration_form.created_at %></td> -->
-        <td>
-          
+        
+        
+
           <%#= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_registration_form_path(registration_form), :class => 'btn btn-mini' %>
+          edit_registration_form_path(registration_form), :class => 'btn btn-mini' %>
+          <td><%= check_box_tag 'registration_form', class:'pyd_button'  %> </td>
+
+        <td>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      registration_form_path(registration_form),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+          registration_form_path(registration_form),
+          :method => :delete,
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+          :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_registration_form_path,
-            :class => 'btn btn-primary' %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+  new_registration_form_path,
+  :class => 'btn btn-primary' %>
 
