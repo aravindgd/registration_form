@@ -21,15 +21,6 @@
       <th><%= model_class.human_attribute_name(:caste) %></th>
       <th><%= model_class.human_attribute_name(:community_category) %></th>
       <th><%= model_class.human_attribute_name(:student_category) %></th>
-      <th>SBIGP Membership No</th>
-      <th>SBIGP Grandfather Name</th>
-      <th>SBIGP Branch</th>
-      <th>SBIC Membership No</th>
-      <th>SBIC Branch</th>
-      <th>AL Admission Number</th>
-      <th>AL Year Of Passing) %></th>
-      <th>School</th>
-      <th>AL Branch</th>
       <th><%= model_class.human_attribute_name(:sibling) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th>Class</th>
@@ -83,88 +74,6 @@
       <td><%= registration_form.caste %></td>
       <td><%= registration_form.community_category %></td>
       <td><%= registration_form.student_category.name if registration_form.student_category%></td>
-      <% if registration_form.student_cat_reg_form %>
-        <% if registration_form.student_cat_reg_form.student_category_id  != 0 %>
-          <% if registration_form.student_cat_reg_form.sbi_grand_parent %>
-            <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.membership_number %>
-          <% else%>
-            <td> </td>
-          <% end%>
-          <% if registration_form.student_cat_reg_form.sbi_grand_parent%>
-            <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.grandfather_name %></td>
-          <% else%>
-            <td> </td>
-          <% end%>
-          <% if registration_form.student_cat_reg_form.sbi_grand_parent %>
-            <td><%= registration_form.student_cat_reg_form.sbi_grand_parent.branch %></td>
-          <% else%>
-            <td> </td>
-          <% end%>
-        <% else%>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-        <% end%>
-        <% if registration_form.student_cat_reg_form.sbi_officer%>
-          <% if registration_form.student_cat_reg_form.sbi_officer.membership_number%>
-            <td><%= registration_form.student_cat_reg_form.sbi_officer.membership_number %></td>
-          <% else%>
-            <td> </td>
-          <% end%>
-          <% if registration_form.student_cat_reg_form.sbi_officer.branch%>
-            <td><%= registration_form.student_cat_reg_form.sbi_officer.branch %></td>
-          <% else%>
-            <td> </td>
-          <% end%>
-        <% else%>
-          <td> </td>
-          <td> </td>
-        <% end%>
-        <% if registration_form.student_cat_reg_form.pre_school%>
-          <% if registration_form.student_cat_reg_form.pre_school.admission_number%>
-            <td><%= registration_form.student_cat_reg_form.pre_school.admission_number %></td>
-          <% else%>
-            <td> </td>
-          <% end%>
-        <% else%>
-          <td> </td>
-        <% end%>
-        <% if registration_form.student_cat_reg_form.alumni%>
-            <% if registration_form.student_cat_reg_form.alumni.year_of_passing%>
-              <td><%= registration_form.student_cat_reg_form.alumni.year_of_passing %></td>
-            <% else%>
-              <td> </td>
-            <% end%>
-            <% if registration_form.student_cat_reg_form.alumni.alumni_category%>
-              <td><%= registration_form.student_cat_reg_form.alumni.alumni_category %></td>
-            <% else%>
-              <td> </td>
-            <% end%>
-          <% else%>
-            <td> </td>
-            <td> </td>
-        <% end%>
-        <% if registration_form.student_cat_reg_form.staff_child%>
-          <% if registration_form.student_cat_reg_form.staff_child.branch%>
-            <td><%= registration_form.student_cat_reg_form.staff_child.branch %></td>
-          <% else%>
-            <td> </td>
-          <% end%>
-        <% else%>
-          <td> </td>
-        <% end%>
-      <% else %>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-      <% end %>
       <%if registration_form.sibling %>
       <td>Yes</td>
       <td><%= registration_form.sibling_existing_parent.name %></td>

@@ -22,22 +22,9 @@ $('#all_forms').dataTable({
                     "bSelectedOnly": true
                 },
                 "select_all", "select_none"
-            ]
-            
-            }
-
-
-      
-// "aoColumnDefs"  : [
-// {
-    // aTargets: [50],    // Column number which needs to be modified
-    // fnRender: function (o, v) {   // o, v contains the object and value for the column
-        // return '<input type="checkbox" class="table-striped" name="someCheckbox" />';
-    // },
-    // sClass: 'tableCell'    // Optional - class to be applied to this table cell
-// }]
-            
-});
+                ]
+              }
+          });
 
 }
 
